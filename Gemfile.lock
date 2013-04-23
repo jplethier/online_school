@@ -24,6 +24,8 @@ GEM
       activesupport (= 3.1.10)
       arel (~> 2.2.3)
       tzinfo (~> 0.3.29)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activeresource (3.1.10)
       activemodel (= 3.1.10)
       activesupport (= 3.1.10)
@@ -106,6 +108,7 @@ GEM
     newrelic_rpm (3.6.0.83)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
+    pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
@@ -195,6 +198,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
   annotate (>= 2.5.0)
   awesome_print
   bourbon
@@ -211,6 +215,7 @@ DEPENDENCIES
   launchy
   letter_opener
   newrelic_rpm
+  pg (= 0.14.1)
   pry-debugger
   rack-mini-profiler
   rails (= 3.1.10)
