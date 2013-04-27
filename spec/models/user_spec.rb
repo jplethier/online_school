@@ -28,6 +28,7 @@
 #  address_complement     :string(255)
 #  address_city           :string(255)
 #  address_state          :string(255)
+#  account_id             :integer
 #
 
 require 'spec_helper'
@@ -51,6 +52,7 @@ describe User do
   it { should respond_to :address_complement }
   it { should respond_to :address_city }
   it { should respond_to :address_state }
+  it { should respond_to :account }
 
   describe 'accessibility' do
     it { should allow_mass_assignment_of :name }
@@ -65,10 +67,15 @@ describe User do
     it { should allow_mass_assignment_of :address_city }
     it { should allow_mass_assignment_of :address_complement }
     it { should allow_mass_assignment_of :address_number }
+    it { should_not allow_mass_assignment_of :account_id }
   end
 
   describe 'validations' do
-    it { binding.pry; should validate_presence_of(:name) }
+    it { should validate_presence_of(:name) }
     it { should ensure_length_of(:password).is_at_least(6) }
+  end
+
+  describe 'associations' do
+    it { should belong_to :account }
   end
 end

@@ -28,6 +28,7 @@
 #  address_complement     :string(255)
 #  address_city           :string(255)
 #  address_state          :string(255)
+#  account_id             :integer
 #
 
 class User < ActiveRecord::Base
@@ -41,4 +42,6 @@ class User < ActiveRecord::Base
   attr_accessible :address, :address_city, :address_complement, :address_number, :address_state, :birth_date, :cellphone_number, :email, :enrollment, :name, :password, :password_confirmation, :phone_number, :remember_me
 
   validates :name, presence: true
+
+  belongs_to :account
 end

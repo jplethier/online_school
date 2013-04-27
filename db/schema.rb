@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427021916) do
+ActiveRecord::Schema.define(:version => 20130427212533) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "cnpj",       :limit => 21
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["cnpj"], :name => "index_accounts_on_cnpj"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130427021916) do
     t.string   "address_complement"
     t.string   "address_city"
     t.string   "address_state"
+    t.integer  "account_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
