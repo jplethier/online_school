@@ -18,6 +18,16 @@
 #  confirmation_sent_at   :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
+#  name                   :string(255)
+#  enrollment             :string(255)
+#  phone_number           :string(255)
+#  cellphone_number       :string(255)
+#  birth_date             :date
+#  address                :string(255)
+#  address_number         :string(255)
+#  address_complement     :string(255)
+#  address_city           :string(255)
+#  address_state          :string(255)
 #
 
 class User < ActiveRecord::Base
