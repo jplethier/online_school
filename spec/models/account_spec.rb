@@ -16,6 +16,8 @@ describe Account do
 
   subject { account }
 
+  its(:save) { should be_true }
+
   it { should respond_to :cnpj }
   it { should respond_to :name }
   it { should respond_to :users }
