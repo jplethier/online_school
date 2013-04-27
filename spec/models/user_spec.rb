@@ -33,5 +33,42 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { FactoryGirl.build :user }
+
+  subject { user }
+
+  its(:save) { should be_true }
+
+  it { should respond_to :name }
+  it { should respond_to :email }
+  it { should respond_to :password }
+  it { should respond_to :enrollment }
+  it { should respond_to :phone_number }
+  it { should respond_to :cellphone_number }
+  it { should respond_to :birth_date }
+  it { should respond_to :address }
+  it { should respond_to :address_number }
+  it { should respond_to :address_complement }
+  it { should respond_to :address_city }
+  it { should respond_to :address_state }
+
+  describe 'accessibility' do
+    it { should allow_mass_assignment_of :name }
+    it { should allow_mass_assignment_of :email }
+    it { should allow_mass_assignment_of :password }
+    it { should allow_mass_assignment_of :enrollment }
+    it { should allow_mass_assignment_of :phone_number }
+    it { should allow_mass_assignment_of :cellphone_number }
+    it { should allow_mass_assignment_of :birth_date }
+    it { should allow_mass_assignment_of :address_state }
+    it { should allow_mass_assignment_of :address }
+    it { should allow_mass_assignment_of :address_city }
+    it { should allow_mass_assignment_of :address_complement }
+    it { should allow_mass_assignment_of :address_number }
+  end
+
+  describe 'validations' do
+    it { binding.pry; should validate_presence_of(:name) }
+    it { should ensure_length_of(:password).is_at_least(6) }
+  end
 end
