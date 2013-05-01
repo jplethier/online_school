@@ -1,0 +1,41 @@
+!!!
+/paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7]<html class="lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7]<html class="lt-ie9 lt-ie8" lang="en">
+/[if IE 8]<html class="lt-ie9" lang="en">
+/[if IE 9]<html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html( lang = "en" )
+  <!--<![endif]-->
+  %head
+    :plain
+      <!--[if gte IE 6]>
+      <script type="text/javascript">
+      document.createElement("header");
+      document.createElement("section")
+      document.createElement("article")
+      document.createElement("nav")
+      document.createElement("aside")
+      document.createElement("footer");
+      </script>
+      <![endif]-->
+      <!--[if lt IE 7]><body class="ie6"> <![endif]-->
+      <!--[if IE 7]><body class="ie7"> <![endif]-->
+      <!--[if IE 8]><body class="ie8"> <![endif]-->
+    %title Title
+    %meta{ :name => "description", :content => "description" }
+    %meta{ :name => "keywords", :content => "keywords" }
+    %meta{ :charset => 'utf-8'}
+    = stylesheet_link_tag :application
+    = stylesheet_link_tag :print, media: :print
+    = yield :css
+    = javascript_include_tag :application
+    = csrf_meta_tag
+
+    / = render 'layouts/shared/font_face'
+
+  %body{ class: @namespace }
+    #wrap
+      %article
+        = flash_messages
+        = yield
