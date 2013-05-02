@@ -12,8 +12,8 @@
 class Account < ActiveRecord::Base
   #attr_accessible :cnpj, :name
 
-  validates :cnpj,    presence: true
-  validates :name,    presence: true
+  validates :cnpj, presence: true
+  validates :name, presence: true
 
   has_many :users
 end
