@@ -9,7 +9,7 @@
 #
 
 class Plan < ActiveRecord::Base
-  attr_accessible :title
+  #attr_accessible :title
 
   validates :title, presence: true
 end
