@@ -1,0 +1,10 @@
+'pt-BR':
+  devise:
+    sessions:
+      user:
+        signed_out: 'Logout realizado com sucesso.'
+    registrations:
+      user:
+        signed_up: 'Cadastro realizado com sucesso. Confirme sua conta através do email enviado para a sua conta.'
+    failure:
+      already_authenticated: 'Login já realizado.'
