@@ -44,4 +44,6 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   belongs_to :account
+
+  accepts_nested_attributes_for :account, :allow_destroy => true
 end
