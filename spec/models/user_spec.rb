@@ -54,28 +54,22 @@ describe User do
   it { should respond_to :address_state }
   it { should respond_to :account }
 
-  describe 'accessibility' do
-    it { should allow_mass_assignment_of :name }
-    it { should allow_mass_assignment_of :email }
-    it { should allow_mass_assignment_of :password }
-    it { should allow_mass_assignment_of :enrollment }
-    it { should allow_mass_assignment_of :phone_number }
-    it { should allow_mass_assignment_of :cellphone_number }
-    it { should allow_mass_assignment_of :birth_date }
-    it { should allow_mass_assignment_of :address_state }
-    it { should allow_mass_assignment_of :address }
-    it { should allow_mass_assignment_of :address_city }
-    it { should allow_mass_assignment_of :address_complement }
-    it { should allow_mass_assignment_of :address_number }
-    it { should_not allow_mass_assignment_of :account_id }
-  end
-
   describe 'validations' do
-    it { should validate_presence_of(:name) }
-    it { should ensure_length_of(:password).is_at_least(6) }
-  end
+    it 'should require a name' do
+      expect{ user.name = nil }.to change{ user.valid? }.from(true).to(false)
+    end
 
-  describe 'associations' do
-    it { should belong_to :account }
+    describe 'should ensure that password is at least 6 length' do
+      it { expect{ user.password = '123' }.to change{ user.valid? }.from(true).to(false) }
+      it { expect{ user.password = '12345' }.to change{ user.valid? }.from(true).to(false) }
+    end
+
+    it 'should require a password' do
+      expect{ user.password = nil }.to change{ user.valid? }.from(true).to(false)
+    end
+
+    it 'should require an email' do
+      expect{ user.email = nil }.to change{ user.valid? }.from(true).to(false)
+    end
   end
 end

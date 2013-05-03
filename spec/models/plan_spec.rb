@@ -19,11 +19,9 @@ describe Plan do
 
   it { should respond_to :title }
 
-  describe 'accessibility' do
-    it { should allow_mass_assignment_of :title }
-  end
-
   describe 'validations' do
-    it { should validate_presence_of :title }
+    it 'should require a title' do
+      expect{ plan.title = nil }.to change{ plan.valid? }.from(true).to(false)
+    end
   end
 end

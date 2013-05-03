@@ -22,17 +22,8 @@ describe Account do
   it { should respond_to :name }
   it { should respond_to :users }
 
-  describe 'accessibility' do
-    it { should allow_mass_assignment_of :cnpj }
-    it { should allow_mass_assignment_of :name }
-  end
-
   describe 'validations' do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :cnpj }
-  end
-
-  describe 'associations' do
-    it { should have_many(:users) }
+    it { expect{ account.name = nil }.to change{ account.valid? }.from(true).to(false) }
+    it { expect{ account.cnpj = nil }.to change{ account.valid? }.from(true).to(false) }
   end
 end
