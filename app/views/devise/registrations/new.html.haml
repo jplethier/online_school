@@ -3,11 +3,11 @@
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
 
-  = f.fields_for :account, resource.build_account do |f_a|
+  = f.fields_for :account, resource.build_account do |f_account|
     %div
-      = f_a.label :cnpj
+      = f_account.label :cnpj
       %br
-      = f_a.text_field :cnpj, autofocus: true
+      = f_account.text_field :cnpj, autofocus: true
 
   %div
     = f.label :name
