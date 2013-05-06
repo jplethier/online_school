@@ -10,11 +10,11 @@ describe RegistrationsController do
     let(:params)  { { user: { account: { field: :any }}} }
     let(:user)    { stub_model(User, account: account) }
 
-    it 'sets the user account name' do
+    it 'sets the user name as Admin plus account name' do
       User.stub(new: user)
-      user.account.should_receive(:name=).with('user name')
+      user.should_receive(:name=).with('Admin school name')
 
-      params[:user][:account][:name] = 'user name'
+      params[:user][:account][:name] = 'school name'
       get :new, params
     end
 

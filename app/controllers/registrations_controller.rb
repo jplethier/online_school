@@ -7,7 +7,9 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).require(:account).permit(account: [:name])
 
     self.resource = User.new params[:user]
-    self.resource.account.name = params[:user][:account][:name]
+    unless params[:user][:account][:name].blank?
+      self.resource.name = 'Admin ' + params[:user][:account][:name]
+    end
     self.resource
   end
 end
