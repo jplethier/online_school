@@ -1,0 +1,67 @@
+$bg-color-site: #EDE8DA;
+$bg-color-footer: #38301B;
+$width-site: 1000px;
+
+body{
+  padding: 0;
+  margin: 0;
+  background-color: $bg-color-site;
+}
+
+.arredondar{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#container{
+  #topo{
+    height: 550px;
+    background-image: image-url('home/fundo-topo.png');
+    #logo{
+      width: $width-site;
+      margin: 0 auto;
+      padding-top: 7px;
+    }
+    #topo-meio{
+      width: $width-site;
+      margin: 0 auto;
+      margin-top: 60px;
+      #topo-text{
+        color: #FFFFFF;
+        font-family: CooperBlack;
+        font-size: 22px;
+        width: 550px;
+      }
+      #circulo-logo{
+        float: right;
+        margin-right: 30px;
+      }
+      a{
+        text-decoration: none;
+        color: #FFFFFF;
+        font-family: CooperBlack;
+        font-size: 22px;
+        background-color: #FF9900;
+        padding: 15px 20px;
+      }
+    }
+  }
+  #content{
+    p{
+      width: $width-site;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #333333;
+      font-family: CooperBlack;
+      font-size: 30px;
+      margin-top: 40px;
+    }
+  }
+  #footer{
+    background-color: $bg-color-footer;
+    height: 200px;
+  }
+}

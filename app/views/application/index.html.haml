@@ -2,3 +2,35 @@
   = link_to 'Logout', destroy_user_session_path, method: :delete
 - else
   = link_to 'Login', new_user_session_path
+
+#container
+  #topo
+    #logo
+      %img{ src: "#{image_path('home/logo-branco.png')}" }
+    #topo-meio
+      #circulo-logo
+        %img{ src: "#{image_path('home/circulo-topo.png')}" }
+      #topo-text
+        %h2 Lorem ipsum
+        %p Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nullam elementum maurivel
+        nulla lacinia interdum. Praesent vel nisi
+        vitae turpis consequat cursus et et nibh.
+        Etiam rutrum porttitor viverra. Proin nisi
+        enim, aliquet sit amet iaculis vitae, feugiat a
+        felis.
+      %div
+        %a{ href: '', class: 'arredondar'} contratar
+  #content
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+    elementum maurivel nulla lacinia interdum.
+    %div
+      %img{ src: "#{image_path('home/bloco.png')}" }
+      %h1 Lorem ipsum
+    %div
+      %img{ src: "#{image_path('home/micro.png')}" }
+      %h1 Lorem ipsum
+    %div
+      %img{ src: "#{image_path('home/kids.png')}" }
+      %h1 Lorem ipsum
+  #footer
