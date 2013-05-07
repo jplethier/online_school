@@ -1,5 +1,8 @@
 OnlineSchool::Application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, controllers: { registrations: 'registrations' }
 
-  root to: "application#index"
+  ActiveAdmin.routes(self)
+
+  root to: 'application#index'
 end
