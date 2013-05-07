@@ -25,7 +25,7 @@ gem 'annotate', '>= 2.5.0'
 gem 'therubyracer', platforms: :ruby
 
 gem 'haml'
-gem "haml-rails"
+gem 'haml-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -67,6 +67,11 @@ group :test do
   gem 'launchy'
   gem 'simplecov', :require => false
 end
+
+gem 'activeadmin',   github: 'akashkamboj/active_admin', branch: 'rails4'
+gem 'ransack',       github: 'ernie/ransack', branch: 'rails-4'
+gem 'formtastic',    github: 'justinfrench/formtastic', branch: 'rails4beta'
+#gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
