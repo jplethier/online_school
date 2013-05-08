@@ -5,14 +5,14 @@
 
   = f.fields_for :account, resource.build_account do |f_account|
     %div
-      = f_account.label :cnpj
-      %br
-      = f_account.text_field :cnpj, autofocus: true
-
-    %div
       = f_account.label :name
       %br
-      = f_account.text_field :name
+      = f_account.text_field :name, autofocus: true
+
+    %div
+      = f_account.label :subdomain
+      %br
+      = f_account.text_field :subdomain
 
   %div
     = f.label :email

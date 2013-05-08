@@ -2,11 +2,13 @@
 #
 # Table name: accounts
 #
-#  id         :integer          not null, primary key
-#  cnpj       :string(21)
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  cnpj         :string(21)
+#  name         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  contact_mail :string(255)
+#  subdomain    :string(255)
 #
 
 class Account < ActiveRecord::Base
