@@ -6,14 +6,17 @@ class RegistrationsController < Devise::RegistrationsController
     if params[:user].blank?
       self.resource = User.new
     else
-      params.require(:user).permit(:email)
-      params.require(:user).require(:account).permit(account: [:name])
-
-      self.resource = User.new params[:user]
-      unless params[:user][:account][:name].blank?
-        self.resource.name = 'Admin ' + params[:user][:account][:name]
+      self.resource = User.new user_params
+      unless params[:user][:account_attributes][:name].blank?
+        self.resource.name = 'Admin ' + params[:user][:account_attributes][:name]
       end
     end
     self.resource
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, account_attributes: [:name, :subdomain] )
   end
 end
