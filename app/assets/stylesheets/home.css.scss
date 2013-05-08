@@ -14,6 +14,30 @@ body{
   border-radius: 5px;
 }
 
+.arredondar-top-left{
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}
+
+.arredondar-top-right{
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+}
+
+.arredondar-bottom-left{
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.arredondar-bottom-right{
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 #container{
   #topo{
     height: 550px;
@@ -32,18 +56,18 @@ body{
         font-family: CooperBlack;
         font-size: 22px;
         width: 550px;
+        h2{
+          font-family: SketchCollege;
+          font-size: 48px;
+        }
       }
       #circulo-logo{
         float: right;
         margin-right: 30px;
       }
-      a{
-        text-decoration: none;
-        color: #FFFFFF;
-        font-family: CooperBlack;
-        font-size: 22px;
-        background-color: #FF9900;
-        padding: 15px 20px;
+      #bt-contratar{
+        text-align: center;
+        margin-top: 30px;
       }
     }
   }
@@ -59,9 +83,122 @@ body{
       font-size: 30px;
       margin-top: 40px;
     }
+    #box-container{
+      width: $width-site;
+      margin: 0 auto;
+      margin-top:70px;
+      text-align: center;
+      #box1,#box2,#box3{
+        width: 333px;
+        float: left;
+        h1{
+          font-family: CooperBlack;
+          margin-top: -40px;
+        }
+        span{
+          font-size: 13px;
+          text-align: left;
+          font-family: CooperBlack;
+          padding: 0 15px;
+        }
+      }
+    }
+    #planos{
+      position: relative;
+      width: 940px;
+      margin: 0 auto;
+      margin-top: 100px;
+      
+      th,td{
+        border-bottom: 1px solid $bg-color-site;
+        border-left: 1px solid $bg-color-site;
+        width: 235px;
+      }
+      th{
+        background-color: #38301B;
+        color: #fff;
+        font-family: CooperBlack;
+        font-size: 20px;
+        padding: 7px 0;
+      }
+      td{
+        background-color: #fff;
+        color: #333;
+        font-family: CooperBlack;
+        font-size: 14px;
+        padding: 10px 0;
+        img{
+          width: 18px;
+          height: 16px;
+        }
+      }
+      #plano-destaque{
+        position: absolute;
+        top: -6px;
+        left: 470px;
+        box-shadow: 1px 1px 10px #333333;
+        th,td{
+          padding: 11px 0;
+        }
+      }
+    }
+    #sombra-tabela-plano{
+      margin-top: -16px;
+    }
   }
   #footer{
     background-color: $bg-color-footer;
-    height: 200px;
+    margin-top: 100px;
+    #footer-container{
+      width: $width-site;
+      margin: 0 auto;
+      #footer-descricao{
+        width: 550px;
+        margin-top: 50px;
+        float: left;
+        img{
+          float: left;
+        }
+        p{
+          margin-left: 120px;
+          margin-top: 0px;
+          color: #EBE6D8;
+          font-family: CooperBlack;
+          font-size: 12px;
+        }
+        #social{
+          text-align: right;
+          margin-top: 20px;
+        }
+      }
+      #footer-form{
+        text-align: left;
+        padding-top: 50px;
+        padding-bottom: 100px;
+        margin-left: 550px;
+        label{
+          color: #FFF;
+          font-family: CooperBlack;
+          font-size: 29px;
+          margin-top: 10px;
+        }       
+        .input-large{
+          width: 400px;
+          padding: 18px;
+          border: none;
+          margin-bottom:20px;
+        }
+        .submit{
+          float: right;
+          margin-right: 15px;
+          border: none;
+          padding: 15px 50px;
+          color: #FFF;
+          font-family: CooperBlack;
+          font-size: 22px;
+          background-color: #FF9900;
+        }
+      }
+    }
   }
 }

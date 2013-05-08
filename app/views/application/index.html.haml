@@ -12,25 +12,155 @@
         %img{ src: "#{image_path('home/circulo-topo.png')}" }
       #topo-text
         %h2 Lorem ipsum
-        %p Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Nullam elementum maurivel
-        nulla lacinia interdum. Praesent vel nisi
-        vitae turpis consequat cursus et et nibh.
-        Etiam rutrum porttitor viverra. Proin nisi
-        enim, aliquet sit amet iaculis vitae, feugiat a
-        felis.
-      %div
-        %a{ href: '', class: 'arredondar'} contratar
+        %p
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nullam elementum maurivel
+          nulla lacinia interdum. Praesent vel nisi
+          vitae turpis consequat cursus et et nibh.
+          Etiam rutrum porttitor viverra. Proin nisi
+          enim, aliquet sit amet iaculis vitae, feugiat a
+          felis.
+      %div{ style: 'clear:both' }
+      #bt-contratar
+        %img{ src: "#{image_path('home/bt-laranja.png')}" }
   #content
-    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-    elementum maurivel nulla lacinia interdum.
-    %div
-      %img{ src: "#{image_path('home/bloco.png')}" }
-      %h1 Lorem ipsum
-    %div
-      %img{ src: "#{image_path('home/micro.png')}" }
-      %h1 Lorem ipsum
-    %div
-      %img{ src: "#{image_path('home/kids.png')}" }
-      %h1 Lorem ipsum
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+      elementum maurivel nulla lacinia interdum.
+    #box-container
+      #box1
+        %img{ src: "#{image_path('home/bloco.png')}" }
+        %h1 Lorem ipsum
+        %span
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nullam elementum maurivel
+          nulla lacinia interdum. Praesent vel nisi
+          vitae turpis consequat cursus et et nibh.
+          Etiam rutrum porttitor viverra. Proin nisi
+          enim, aliquet sit amet iaculis vitae, feugiat a
+          felis.
+      #box2
+        %img{ src: "#{image_path('home/micro.png')}" }
+        %h1 Lorem ipsum
+        %span
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nullam elementum maurivel
+          nulla lacinia interdum. Praesent vel nisi
+          vitae turpis consequat cursus et et nibh.
+          Etiam rutrum porttitor viverra. Proin nisi
+          enim, aliquet sit amet iaculis vitae, feugiat a
+          felis.
+      #box3
+        %img{ src: "#{image_path('home/kids.png')}" }
+        %h1 Lorem ipsum
+        %span
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nullam elementum maurivel
+          nulla lacinia interdum. Praesent vel nisi
+          vitae turpis consequat cursus et et nibh.
+          Etiam rutrum porttitor viverra. Proin nisi
+          enim, aliquet sit amet iaculis vitae, feugiat a
+          felis.
+
+      %div{ style: 'clear:both' }
+      #planos
+        %table#plano-destaque{ cellpadding: 0, cellspacing: 0 }
+          %tr
+            %th.arredondar-top-left.arredondar-top-right plano2
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td.arredondar-bottom-left.arredondar-bottom-right Lorem ipsum
+
+        %table{ cellpadding: 0, cellspacing: 0 }
+          %tr
+            %th.arredondar-top-left
+            %th plano1
+            %th plano2
+            %th.arredondar-top-right plano3
+          %tr
+            %td Lorem ipsum
+            %td -
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+          %tr
+            %td Lorem ipsum
+            %td Lorem ipsum
+            %td Lorem ipsum
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+          %tr
+            %td Lorem ipsum
+            %td 5
+            %td 10
+            %td 20
+          %tr
+            %td Lorem ipsum
+            %td -
+            %td -
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+          %tr
+            %td Lorem ipsum
+            %td R$0,00
+            %td R$0,00
+            %td R$0,00
+          %tr
+            %td.arredondar-bottom-left Lorem ipsum
+            %td -
+            %td
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+            %td.arredondar-bottom-right
+              Lorem ipsum
+              %img{ src: "#{image_path('home/onebit_34.png')}" }
+      #sombra-tabela-plano
+        %img{ src: "#{image_path('home/sombra-tabela-plano.png')}" }
+
+      %div{ style: 'clear:both' }
+
   #footer
+    #footer-container
+      #footer-descricao
+        %img{ src: "#{image_path('home/logo-branco.png')}" }
+        %p
+          Rua Presidente Vargas 10.000, Subsolo C
+          %br
+          Cep: 20000-000 - Rio de Janeiro - RJ
+          %br
+          %br
+          Email: contato@syschool.com.br
+        #social
+          %img{ src: "#{image_path('home/facebook-icon-brown.png')}" }
+          %img{ src: "#{image_path('home/twitter-icon-brown.png')}" }
+          %img{ src: "#{image_path('home/rss-icon-brown.png')}" }
+          %img{ src: "#{image_path('home/google-icon-brown.png')}" }
+      #footer-form
+        %form
+          %label Lorem ipsum
+          %br
+          %br
+          %input{ type: 'text', class: 'input-large arredondar' }
+          %input{ type: 'text', class: 'input-large arredondar' }
+          %input{ type: 'text', class: 'input-large arredondar' }
+          %input{ type: 'submit', value: 'Enviar', class: 'submit arredondar' }
+      %div{ style: 'clear:both' }
+
