@@ -2,6 +2,7 @@
   devise:
     sessions:
       user:
+        signed_in: 'Login realizado com sucesso.'
         signed_out: 'Logout realizado com sucesso.'
     registrations:
       user:
