@@ -7,14 +7,14 @@ describe RegistrationsController do
     before { @request.env['devise.mapping'] = Devise.mappings[:user] }
 
     let(:account) { stub_model(Account) }
-    let(:params)  { { user: { account: { field: :any }}} }
+    let(:params)  { { user: { account_attributes: { field: :any }}} }
     let(:user)    { stub_model(User, account: account) }
 
     it 'sets the user name as Admin plus account name' do
       User.stub(new: user)
       user.should_receive(:name=).with('Admin school name')
 
-      params[:user][:account][:name] = 'school name'
+      params[:user][:account_attributes][:name] = 'school name'
       get :new, params
     end
 

@@ -12,8 +12,8 @@ describe Account do
       expect { account.name = nil }.to change { account.valid? }.from(true).to(false)
     end
 
-    it 'requires a cnpj' do
-      expect { account.cnpj = nil }.to change { account.valid? }.from(true).to(false)
-    end
+    # it 'requires a cnpj' do
+    #   expect { account.cnpj = nil }.to change { account.valid? }.from(true).to(false)
+    # end
   end
 end

@@ -226,6 +226,9 @@
     models:
       user: 'Usuários'
     attributes:
+      account:
+        name: 'Nome'
+        subdomain: 'Subdomínio'
       user:
         enrollment: 'Matrícula'
         name: "Nome"
