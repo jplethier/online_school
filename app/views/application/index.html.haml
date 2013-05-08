@@ -1,32 +1,32 @@
 - if user_signed_in?
-  = link_to 'Logout', destroy_user_session_path, method: :delete
+  -#= link_to 'Logout', destroy_user_session_path, method: :delete
 - else
-  = link_to 'Login', new_user_session_path
+  -#= link_to 'Login', new_user_session_path
 
-#container
-  #topo
-    #logo
-      %img{ src: "#{image_path('home/logo-branco.png')}" }
-    #topo-meio
-      #circulo-logo
-        %img{ src: "#{image_path('home/circulo-topo.png')}" }
-      #topo-text
-        %h2 Lorem ipsum
-        %p
-          Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Nullam elementum maurivel
-          nulla lacinia interdum. Praesent vel nisi
-          vitae turpis consequat cursus et et nibh.
-          Etiam rutrum porttitor viverra. Proin nisi
-          enim, aliquet sit amet iaculis vitae, feugiat a
-          felis.
-      %div{ style: 'clear:both' }
-      #bt-contratar
-        %img{ src: "#{image_path('home/bt-laranja.png')}" }
+.nav
+  .logo-wrapper
+    .logo
+
+.header
+  .banner-wrapper
+    .banner
+    .banner-text
+      %h2 Lorem ipsum
+      %p
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nullam elementum maurivel
+        nulla lacinia interdum. Praesent vel nisi
+        vitae turpis consequat cursus et et nibh.
+        Etiam rutrum porttitor viverra. Proin nisi
+        enim, aliquet sit amet iaculis vitae, feugiat a
+        felis.
+    .button
+      %img{ src: "#{image_path('home/bt-laranja.png')}" }
+
   #content
     %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-      elementum maurivel nulla lacinia interdum.
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+      elementum maurivel nulla lacinia interdum."
     #box-container
       #box1
         %img{ src: "#{image_path('home/bloco.png')}" }
