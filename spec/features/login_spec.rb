@@ -11,12 +11,10 @@ describe "Login" do
     visit new_user_session_path
   end
 
-  describe 'creating a user' do
-    it 'successfully' do
-      fill_in 'user_email', :with => user.email
-      fill_in 'user_password', :with => '123qwe'
-      click_on 'signin_btn'
-      should have_content('Login realizado com sucesso.')
-    end
+  it 'successfully' do
+    fill_in 'user_email', :with => user.email
+    fill_in 'user_password', :with => '123qwe'
+    click_on 'signin_btn'
+    should have_content('Login realizado com sucesso.')
   end
 end
