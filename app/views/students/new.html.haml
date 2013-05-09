@@ -1,0 +1,70 @@
+Novo Aluno
+
+= form_for @student, url: student_path(@student) do |f|
+  %div
+    = f.label :name
+    %br
+    = f.text_field :name
+
+  %div
+    = f.label :email
+    %br
+    = f.email_field :email
+
+  %div
+    = f.label :password
+    %br
+    = f.password_field :password
+
+  %div
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation
+
+  %div
+    = f.label :enrollment
+    %br
+    = f.text_field :enrollment
+
+  %div
+    = f.label :phone_number
+    %br
+    = f.text_field :phone_number
+
+  %div
+    = f.label :cellphone_number
+    %br
+    = f.text_field :cellphone_number
+
+  %div
+    = f.label :birth_date
+    %br
+    = f.text_field :birth_date
+
+  %div
+    = f.label :address
+    %br
+    = f.text_field :address
+
+  %div
+    = f.label :address_number
+    %br
+    = f.text_field :address_number
+
+  %div
+    = f.label :address_complement
+    %br
+    = f.text_field :address_complement
+
+  %div
+    = f.label :address_city
+    %br
+    = f.text_field :address_city
+
+  %div
+    = f.label :address_state
+    %br
+    = f.text_field :address_state
+
+  %div
+    = f.submit 'Confirmar'

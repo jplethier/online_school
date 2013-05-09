@@ -1,0 +1,14 @@
+= link_to 'Novo Aluno', new_student_path
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Email
+      %th Editar
+  %tbody
+    - @students.each do |student|
+      %tr
+        %td= student.name
+        %td= student.email
+        %td= link_to 'Editar', edit_student_path(student)

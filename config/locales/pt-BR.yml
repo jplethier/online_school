@@ -230,10 +230,18 @@
         name: 'Nome'
         subdomain: 'Subdomínio'
       user:
+        address: 'Endereço'
+        address_city: 'Cidade'
+        address_complement: 'Complemento'
+        address_number: 'Número'
+        address_state: 'Estado'
+        birth_date: 'Data de Nascimento'
+        cellphone_number: 'Celular'
         enrollment: 'Matrícula'
         name: "Nome"
         password: "Senha"
         password_confirmation: "Confirmação da Senha"
+        phone_number: 'Telefone Residencial'
     errors:
       models:
         user:
