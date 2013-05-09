@@ -29,6 +29,11 @@
 #  address_city           :string(255)
 #  address_state          :string(255)
 #  account_id             :integer
+#  type                   :string(255)
+#  student                :boolean
+#  teacher                :boolean
+#  employee               :boolean
+#  admin                  :boolean
 #
 
 class User < ActiveRecord::Base
