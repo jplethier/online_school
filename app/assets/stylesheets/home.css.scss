@@ -1,4 +1,5 @@
 $beige: #EDE8DA;
+$beige-light: #EBE6D8;
 $brown: #38301B;
 $gray:  #333;
 $green: #289C55;
@@ -14,33 +15,30 @@ body {
   padding: 0;
 }
 
-.clear {
-  clear: both;
-}
-
-//TODO: remover
-.arredondar {
+input {
+  border: none;
   border-radius: 5px;
 }
 
-//TODO: remover
-.arredondar-top-left{
-  border-top-left-radius: 5px;
+textarea {
+  border: none;
+  border-radius: 5px;
 }
 
-//TODO: remover
-.arredondar-top-right{
-  border-top-right-radius: 5px;
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
 }
 
-//TODO: remover
-.arredondar-bottom-left{
-  border-bottom-left-radius: 5px;
+.primary {
+  background-color: $orange;
+  color: $white;
+  font-family: CooperBlack;
 }
 
-//TODO: remover
-.arredondar-bottom-right{
-  border-bottom-right-radius: 5px;
+.clear {
+  clear: both;
 }
 
 .nav {
@@ -54,18 +52,13 @@ body {
     .login {
       float: right;
 
-      input {
+      input[type="text"], input[type="password"] {
         background-color: $beige;
-        border: none;
         padding: 10px;
       }
 
-      .bt-login {
-        background-color: $orange;
-        color: $white;
-        font-family: CooperBlack;
-        padding-left: 15px;
-        padding-right: 15px;
+      input[type="submit"] {
+        padding: 10px 15px;
       }
     }
   }
@@ -196,7 +189,12 @@ body {
     }
   }
 
+  .button {
+    padding: 7px 30px;
+  }
+
   table {
+    border-spacing: 0;
     box-shadow: 0 12px 13px -13px $gray;
 
     th:first-child {
@@ -227,69 +225,70 @@ body {
   }
 }
 
-#footer{
+footer {
   background-color: $brown;
   margin-top: 100px;
-  #footer-container{
+
+  .footer-wrapper {
     width: $width-site;
     margin: 0 auto;
-    #footer-descricao{
-      width: 550px;
-      margin-top: 50px;
+
+    #contact {
       float: left;
-      img{
+      margin-top: 50px;
+      width: 550px;
+
+      img {
         float: left;
       }
-      p{
-        margin-left: 120px;
-        margin-top: 0px;
-        color: #EBE6D8;
+
+      p {
+        color: $beige-light;
         font-family: CooperBlack;
         font-size: 12px;
-      }
-      #social{
-        text-align: right;
-        margin-top: 20px;
+        margin-left: 120px;
+        margin-top: 0px;
       }
     }
-    #footer-form{
+
+    #social {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    form {
       text-align: left;
+      margin-left: 550px;
       padding-top: 50px;
       padding-bottom: 100px;
-      margin-left: 550px;
+
       label{
-        color: #FFF;
+        color: $white;
         font-family: CooperBlack;
         font-size: 29px;
         margin-top: 10px;
       }
-      .input-large{
+
+      input[type="text"] {
         width: 400px;
         padding: 18px;
-        border: none;
         margin-bottom:20px;
       }
-      .submit{
+
+      textarea {
+        height: 200px;
+        width: 400px;
+        padding: 18px;
+        margin-bottom:20px;
+      }
+
+      input[type="submit"] {
         float: right;
         margin-right: 15px;
-        border: none;
-        padding: 15px 50px;
-        color: #FFF;
-        font-family: CooperBlack;
         font-size: 22px;
-        background-color: $orange;
+        padding: 15px 50px;
       }
     }
   }
-}
-
-.bt-contratar {
-  text-decoration: none;
-  border: none;
-  padding: 7px 30px;
-  color: #FFF;
-  font-family: CooperBlack;
-  font-size: 14px;
-  background-color: #FF9900;
 }
 
