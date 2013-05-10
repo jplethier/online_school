@@ -25,6 +25,9 @@ input {
   box-shadow: 0px 0px 4pt 3pt $green;
 }
 
+::selection {
+  background: $orange;
+}
 
 textarea {
   border: none;
