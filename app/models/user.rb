@@ -52,8 +52,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :account, :allow_destroy => true
 
-  scope :students,  where(student: true)
-  scope :teachers,  where(teacher: true)
-  scope :employees, where(employee: true)
-  scope :admins,    where(admin: true)
+  scope :students,  lambda { where(student: true) }
+  scope :teachers,  lambda { where(teacher: true) }
+  scope :employees, lambda { where(employee: true) }
+  scope :admins,    lambda { where(admin: true) }
 end
