@@ -1,10 +1,13 @@
-- if user_signed_in?
-  -#= link_to 'Logout', destroy_user_session_path, method: :delete
-- else
-  -#= link_to 'Login', new_user_session_path
-
 .nav
-  .logo-wrapper
+  .nav-wrapper
+    - if user_signed_in?
+      = link_to 'Logout', destroy_user_session_path, method: :delete
+    - else
+      .login
+        %form
+          %input{ type: 'text', placeholder: 'login', class: 'arredondar' }
+          %input{ type: 'password', placeholder: 'senha', class: 'arredondar' }
+          %input{ type: 'submit', value: 'Login', class: 'arredondar bt-login' }
     .logo
 
 .header
