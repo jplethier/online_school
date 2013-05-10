@@ -13,7 +13,7 @@ describe "Login" do
 
   it 'successfully' do
     fill_in 'user_email', :with => user.email
-    fill_in 'user_password', :with => '123qwe'
+    fill_in 'user_password', :with => user.password
     click_on 'signin_btn'
     should have_content('Login realizado com sucesso.')
   end
