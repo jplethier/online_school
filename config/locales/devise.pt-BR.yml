@@ -10,4 +10,5 @@
     failure:
       already_authenticated: 'Login já realizado.'
       user:
+        not_found_in_database: 'Email não encontrado'
         unauthenticated: 'É necessário logar para acessar essa página'
