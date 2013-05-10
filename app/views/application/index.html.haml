@@ -26,12 +26,12 @@
     .button
       %img{ src: "#{image_path('home/bt-laranja.png')}" }
 
-  #content
+  .content
     %p
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
       elementum maurivel nulla lacinia interdum."
-    #box-container
-      #box1
+    .box-container
+      .box
         %img{ src: "#{image_path('home/bloco.png')}" }
         %h1 Lorem ipsum
         %span
@@ -42,7 +42,7 @@
           Etiam rutrum porttitor viverra. Proin nisi
           enim, aliquet sit amet iaculis vitae, feugiat a
           felis.
-      #box2
+      .box
         %img{ src: "#{image_path('home/micro.png')}" }
         %h1 Lorem ipsum
         %span
@@ -53,7 +53,7 @@
           Etiam rutrum porttitor viverra. Proin nisi
           enim, aliquet sit amet iaculis vitae, feugiat a
           felis.
-      #box3
+      .box
         %img{ src: "#{image_path('home/kids.png')}" }
         %h1 Lorem ipsum
         %span
@@ -66,14 +66,11 @@
           felis.
 
       %div{ style: 'clear:both' }
-      #planos
-        %table#plano-destaque{ cellpadding: 0, cellspacing: 0 }
+
+      .planos
+        %table.highlight{ cellpadding: 0, cellspacing: 0 }
           %tr
-            %th.arredondar-top-left.arredondar-top-right plano2
-          %tr
-            %td Lorem ipsum
-          %tr
-            %td Lorem ipsum
+            %th plano2
           %tr
             %td Lorem ipsum
           %tr
@@ -83,15 +80,19 @@
           %tr
             %td Lorem ipsum
           %tr
-            %td.arredondar-bottom-left.arredondar-bottom-right
+            %td Lorem ipsum
+          %tr
+            %td Lorem ipsum
+          %tr
+            %td
               %a{ class: 'bt-contratar arredondar' } Contratar
 
         %table{ cellpadding: 0, cellspacing: 0 }
           %tr
-            %th.arredondar-top-left
+            %th
             %th plano1
             %th plano2
-            %th.arredondar-top-right plano3
+            %th plano3
           %tr
             %td Lorem ipsum
             %td -
@@ -129,16 +130,14 @@
             %td R$0,00
             %td R$0,00
           %tr
-            %td.arredondar-bottom-left
+            %td
             %td
               %a{ class: 'bt-contratar arredondar' } Contratar
             %td
               %img{ src: "#{image_path('home/onebit_34.png')}" }
               %a{ class: 'bt-contratar arredondar' } Contratar
-            %td.arredondar-bottom-right
+            %td
               %a{ class: 'bt-contratar arredondar' } Contratar
-      #sombra-tabela-plano
-        %img{ src: "#{image_path('home/sombra-tabela-plano.png')}" }
 
       %div{ style: 'clear:both' }
 

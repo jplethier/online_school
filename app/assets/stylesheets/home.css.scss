@@ -1,5 +1,6 @@
 $beige: #EDE8DA;
 $brown: #38301B;
+$gray:  #333;
 $green: #289C55;
 $green-light: #5EB580;
 $orange: #FF9900;
@@ -77,7 +78,7 @@ body {
   .header-wrapper {
     background: image-url('noise.png') $green;
     box-shadow: inset  0  1px  10px -5px  #111,
-                inset  0 -13px 25px -15px #333;
+                inset  0 -13px 25px -15px $gray;
     height: 480px;
 
     .banner {
@@ -111,81 +112,117 @@ body {
   }
 }
 
-#content{
-  p{
-    width: $width-site;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #333333;
+.content {
+  p {
+    color: $gray;
     font-family: CooperBlack;
     font-size: 30px;
-    margin-top: 40px;
-  }
-  #box-container{
-    width: $width-site;
-    margin: 0 auto;
-    margin-top:70px;
+    margin: 40px auto 10px auto;
     text-align: center;
-    #box1,#box2,#box3{
-      width: 333px;
+    width: $width-site;
+  }
+
+  .box-container {
+    margin: 70px auto 0 auto;
+    text-align: center;
+    width: $width-site;
+
+    .box {
+      width: 33%;
       float: left;
+
       h1{
         font-family: CooperBlack;
+        font-size: 2em;
         margin-top: -40px;
       }
+
       span{
-        font-size: 13px;
         text-align: left;
         font-family: CooperBlack;
+        font-size: 13px;
         padding: 0 15px;
       }
     }
   }
-  #planos{
-    position: relative;
-    width: 940px;
-    margin: 0 auto;
-    margin-top: 100px;
 
-    th,td{
+  .planos {
+    margin: 100px auto 0 auto;
+    position: relative;
+    width: $width-site - 60px;
+
+    th, td {
       border-bottom: 1px solid $beige;
       border-left: 1px solid $beige;
+      font-family: CooperBlack;
       width: 235px;
     }
-    th{
-      background-color: #38301B;
-      color: #fff;
-      font-family: CooperBlack;
+
+    th {
+      background-color: $brown;
+      color: $white;
       font-size: 20px;
       padding: 7px 0;
     }
-    td{
-      background-color: #fff;
-      color: #333;
-      font-family: CooperBlack;
+
+    td {
+      background-color: $white;
+      color: $gray;
       font-size: 14px;
       padding: 10px 0;
+
       img{
-        width: 18px;
         height: 16px;
+        width: 18px;
       }
     }
-    #plano-destaque{
+
+    .highlight {
+      border-radius: 5px;
+      box-shadow: 1px 2px 16px $gray;
       position: absolute;
-      top: -6px;
       left: 470px;
-      box-shadow: 1px 1px 10px #333333;
-      th,td{
-        padding: 11px 0;
+      top: -12px;
+
+      th, td {
+        border: none;
+        border: 1px solid $beige;
+        padding: 12px 0;
       }
     }
   }
-  #sombra-tabela-plano{
-    margin-top: -16px;
+
+  table {
+    box-shadow: 0 12px 13px -13px $gray;
+
+    th:first-child {
+      border-radius: 5px 0 0 0;
+    }
+
+    th:last-child {
+      border-radius: 0 5px 0 0;
+    }
+
+    th:only-child{
+      border-radius: 5px 5px 0 0;
+    }
+
+    tr:last-child {
+      td:first-child {
+        border-radius: 0 0 0 5px;
+      }
+
+      td:last-child {
+        border-radius: 0 0 5px 0;
+      }
+
+      td:only-child{
+        border-radius: 0 0 5px 5px;
+      }
+    }
   }
 }
+
 #footer{
   background-color: $brown;
   margin-top: 100px;
