@@ -5,7 +5,7 @@ class StudentsController < AuthorizedController
   end
 
   def new
-    @student = User.new(student: true)
+    @student = User.new
   end
 
   def create
