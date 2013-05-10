@@ -9,3 +9,5 @@
         signed_up: 'Cadastro realizado com sucesso. Confirme sua conta através do email enviado para a sua conta.'
     failure:
       already_authenticated: 'Login já realizado.'
+      user:
+        unauthenticated: 'É necessário logar para acessar essa página'

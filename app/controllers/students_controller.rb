@@ -1,4 +1,4 @@
-class StudentsController < ApplicationController
+class StudentsController < AuthorizedController
 
   def index
     @students = User.students
