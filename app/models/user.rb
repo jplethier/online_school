@@ -43,9 +43,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  #attr_accessible :address, :address_city, :address_complement, :address_number, :address_state, :birth_date, :cellphone_number, :email, :enrollment, :name, :password, :password_confirmation, :phone_number, :remember_me
-
   validates :name, presence: true
 
   belongs_to :account
