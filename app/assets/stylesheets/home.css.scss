@@ -1,7 +1,8 @@
 $beige: #EDE8DA;
 $beige-light: #EBE6D8;
 $brown: #38301B;
-$gray:  #333;
+$gray: #333;
+$gray-dark: #444;
 $green: #289C55;
 $green-light: #5EB580;
 $orange: #FF9900;
@@ -18,6 +19,10 @@ body {
 input {
   border: none;
   border-radius: 5px;
+}
+
+input[type="submit"] {
+  cursor: pointer;
 }
 
 :focus {
@@ -52,14 +57,18 @@ textarea {
 
 .nav {
   background: image-url('noise.png') $green-light;
+  padding: 7px 0;
 
   .nav-wrapper {
     margin: 0 auto;
-    padding: 7px 0;
+    position: relative;
     width: $width-site;
 
     .login {
-      float: right;
+      margin: 6px 0 0 0;
+      position: absolute;
+      right: 0;
+      top: 0;
 
       input[type="text"], input[type="password"] {
         background-color: $beige;
@@ -111,9 +120,17 @@ textarea {
       }
     }
 
-    .button {
+    .link-wrapper {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 50px;
+
+      a {
+        box-shadow: 0 0 7px $gray-dark;
+        border-radius: 8px;
+        font-size: 26px;
+        padding: 15px 65px;
+        text-decoration: none;
+      }
     }
   }
 }
@@ -152,7 +169,7 @@ textarea {
     }
   }
 
-  .planos {
+  #planos {
     margin: 100px auto 0 auto;
     position: relative;
     width: $width-site - 60px;
@@ -199,6 +216,8 @@ textarea {
   }
 
   .button {
+    padding: 30px;
+    padding: 30px;
     padding: 7px 30px;
   }
 
@@ -293,6 +312,8 @@ footer {
 
       input[type="submit"] {
         float: right;
+        padding: 30px;
+        padding: 30px;
         margin-right: 15px;
         font-size: 22px;
         padding: 15px 50px;
