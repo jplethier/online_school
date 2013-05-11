@@ -7,7 +7,7 @@
         %form
           %input{ type: 'text', placeholder: 'login' }
           %input{ type: 'password', placeholder: 'senha' }
-          %input{ type: 'submit', value: 'Login', class: 'primary' }
+          %input.primary{ type: 'submit', value: 'Login' }
     .logo
 
 .header
@@ -24,7 +24,7 @@
         enim, aliquet sit amet iaculis vitae, feugiat a
         felis.
     .link-wrapper
-      %a{ href: '#planos', class: 'button primary' } Contratar
+      %a.button.primary{ href: '#planos' } Contratar
 
 .content
   %p
@@ -84,7 +84,7 @@
           %td Lorem ipsum
         %tr
           %td
-            %a{ class: 'button primary' } Contratar
+            %a.button.primary Contratar
 
       %table
         %tr
@@ -131,12 +131,12 @@
         %tr
           %td
           %td
-            %a{ class: 'button primary' } Contratar
+            %a.button.primary Contratar
           %td
             %img{ src: "#{image_path('home/onebit_34.png')}" }
-            %a{ class: 'button primary' } Contratar
+            %a.button.primary Contratar
           %td
-            %a{ class: 'button primary' } Contratar
+            %a.button.primary Contratar
 
 %footer
   .footer-wrapper
@@ -161,5 +161,5 @@
       %input{ type: 'text', placeholder: 'nome' }
       %input{ type: 'text', placeholder: 'e-mail' }
       %textarea{ placeholder: 'mensagem' }
-      %input{ type: 'submit', value: 'Enviar', class: 'primary' }
+      %input.primary{ type: 'submit', value: 'Enviar' }
 
