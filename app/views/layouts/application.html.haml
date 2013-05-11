@@ -34,7 +34,18 @@
     / = render 'layouts/shared/font_face'
 
   %body{ class: @namespace }
-    #wrap
-      %article
-        = flash_messages
-        = yield
+    .nav
+      .nav-wrapper
+        - if user_signed_in?
+          = link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          .login
+            %form
+              %input{ type: 'text', placeholder: 'login' }
+              %input{ type: 'password', placeholder: 'senha' }
+              %input.primary{ type: 'submit', value: 'Login' }
+        .logo
+
+    %article
+      = flash_messages
+      = yield

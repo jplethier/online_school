@@ -61,6 +61,7 @@ textarea {
   padding: 7px 0;
 
   .nav-wrapper {
+    height: 50px;
     margin: 0 auto;
     position: relative;
     width: $width-site;
@@ -80,13 +81,15 @@ textarea {
         padding: 10px 15px;
       }
     }
-  }
 
-  .logo {
-    background: image-url('home/logo-branco.png') no-repeat;
-    height: 50px;
-    margin: 0 auto;
-    width: $width-site;
+    .logo {
+      background: image-url('home/logo-branco.png') no-repeat;
+      left: 0;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      width: 109px;
+    }
   }
 }
 
