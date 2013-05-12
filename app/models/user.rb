@@ -16,6 +16,7 @@
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
 #  name                   :string(255)
@@ -29,7 +30,6 @@
 #  address_city           :string(255)
 #  address_state          :string(255)
 #  account_id             :integer
-#  type                   :string(255)
 #  student                :boolean
 #  teacher                :boolean
 #  employee               :boolean
@@ -38,10 +38,9 @@
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :token_authenticatable
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :confirmable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
 
