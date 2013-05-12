@@ -21,7 +21,7 @@ describe "New User" do
       click_on 'signup_btn'
       (User.count - 1).should == count
       (Account.count - 1).should == count
-      should have_content('Cadastro realizado com sucesso. Confirme sua conta através do email enviado para a sua conta.')
+      should have_content('Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.')
     end
   end
 end
