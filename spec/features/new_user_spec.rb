@@ -21,8 +21,6 @@ describe "New User" do
       click_on 'signup_btn'
       (User.count - 1).should == count
       (Account.count - 1).should == count
-      User.last.account.should_not be_nil
-      User.last.name.should == 'Admin Nome da Escola'
       should have_content('Cadastro realizado com sucesso. Confirme sua conta através do email enviado para a sua conta.')
     end
   end
