@@ -37,12 +37,12 @@
     .nav
       .nav-wrapper
         - if user_signed_in?
-          = link_to 'Logout', destroy_user_session_path, method: :delete
+          = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout'
         - else
           .login
-            %form
-              %input{ type: 'text', placeholder: 'login' }
-              %input{ type: 'password', placeholder: 'senha' }
+            = form_tag user_session_path do
+              = text_field_tag 'user[email]', '', autofocus: true, placeholder: 'login'
+              = password_field_tag 'user[password]', '', placeholder: 'senha'
               %input.primary{ type: 'submit', value: 'Login' }
         .logo
 
