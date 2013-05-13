@@ -13,12 +13,14 @@ describe "New User" do
     it 'successfully' do
       count = User.count
       a_count = Account.count
-      fill_in 'user_account_attributes_name', :with => 'Nome da Escola'
-      fill_in 'user_account_attributes_subdomain', :with => 'escola1'
-      fill_in 'user_email', :with => 'user@school.com.be'
-      fill_in 'user_password', :with => '123qwe'
-      fill_in 'user_password_confirmation', :with => '123qwe'
-      click_on 'signup_btn'
+      within 'article' do
+        fill_in 'user_account_attributes_name', :with => 'Nome da Escola'
+        fill_in 'user_account_attributes_subdomain', :with => 'escola1'
+        fill_in 'user_email', :with => 'user@school.com.be'
+        fill_in 'user_password', :with => '123qwe'
+        fill_in 'user_password_confirmation', :with => '123qwe'
+        click_on 'signup_btn'
+      end
       (User.count - 1).should == count
       (Account.count - 1).should == count
       should have_content('Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.')

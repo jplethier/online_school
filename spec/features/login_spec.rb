@@ -9,13 +9,33 @@ describe "Login" do
 
   before do
     user.confirm!
-    visit new_user_session_path
   end
 
-  it 'successfully' do
-    fill_in 'user_email', :with => user.email
-    fill_in 'user_password', :with => user.password
-    click_on 'signin_btn'
-    should have_content('Login efetuado com sucesso!')
+  context 'in sign_in page' do
+    before do
+      visit new_user_session_path
+    end
+
+    it 'successfully' do
+      within 'article' do
+        fill_in 'user_email', :with => user.email
+        fill_in 'user_password', :with => user.password
+        click_on 'Login'
+      end
+      should have_content('Login efetuado com sucesso!')
+    end
+  end
+
+  context 'in home page' do
+    before do
+      visit root_path
+    end
+
+    it 'successfully' do
+      fill_in 'user_email', :with => user.email
+      fill_in 'user_password', :with => user.password
+      click_on 'Login'
+      should have_content('Login efetuado com sucesso!')
+    end
   end
 end
