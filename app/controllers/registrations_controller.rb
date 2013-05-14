@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
       self.resource = User.new
     else
       self.resource = User.new user_params
+      self.resource.admin = true
       unless params[:user][:account_attributes][:name].blank?
         self.resource.name = 'Admin ' + params[:user][:account_attributes][:name]
       end

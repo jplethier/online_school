@@ -25,5 +25,12 @@ describe RegistrationsController do
       params[:user][:email] = 'user@example.com'
       get :new, params
     end
+
+    it 'sets the user as admin' do
+      User.stub(new: user)
+      user.should_receive(:admin=).with(true)
+
+      get :new, params
+    end
   end
 end
