@@ -1,16 +1,21 @@
 class StudentsController < AuthorizedController
+  load_and_authorize_resource :class => "User"
+
+  prepend_before_filter do
+   params[:user] &&= student_params
+ end
 
   def index
-    @students = User.students
+    @students = @students.students
   end
 
   def new
-    @student = User.new
+    @student.student = true
   end
 
   def create
-    @student = User.new student_params
     @student.student = true
+    @student.skip_confirmation!
     if @student.save
       redirect_to students_path, success: 'Aluno criado com sucesso'
     else

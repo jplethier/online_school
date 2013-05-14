@@ -3,7 +3,7 @@ require 'spec_helper'
 describe StudentsController do
 
   let(:account) { stub_model(Account) }
-  let(:admin)   { stub_model(User, account: account) }
+  let(:admin)   { stub_model(User, account: account, admin: true) }
   let(:student) { stub_model(User, account: account, student: true) }
 
   before { sign_in admin }

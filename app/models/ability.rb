@@ -28,7 +28,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.admin
-      can :manage, User
+      can :manage, User, account_id: user.account_id
     end
   end
 end
