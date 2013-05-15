@@ -6,5 +6,11 @@ FactoryGirl.define do
     sequence(:email) { |n| "mail-#{n}@factory.com" }
     password '123qwe'
     password_confirmation '123qwe'
+
+    account
+  end
+
+  factory :admin_user, parent: :user do
+    admin true
   end
 end
