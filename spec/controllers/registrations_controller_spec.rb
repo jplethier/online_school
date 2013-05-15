@@ -7,7 +7,7 @@ describe RegistrationsController do
     before { @request.env['devise.mapping'] = Devise.mappings[:user] }
 
     let(:account) { stub_model(Account) }
-    let(:params)  { { user: { account_attributes: { field: :any }}} }
+    let(:params)  { { user: { account_attributes: {} }} }
     let(:user)    { stub_model(User, account: account) }
 
     it 'sets the user name as Admin plus account name' do

@@ -21,7 +21,7 @@ describe StudentsController do
   end
 
   describe 'create' do
-    let(:params)  { { user: { field: :any } } }
+    let(:params)  { { user: { password: :any } } }
 
     it 'successfully' do
       student.stub(save: true)
