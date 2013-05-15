@@ -27,6 +27,6 @@ class TeachersController < AuthorizedController
   private
 
   def teacher_params
-    params.require(:user).permit(:address, :address_city, :address_complement, :address_number, :address_state, :birth_date, :cellphone_number, :email, :name, :enrollment, :password, :password_cofirmation, :phone_number)
+    params.require(:user).permit(:address, :address_city, :address_complement, :address_number, :address_state, :birth_date, :cellphone_number, :email, :name, :enrollment, :password, :password_confirmation, :phone_number)
   end
 end
