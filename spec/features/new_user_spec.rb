@@ -22,7 +22,7 @@ describe "New User" do
         click_on 'signup_btn'
       end
       (User.count - 1).should == count
-      (Account.count - 1).should == count
+      (Account.count - 1).should == a_count
       should have_content('Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.')
     end
 
@@ -38,7 +38,7 @@ describe "New User" do
         click_on 'signup_btn'
       end
       (User.count).should == count
-      (Account.count).should == count
+      (Account.count).should == a_count
       should have_content('Não foi possível salvar')
     end
   end
