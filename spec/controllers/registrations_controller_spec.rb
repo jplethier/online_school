@@ -15,7 +15,7 @@ describe RegistrationsController do
       user.should_receive(:name=).with('Admin school name')
 
       params[:user][:account_attributes][:name] = 'school name'
-      get :new, params
+      post :create, params
     end
 
     it 'sets the user email' do
@@ -23,14 +23,14 @@ describe RegistrationsController do
       User.should_receive(:new).with(hash_including(email: 'user@example.com'))
 
       params[:user][:email] = 'user@example.com'
-      get :new, params
+      post :create, params
     end
 
     it 'sets the user as admin' do
       User.stub(new: user)
       user.should_receive(:admin=).with(true)
 
-      get :new, params
+      post :create, params
     end
   end
 end
