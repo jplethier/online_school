@@ -41,7 +41,7 @@
         - else
           .login
             = form_tag user_session_path do
-              = text_field_tag 'user[email]', '', autofocus: true, placeholder: 'login'
+              = email_field_tag 'user[email]', '', autofocus: true, placeholder: 'email'
               = password_field_tag 'user[password]', '', placeholder: 'senha'
               %input.primary{ type: 'submit', value: 'Login' }
           %a.logo{ href: '/' }
