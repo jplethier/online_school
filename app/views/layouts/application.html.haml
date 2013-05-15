@@ -44,7 +44,7 @@
               = text_field_tag 'user[email]', '', autofocus: true, placeholder: 'login'
               = password_field_tag 'user[password]', '', placeholder: 'senha'
               %input.primary{ type: 'submit', value: 'Login' }
-        .logo
+          %a.logo{ href: '/' }
 
     %article
       = flash_messages
