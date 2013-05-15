@@ -1,0 +1,14 @@
+= link_to 'Novo Professor', new_teacher_path
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Email
+      %th Editar
+  %tbody
+    - @teachers.each do |teacher|
+      %tr
+        %td= teacher.name
+        %td= teacher.email
+        %td= link_to 'Editar', edit_teacher_path(teacher)

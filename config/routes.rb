@@ -6,4 +6,5 @@ OnlineSchool::Application.routes.draw do
   resources :users
 
   resources :students
+  resources :teachers
 end
