@@ -26,7 +26,7 @@ gem 'annotate', '>= 2.5.0'
 gem 'therubyracer', platforms: :ruby
 
 gem 'haml'
-gem "haml-rails"
+gem 'haml-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
