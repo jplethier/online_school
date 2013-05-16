@@ -1,4 +1,5 @@
 = form_tag(send_contact_email_path) do
+  = hidden_field_tag :plan, params[:plan]
   = label_tag params[:plan]
   = text_field_tag :name, '', placeholder: 'nome'
   = email_field_tag :email, '', placeholder: 'e-mail'
