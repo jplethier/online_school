@@ -60,14 +60,13 @@
           %img{ src: "#{image_path('home/twitter-icon-brown.png')}" }
           %img{ src: "#{image_path('home/rss-icon-brown.png')}" }
           %img{ src: "#{image_path('home/google-icon-brown.png')}" }
-      %form
-        %label Lorem ipsum
-        %br
-        %br
-        %input{ type: 'text', placeholder: 'nome' }
-        %input{ type: 'text', placeholder: 'e-mail' }
-        %textarea{ placeholder: 'mensagem' }
-        %input.primary{ type: 'submit', value: 'Enviar' }
+      = form_tag(send_contact_email_path) do
+        = hidden_field_tag :plan, 'nenhum plano selecionado'
+        = label_tag 'Mande sua mensagem'
+        = text_field_tag :name, '', placeholder: 'nome'
+        = email_field_tag :email, '', placeholder: 'e-mail'
+        = text_area_tag :message, '', placeholder: 'mensagem'
+        = submit_tag 'Enviar', class: 'primary'
 
   = javascript_include_tag :application
 
