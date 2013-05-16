@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  def contact_form
-    render layout: false
-  end
-
   protected
 
   def configure_permitted_parameters
