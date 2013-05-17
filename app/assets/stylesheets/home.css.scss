@@ -33,7 +33,7 @@ input[type="submit"] {
 
 :focus {
   outline: 0;
-  box-shadow: 0px 0px 4pt 3pt $green;
+  box-shadow: 0px 0px 5pt 2pt $green;
 }
 
 ::selection {
@@ -88,7 +88,7 @@ form {
   }
 
   .error:focus {
-    box-shadow: 0px 0px 4pt 3pt $red;
+    box-shadow: 0px 0px 5pt 1pt $red;
   }
 }
 
@@ -183,14 +183,16 @@ form {
 
       h2 {
         font-family: SketchCollege;
-        font-size: 48px;
+        font-size: 44px;
         margin-top: 0;
       }
+
     }
 
     .link-wrapper {
       text-align: center;
       margin-top: 50px;
+      width: 500px;
 
       a {
         box-shadow: 0 0 7px $gray-dark;
@@ -198,6 +200,13 @@ form {
         font-size: 26px;
         padding: 15px 65px;
         text-decoration: none;
+      }
+
+      p {
+        color: $white;
+        font-family: CooperBlack;
+        font-size: 15px;
+        margin-top: 17px;
       }
     }
   }
