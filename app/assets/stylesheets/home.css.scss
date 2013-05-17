@@ -359,8 +359,10 @@ footer {
       padding-top: 50px;
       padding-bottom: 100px;
 
-      label {
+      h2 {
         color: $white;
+        margin-top: 0;
+        text-align: center;
       }
     }
   }

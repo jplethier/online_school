@@ -62,7 +62,7 @@
           %img{ src: "#{image_path('home/google-icon-brown.png')}" }
       = form_tag(send_contact_email_path, id: "footer_form") do
         = hidden_field_tag :plan, 'nenhum plano selecionado'
-        = label_tag 'Mande sua mensagem'
+        %h2 Entre em contato
         = text_field_tag :name, '', placeholder: 'nome', required: true
         = email_field_tag :email, '', placeholder: 'e-mail', required: true
         = text_area_tag :message, '', placeholder: 'mensagem', required: true, data: { 'msg-required' => 'Informe suas dúvidas, perguntas e/ou sugestões' }
