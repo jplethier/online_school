@@ -6,6 +6,7 @@ $gray-dark: #444;
 $green: #289C55;
 $green-light: #5EB580;
 $orange: #FF9900;
+$red: red;
 $white: #FFF;
 
 $width-site: 1000px;
@@ -338,8 +339,12 @@ footer {
       }
 
       input[type="text"].error, input[type="email"].error, textarea.error {
-        border: 1px solid red;
+        border: 1px solid $red;
         margin-bottom: 5px;
+      }
+
+      .error:focus {
+        box-shadow: 0px 0px 4pt 3pt $red;
       }
 
       input[type="submit"] {
