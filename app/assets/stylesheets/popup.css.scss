@@ -36,49 +36,12 @@ body {
       border-radius: 10px;
 
       form {
-        text-align: left;
         width: 75%;
         margin: 10px auto;
         height: 550px;
 
-        label{
+        label {
           color: $gray;
-          font-family: CooperBlack;
-          font-size: 29px;
-          margin-top: 10px;
-        }
-
-        label.error {
-          color: red;
-          font-size: 12px;
-          margin-top: 5px;
-          margin-bottom: 10px;
-          display: block;
-        }
-
-        input[type="text"], input[type="email"] {
-          width: 400px;
-          padding: 18px;
-          margin-bottom:20px;
-        }
-
-        input[type="text"].error, input[type="email"].error, textarea.error {
-          border: 1px solid red;
-          margin-bottom: 5px;
-        }
-
-        textarea {
-          height: 200px;
-          width: 400px;
-          padding: 18px;
-          margin-bottom:20px;
-        }
-
-        input[type="submit"] {
-          float: right;
-          margin-right: 15px;
-          font-size: 22px;
-          padding: 15px 50px;
         }
       }
     }
