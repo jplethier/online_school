@@ -1,25 +1,10 @@
 = form_tag(send_contact_email_path, id: 'form_contact') do
   = hidden_field_tag :plan, params[:plan]
   = label_tag params[:plan]
-  .field= text_field_tag :name, '', placeholder: 'nome'
-  .field= email_field_tag :email, '', placeholder: 'e-mail'
-  .field= text_area_tag :message, '', placeholder: 'mensagem'
+  .field= text_field_tag :name, '', placeholder: 'nome', required: true
+  .field= email_field_tag :email, '', placeholder: 'e-mail', required: true
+  .field= text_area_tag :message, '', placeholder: 'mensagem', required: true, data: { 'msg-required' => 'Informe suas dúvidas, perguntas e/ou sugestões' }
   = submit_tag 'Enviar', class: 'primary'
 
 :javascript
-  // validate signup form on keyup and submit
-  var validator = $("#form_contact").validate({
-    rules: {
-      name: "required",
-      message: "required",
-      email: {
-        required: true,
-        email: true
-      }
-    },
-    messages: {
-      name: "Informe seu nome",
-      message: "Informe suas dúvidas, perguntas e/ou sugestões",
-      email: "Informe um email válido"
-    }
-  });
+  $("#form_contact").validate();

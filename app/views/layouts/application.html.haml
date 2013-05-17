@@ -63,29 +63,13 @@
       = form_tag(send_contact_email_path, id: "footer_form") do
         = hidden_field_tag :plan, 'nenhum plano selecionado'
         = label_tag 'Mande sua mensagem'
-        = text_field_tag :name, '', placeholder: 'nome'
-        = email_field_tag :email, '', placeholder: 'e-mail'
-        = text_area_tag :message, '', placeholder: 'mensagem'
+        = text_field_tag :name, '', placeholder: 'nome', required: true
+        = email_field_tag :email, '', placeholder: 'e-mail', required: true
+        = text_area_tag :message, '', placeholder: 'mensagem', required: true, data: { 'msg-required' => 'Informe suas dúvidas, perguntas e/ou sugestões' }
         = submit_tag 'Enviar', class: 'primary'
 
   = javascript_include_tag :application
-
-  :javascript
-    var validator = $("#footer_form").validate({
-      rules: {
-        name: "required",
-        message: "required",
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        name: "Informe seu nome",
-        message: "Informe suas dúvidas, perguntas e/ou sugestões",
-        email: "Informe um email válido"
-      }
-    });
+  = yield :javascript
 
   -# Change UAXXXXXXXX1 to be your site's ID
   %script
