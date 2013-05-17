@@ -6,8 +6,5 @@ $(document).ready(function(){
     maxlength: $.validator.format('Please enter no more than {0} characters.'),
     minlength: $.validator.format('Please enter at least {0} characters.'),
   });
-
-  //TODO: remove this from here... the loading order is breaking it
-  $('#footer_form').validate();
 });
 

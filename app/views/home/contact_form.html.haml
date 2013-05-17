@@ -1,10 +1,20 @@
+%a.close &#120;
+
+%p O sistema estará pronto em breve, entre em contato conosco para que possamos te avisar.
+
 = form_tag(send_contact_email_path, id: 'form_contact') do
   = hidden_field_tag :plan, params[:plan]
-  = label_tag params[:plan]
+
   .field= text_field_tag :name, '', placeholder: 'nome', required: true
   .field= email_field_tag :email, '', placeholder: 'e-mail', required: true
   .field= text_area_tag :message, '', placeholder: 'mensagem', required: true, data: { 'msg-required' => 'Informe suas dúvidas, perguntas e/ou sugestões' }
   = submit_tag 'Enviar', class: 'primary'
 
 :javascript
-  $("#form_contact").validate();
+  $(document).ready(function() {
+    $("#form_contact").validate();
+
+    $('.close').click(function() {
+      Popup.close();
+    });
+  });
