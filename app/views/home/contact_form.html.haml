@@ -1,7 +1,10 @@
-= form_tag(send_contact_email_path) do
+= form_tag(send_contact_email_path, id: 'form_contact') do
   = hidden_field_tag :plan, params[:plan]
   = label_tag params[:plan]
-  = text_field_tag :name, '', placeholder: 'nome'
-  = email_field_tag :email, '', placeholder: 'e-mail'
-  = text_area_tag :message, '', placeholder: 'mensagem'
+  = text_field_tag :name, '', placeholder: 'nome', class: 'required'
+  = email_field_tag :email, '', placeholder: 'e-mail', class: 'required'
+  = text_area_tag :message, '', placeholder: 'mensagem', class: 'required'
   = submit_tag 'Enviar', class: 'primary'
+
+:javascript
+  $('#form_contact').validate();
