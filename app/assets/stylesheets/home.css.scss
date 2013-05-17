@@ -174,15 +174,17 @@ form {
 
     .banner-text {
       color: $white;
-      font-size: 22px;
+      font-family: Jeans;
+      font-size: 21px;
       margin: 0 auto;
       padding: 50px 450px 0 0;
       width: 550px;
+      letter-spacing: 2px;
 
       h2 {
-      font-family: Eraser;
         font-size: 44px;
         margin-top: 0;
+        font-weight: normal;
       }
 
     }
