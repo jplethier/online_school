@@ -160,7 +160,7 @@ form {
 
   .header-wrapper {
     margin: 0 auto;
-    height: 480px;
+    height: 420px;
     width: $width-site;
 
     .banner {
@@ -174,13 +174,13 @@ form {
 
     .banner-text {
       color: $white;
-      font-family: Eraser;
       font-size: 22px;
       margin: 0 auto;
       padding: 50px 450px 0 0;
       width: 550px;
 
       h2 {
+      font-family: Eraser;
         font-size: 44px;
         margin-top: 0;
       }
@@ -203,7 +203,7 @@ form {
       p {
         color: $white;
         font-size: 15px;
-        margin-top: 17px;
+        margin-top: 20px;
       }
     }
   }
@@ -271,15 +271,14 @@ form {
     }
 
     .highlight {
+      border: none;
       border-radius: 5px;
       box-shadow: 1px 2px 16px $gray;
       position: absolute;
-      left: 470px;
+      left: 468px;
       top: -12px;
 
       th, td {
-        border: none;
-        border: 1px solid $beige;
         padding: 12px 0;
       }
     }
