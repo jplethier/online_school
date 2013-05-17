@@ -95,9 +95,3 @@
             %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Médio')", href: 'javascript:;' } Experimentar
           %td
             %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Grande')", href: 'javascript:;' } Experimentar
-
-=content_for :javascript do
-  :javascript
-    $(document).ready(function() {
-      $('#footer_form').validate();
-    });

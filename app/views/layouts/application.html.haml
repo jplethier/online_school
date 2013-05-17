@@ -71,6 +71,11 @@
   = javascript_include_tag :application
   = yield :javascript
 
+  :javascript
+    $(document).ready(function() {
+      $('#footer_form').validate();
+    });
+
   -# Change UAXXXXXXXX1 to be your site's ID
   %script
     window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
