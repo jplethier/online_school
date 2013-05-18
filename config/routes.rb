@@ -6,6 +6,8 @@ OnlineSchool::Application.routes.draw do
   get  'contact_form', to: 'home#contact_form', as: 'contact_form'
   post 'send_contact_email', to: 'home#send_contact_email', as: 'send_contact_email'
 
+  get 'dashboard', to: 'dashboard#index'
+
   resources :users
 
   resources :students
