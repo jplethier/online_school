@@ -15,9 +15,9 @@
   -# Use the .htaccess and remove these lines to avoid edge case issues.  More info: h5bp.com/b/378
   %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge,chrome=1' }
 
-  = javascript_include_tag 'modernizr.custom.js'
   = stylesheet_link_tag :application
   = csrf_meta_tag
+  = javascript_include_tag :head
 
 %body{ class: @namespace }
   <!--[if lt IE 7]>
@@ -75,9 +75,5 @@
     $(document).ready(function() {
       $('#footer_form').validate();
     });
-
-  %script
-    window._gaq = [['_setAccount','UA-41035402-1'],['_trackPageview'],['_trackPageLoadTime']];
-    Modernizr.load({load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'});
 </html>
 
