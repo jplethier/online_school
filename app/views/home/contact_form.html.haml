@@ -12,7 +12,11 @@
 
 :javascript
   $(document).ready(function() {
-    $("#form_contact").validate();
+    $("#form_contact").validate({
+      submitHandler: function(form) {
+        ga('send', 'event', 'button', 'click', 'popup');
+      }
+    });
 
     $('.close').click(function() {
       Popup.close();
