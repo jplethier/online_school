@@ -16,9 +16,31 @@ body.dashboard {
   clear: both;
 }
 
-.arredondar{
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+a.logout {
+  float: right;
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  vertical-align: top;
+}
+
+:focus {
+  outline: 0;
+  box-shadow: 0px 0px 5pt 2pt $green;
+}
+
+::selection {
+  background: $orange;
+}
+
+textarea {
+  border: none;
   border-radius: 5px;
 }
 
@@ -65,11 +87,6 @@ body.dashboard {
   padding: 15px 20px;
   border: 1px solid #ccc;
   background-color: #F1F1F1;
-}
-
-#container{
-  width: 1000px;
-  margin: 0 auto;
 }
 
 #top{

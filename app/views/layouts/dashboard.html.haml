@@ -24,27 +24,25 @@
   <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
 
-  #container
+  .nav
+    .logo
+      %h2 LOGO ESCOLA
+    .menu.font-menu
+      %ul
+        %li
+          %a{ href: "" } home
+        %li
+          %a{ href: "" } professores
+        %li
+          %a{ href: "" } alunos
+        %li
+          %a{ href: "" } comunicados
 
-    #top
-      .logo
-        %h2 LOGO ESCOLA
-      .menu.font-menu.arredondar
-        %ul
-          %li
-            %a.arredondar{ href: "" } home
-          %li
-            %a.arredondar{ href: "" } professores
-          %li
-            %a.arredondar{ href: "" } alunos
-          %li
-            %a.arredondar{ href: "" } comunicados
+      %form
+        %input{ type: "text", name: "" }
 
-        %form
-          %input.arredondar{ type: "text", name: "" }
+  %article
+    = flash_messages
+    = yield
 
-    #middle
-      = flash_messages
-      = yield
-
-    #footer.arredondar
+  %footer
