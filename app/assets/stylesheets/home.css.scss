@@ -1,340 +1,349 @@
-$width-site: 1000px;
-
-body {
-  background-color: $beige;
-  font-family: CenturyGothicRegular;
-  margin: 0;
-  padding: 0;
-}
-
-a.logout {
-  float: right;
-}
-
-input {
-  border: none;
-  border-radius: 5px;
-}
-
-input[type="submit"] {
-  cursor: pointer;
-  vertical-align: top;
-}
-
-:focus {
-  box-shadow: 0px 0px 5pt 2pt $green;
-  outline: 0;
-  transition: .3s;
-}
-
-::selection {
-  background: $orange;
-}
-
-textarea {
-  border: none;
-  border-radius: 5px;
-}
-
-form {
-  text-align: left;
-
-  label {
-    font-size: 29px;
-    margin-top: 10px;
+<<<<<<< HEAD
+body.home {
+  a.logout {
+    float: right;
   }
 
-  input[type="text"], input[type="email"] {
-    margin-bottom:20px;
-    padding: 18px;
-    width: 400px;
+  input {
+    border: none;
+    border-radius: 5px;
   }
 
   input[type="submit"] {
-    float: right;
-    font-size: 22px;
-    margin-right: 13px;
-    padding: 15px 50px;
+    cursor: pointer;
+    vertical-align: top;
   }
 
-  textarea {
-    height: 200px;
-    margin-bottom:20px;
-    padding: 18px;
-    width: 400px;
+  :focus {
+    outline: 0;
+    box-shadow: 0px 0px 5pt 2pt $green;
   }
 
-  label.error {
-    color: $red!important;
-    display: block;
-    font-size: 12px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-  }
-
-  input[type="text"].error, input[type="email"].error, textarea.error {
-    border: 1px solid $red;
-    margin-bottom: 5px;
+  ::selection {
+    background: $orange;
   }
 
   .error:focus {
     box-shadow: 0px 0px 5pt 1pt $red;
     transition: .3s;
   }
-}
 
-.button {
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-}
+  form {
+    text-align: left;
 
-.primary {
-  background-color: $orange;
-  color: $white;
-
-  &:hover {
-    color: $brown;
-    transition: 0.2s;
-  }
-}
-
-.clear {
-  clear: both;
-}
-
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.nav {
-  background: image-url('noise.png') $green-light;
-  padding: 7px 0;
-
-  .nav-wrapper {
-    height: 50px;
-    margin: 0 auto;
-    position: relative;
-    width: $width-site;
-
-    .login {
-      margin: 6px 0 0 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      input[type="email"], input[type="password"] {
-        background-color: $beige;
-        padding: 10px;
-      }
-
-      input[type="submit"] {
-        padding: 10px 15px;
-      }
+    label {
+      font-size: 29px;
+      margin-top: 10px;
     }
 
-    .logo {
-      background: image-url('home/logo-branco.png') no-repeat;
-      left: 0;
-      height: 50px;
-      position: absolute;
-      top: 0;
-      width: 109px;
+    input[type="text"], input[type="email"] {
+      margin-bottom:20px;
+      padding: 18px;
+      width: 400px;
     }
-  }
-}
 
-.header {
-    background: image-url('noise.png') $green;
-    box-shadow: inset  0  1px  10px -5px  #111,
-                inset  0 -13px 25px -15px $gray;
-
-  .header-wrapper {
-    margin: 0 auto;
-    height: 420px;
-    width: $width-site;
-
-    .banner {
-      background: image-url('home/circulo-topo.png') no-repeat;
+    input[type="submit"] {
       float: right;
-      height: 262px;
-      margin: 60px 0 0 0;
-      text-align: right;
-      width: 309px;
+      font-size: 22px;
+      margin-right: 13px;
+      padding: 15px 50px;
     }
 
-    .banner-text {
-      color: $white;
-      font-family: Jeans;
-      font-size: 20px;
-      margin: 0 auto;
-      padding: 30px 450px 0 0;
-      width: 550px;
-      letter-spacing: 2px;
-
-      h2 {
-        font-size: 44px;
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-weight: normal;
-      }
-
-    }
-
-    .link-wrapper {
-      text-align: center;
-      margin-top: 50px;
-      width: 500px;
-
-      a {
-        box-shadow: 0 0 7px $gray-dark;
-        border-radius: 8px;
-        font-size: 26px;
-        padding: 15px 65px;
-        text-decoration: none;
-      }
-
-      p {
-        color: $white;
-        font-size: 15px;
-        margin-top: 20px;
-      }
-    }
-  }
-}
-
-.content {
-  p {
-    color: $gray;
-    font-size: 30px;
-    margin: 40px auto 10px auto;
-    text-align: center;
-    width: $width-site;
-  }
-
-  .box-container {
-    margin: 70px auto 0 auto;
-    text-align: center;
-    width: $width-site;
-
-    .box {
-      width: 33%;
-      float: left;
-
-      h1{
-        font-size: 2em;
-        margin-top: -40px;
-      }
-
-      span{
-        text-align: left;
-        font-size: 13px;
-        padding: 0 15px;
-      }
-    }
-  }
-
-  #planos {
-    margin: 100px auto 0 auto;
-    position: relative;
-    width: $width-site - 60px;
-
-    th, td {
-      border-bottom: 1px solid $beige;
-      border-left: 1px solid $beige;
-      width: 235px;
-    }
-
-    th {
-      background-color: $brown;
-      color: $white;
-      font-size: 20px;
-      padding: 7px 0;
-    }
-
-    td {
-      background-color: $white;
-      color: $gray;
-      font-size: 14px;
-      padding: 10px 0;
-
-      img{
-        height: 16px;
-        width: 18px;
-      }
-    }
-
-    .highlight {
+    textarea {
+      height: 200px;
+      margin-bottom:20px;
+      padding: 18px;
+      width: 400px;
       border: none;
       border-radius: 5px;
-      box-shadow: 1px 2px 16px $gray;
-      position: absolute;
-      left: 468px;
-      top: -12px;
+    }
 
-      th, td {
-        padding: 12px 0;
-      }
+    label.error {
+      color: $red!important;
+      display: block;
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-top: 5px;
+    }
+
+    input[type="text"].error, input[type="email"].error, textarea.error {
+      border: 1px solid $red;
+      margin-bottom: 5px;
+    }
+
+    .error:focus {
+      box-shadow: 0px 0px 5pt 1pt $red;
     }
   }
 
   .button {
-    padding: 7px 30px;
-    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
   }
 
-  table {
-    border-spacing: 0;
-    box-shadow: 0 12px 13px -13px $gray;
+  .primary {
+    background-color: $orange;
+    color: $white;
 
-    th:first-child {
-      border-radius: 5px 0 0 0;
+    &:hover {
+      color: $brown;
+      transition: 0.2s;
     }
+  }
 
-    th:last-child {
-      border-radius: 0 5px 0 0;
-    }
+  .hidden {
+    display: none !important;
+    visibility: hidden;
+  }
 
-    th:only-child{
-      border-radius: 5px 5px 0 0;
-    }
+  .invisible {
+    visibility: hidden;
+  }
 
-    tr:last-child {
-      td:first-child {
-        border-radius: 0 0 0 5px;
+  .nav {
+    background: image-url('noise.png') $green-light;
+    padding: 7px 0;
+
+    .nav-wrapper {
+      height: 50px;
+      margin: 0 auto;
+      position: relative;
+      width: $width-site;
+
+      .login {
+        margin: 6px 0 0 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        input[type="email"], input[type="password"] {
+          background-color: $beige;
+          padding: 10px;
+        }
+
+        input[type="submit"] {
+          padding: 10px 15px;
+        }
       }
 
-      td:last-child {
-        border-radius: 0 0 5px 0;
-      }
-
-      td:only-child{
-        border-radius: 0 0 5px 5px;
+      .logo {
+        background: image-url('home/logo-branco.png') no-repeat;
+        left: 0;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        width: 109px;
       }
     }
   }
-}
 
-footer {
-  background-color: $brown;
-  margin-top: 100px;
+  .header {
+      background: image-url('noise.png') $green;
+      box-shadow: inset  0  1px  10px -5px  #111,
+                  inset  0 -13px 25px -15px $gray;
 
-  .footer-wrapper {
-    width: $width-site;
-    margin: 0 auto;
+    .header-wrapper {
+      margin: 0 auto;
+      height: 420px;
+      width: $width-site;
 
-    .contact {
-      float: left;
-      margin-top: 50px;
-      width: 550px;
+      .banner {
+        background: image-url('home/circulo-topo.png') no-repeat;
+        float: right;
+        height: 262px;
+        margin: 60px 0 0 0;
+        text-align: right;
+        width: 309px;
+      }
 
-      img {
+      .banner-text {
+        color: $white;
+        font-family: Jeans;
+        font-size: 20px;
+        margin: 0 auto;
+        padding: 30px 450px 0 0;
+        width: 550px;
+        letter-spacing: 2px;
+
+        h2 {
+          font-size: 44px;
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-weight: normal;
+        }
+
+      }
+
+      .link-wrapper {
+        text-align: center;
+        margin-top: 50px;
+        width: 500px;
+
+        a {
+          box-shadow: 0 0 7px $gray-dark;
+          border-radius: 8px;
+          font-size: 26px;
+          padding: 15px 65px;
+          text-decoration: none;
+        }
+
+        p {
+          color: $white;
+          font-size: 15px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  .content {
+    p {
+      color: $gray;
+      font-size: 30px;
+      margin: 40px auto 10px auto;
+      text-align: center;
+      width: $width-site;
+    }
+
+    .box-container {
+      margin: 70px auto 0 auto;
+      text-align: center;
+      width: $width-site;
+
+      .box {
+        width: 33%;
         float: left;
+
+        h1{
+          font-size: 2em;
+          margin-top: -40px;
+        }
+
+        span{
+          text-align: left;
+          font-size: 13px;
+          padding: 0 15px;
+        }
+      }
+    }
+
+    #planos {
+      margin: 100px auto 0 auto;
+      position: relative;
+      width: $width-site - 60px;
+
+      th, td {
+        border-bottom: 1px solid $beige;
+        border-left: 1px solid $beige;
+        width: 235px;
+      }
+
+      th {
+        background-color: $brown;
+        color: $white;
+        font-size: 20px;
+        padding: 7px 0;
+      }
+
+      td {
+        background-color: $white;
+        color: $gray;
+        font-size: 14px;
+        padding: 10px 0;
+
+        img{
+          height: 16px;
+          width: 18px;
+        }
+      }
+
+      .highlight {
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 2px 16px $gray;
+        position: absolute;
+        left: 468px;
+        top: -12px;
+
+        th, td {
+          padding: 12px 0;
+        }
+      }
+    }
+
+    .button {
+      padding: 7px 30px;
+      text-decoration: none;
+    }
+
+    table {
+      border-spacing: 0;
+      box-shadow: 0 12px 13px -13px $gray;
+
+      th:first-child {
+        border-radius: 5px 0 0 0;
+      }
+
+      th:last-child {
+        border-radius: 0 5px 0 0;
+      }
+
+      th:only-child{
+        border-radius: 5px 5px 0 0;
+      }
+
+      tr:last-child {
+        td:first-child {
+          border-radius: 0 0 0 5px;
+        }
+
+        td:last-child {
+          border-radius: 0 0 5px 0;
+        }
+
+        td:only-child{
+          border-radius: 0 0 5px 5px;
+        }
+      }
+    }
+  }
+
+  footer {
+    background-color: $brown;
+    margin-top: 100px;
+
+    .footer-wrapper {
+      width: $width-site;
+      margin: 0 auto;
+
+      form {
+        margin-left: 550px;
+        padding-top: 50px;
+        padding-bottom: 100px;
+
+        h2 {
+          color: $white;
+          margin-top: 0;
+          text-align: center;
+        }
+      }
+
+      .contact {
+        float: left;
+        margin-top: 50px;
+        width: 550px;
+
+        img {
+          float: left;
+        }
+
+        p {
+          color: $beige-light;
+          font-size: 12px;
+          margin-left: 120px;
+          margin-top: 0px;
+        }
       }
 
       p {
@@ -346,60 +355,45 @@ footer {
           color: $white;
           text-decoration: none;
         }
-      }
-    }
+      .social {
+        text-align: left;
+        margin-top: 20px;
 
-    .social {
-      text-align: left;
-      margin-top: 20px;
-
-      a {
-        display: inline-block;
-        height: 64px;
-        transition: .5s;
-        width: 64px;
-      }
-
-      .facebook {
-        background-image: image-url('home/facebook-icon-brown.png');
-        &:hover {
-          background-image: image-url('home/facebook-icon.png');
+        a {
+          display: inline-block;
+          height: 64px;
+          transition: .5s;
+          width: 64px;
         }
-      }
 
-      .google {
-        background-image: image-url('home/google-icon-brown.png');
-        &:hover {
-          background-image: image-url('home/google-icon.png');
+        .facebook {
+          background-image: image-url('home/facebook-icon-brown.png');
+          &:hover {
+            background-image: image-url('home/facebook-icon.png');
+          }
         }
-      }
 
-      .rss {
-        background-image: image-url('home/rss-icon-brown.png');
-        &:hover {
-          background-image: image-url('home/rss-icon.png');
+        .google {
+          background-image: image-url('home/google-icon-brown.png');
+          &:hover {
+            background-image: image-url('home/google-icon.png');
+          }
         }
-      }
 
-      .twitter {
-        background-image: image-url('home/twitter-icon-brown.png');
-        &:hover {
-          background-image: image-url('home/twitter-icon.png');
+        .rss {
+          background-image: image-url('home/rss-icon-brown.png');
+          &:hover {
+            background-image: image-url('home/rss-icon.png');
+          }
         }
-      }
-    }
 
-    form {
-      margin-left: 550px;
-      padding-top: 50px;
-      padding-bottom: 100px;
-
-      h2 {
-        color: $white;
-        margin-top: 0;
-        text-align: center;
+        .twitter {
+          background-image: image-url('home/twitter-icon-brown.png');
+          &:hover {
+            background-image: image-url('home/twitter-icon.png');
+          }
+        }
       }
     }
   }
 }
-
