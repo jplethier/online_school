@@ -1,4 +1,5 @@
 class StudentsController < AuthorizedController
+  layout 'dashboard'
   load_and_authorize_resource :class => "User"
 
   prepend_before_filter do
