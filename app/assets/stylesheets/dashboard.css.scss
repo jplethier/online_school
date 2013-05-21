@@ -103,16 +103,6 @@ body.dashboard{
       box-shadow: 1px 1px 10px $gray;
       float: left;
 
-      .ver-todos{
-        text-align: right;
-        padding: 5px;
-        a{
-          text-decoration: none;
-          font-size: 12px;
-          color: $blue-light;
-        }
-      }
-
       p{
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
@@ -123,14 +113,28 @@ body.dashboard{
         color: $white;
         text-transform: uppercase;
       }
-      ul{
+
+      ul {
         margin: 0;
         padding: 0;
+
+        li:last-child {
+          text-align: right;
+          padding: 5px;
+
+          a{
+            text-decoration: none;
+            font-size: 12px;
+            color: $blue-light;
+          }
+        }
       }
+
       li{
         list-style: none;
         border-bottom: 1px solid $gray-lighter;
-        .hora{
+
+        .hour{
           float: left;
           width: 50px;
           font-size: 12px;
@@ -139,6 +143,7 @@ body.dashboard{
         .post{
           padding: 10px 0;
           font-size: 12px;
+
           a{
             text-decoration: none;
             color: $gray;
@@ -151,7 +156,6 @@ body.dashboard{
       }
     }
   }
-
 
   footer{
     height: 100px;
