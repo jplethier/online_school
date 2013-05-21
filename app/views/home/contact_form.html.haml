@@ -15,7 +15,8 @@
     $("#form_contact").validate({
       submitHandler: function(form) {
         ga('send', 'event', 'button', 'click', 'popup');
-      }
+        form.submit();
+     }
     });
 
     $('.close').click(function() {
