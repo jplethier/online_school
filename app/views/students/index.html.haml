@@ -1,14 +1,25 @@
-= link_to 'Novo Aluno', new_student_path
+.content
+  / .list
+  #admin-aluno.box.arredondar.sombra-box
+    %p.arredondar-top aluno
+    %ul
+      %li
+        .padding.align-center
+          = link_to 'cadastrar novo', new_student_path, class: 'bt-verde arredondar'
+      %li
+        .padding
+          %form{ name: "", action: "", method: "" }
+            %input.input-search.input-size.arredondar{ type: "text", name: "" }
+            %input.bt-submit-laranja.arredondar{ type: "submit", value: "buscar" }
 
-%table
-  %thead
-    %tr
-      %th Nome
-      %th Email
-      %th Editar
-  %tbody
-    - @students.each do |student|
-      %tr
-        %td= student.name
-        %td= student.email
-        %td= link_to 'Editar', edit_student_path(student)
+      %li.padding
+        %ul.lista-3-colunas
+          - @students.each do |student|
+            %li
+              .img.arredondar
+              .texto
+                %span.professor= student.name
+                %br
+                %span.email= student.email
+                %br
+                %span.especializacao= link_to 'Editar', edit_student_path(student)
