@@ -2,7 +2,7 @@ body.dashboard{
   background: image-url('noise.png');
 
   .sombra-box{
-    box-shadow: 1px 1px 10px #333333;
+    box-shadow: 1px 1px 10px $gray;
   }
 
   .nav{
@@ -13,11 +13,11 @@ body.dashboard{
       padding: 40px 0;
     }
     .menu{
-      background-color: #669999;
+      background-color: $blue;
       height: 78px;
       border-radius: 5px;
       font-size: 12px;
-      color: #FFF;
+      color: $white;
       text-transform: uppercase;
       text-shadow: black 0.1em 0.1em 0.2em;
 
@@ -25,15 +25,15 @@ body.dashboard{
         float: left;
         list-style: none;
         font-size: 12px;
-        color: #FFF;
+        color: $white;
         text-transform: uppercase;
         padding: 30px;
 
         a{
           border-radius: 5px;
           text-decoration: none;
-          color: #fff;
-          background-color: #9DBDBD;
+          color: $white;
+          background-color: $blue-light;
           padding: 5px 8px;
         }
       }
@@ -58,7 +58,7 @@ body.dashboard{
     .sidebar-left{
       float: left;
       padding: 10px;
-      border: 1px dotted #ccc;
+      border: 1px dotted $gray-light;
       border-radius: 5px;
     }
     .content{
@@ -67,8 +67,8 @@ body.dashboard{
     .foto{
       width: 200px;
       height: 212px;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
+      border: 1px solid $gray-light;
+      background-color: $white-dark;
       border-radius: 5px;
     }
     .sidebar-left{
@@ -81,14 +81,14 @@ body.dashboard{
         list-style: none;
         width: 100%;
         margin-top: 1px;
-        background-color: #669999;
-        color: #fff;
+        background-color: $blue;
+        color: $white;
         padding: 10px 0;
         cursor: pointer;
 
         a{
           font-size: 12px;
-          color: #FFF;
+          color: $white;
           text-transform: uppercase;
           text-shadow: black 0.1em 0.1em 0.2em;
           text-decoration: none;
@@ -97,7 +97,7 @@ body.dashboard{
       }
     }
     .box{
-      background-color: #fff;
+      background-color: $white;
       height: 400px;
       margin-bottom: 10px;
       border-radius: 5px;
@@ -108,7 +108,7 @@ body.dashboard{
         a{
           text-decoration: none;
           font-size: 12px;
-          color: #9DBDBD;
+          color: $blue-light;
         }
       }
 
@@ -116,10 +116,10 @@ body.dashboard{
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         margin: 0;
-        background-color: #669999;
+        background-color: $blue;
         padding: 10px;
         font-size: 12px;
-        color: #FFF;
+        color: $white;
         text-transform: uppercase;
       }
       ul{
@@ -128,7 +128,7 @@ body.dashboard{
       }
       li{
         list-style: none;
-        border-bottom: 1px solid #EAEAEA;
+        border-bottom: 1px solid $gray-lighter;
         .hora{
           float: left;
           width: 50px;
