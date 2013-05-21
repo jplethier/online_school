@@ -1,10 +1,6 @@
 body.dashboard{
   background: image-url('noise.png');
 
-  .sombra-box{
-    box-shadow: 1px 1px 10px $gray;
-  }
-
   .nav{
     width: $width-site;
     margin: 0 auto;
@@ -55,34 +51,35 @@ body.dashboard{
     margin: 10px auto;
     width: $width-site;
 
-    .sidebar-left{
+    .content{
+      float: left;
+    }
+
+    .sidebar{
       float: left;
       padding: 10px;
       border: 1px dotted $gray-light;
       border-radius: 5px;
-    }
-    .content{
-      margin-left: 235px;
-    }
-    .foto{
-      width: 200px;
-      height: 212px;
-      border: 1px solid $gray-light;
-      background-color: $white-dark;
-      border-radius: 5px;
-    }
-    .sidebar-left{
+
+      .picture{
+        width: 200px;
+        height: 212px;
+        border: 1px solid $gray-light;
+        background-color: $white-dark;
+        border-radius: 5px;
+      }
+
       ul{
         margin: 10px 0 0 0;
         padding: 0;
       }
+
       li{
         border-radius: 5px;
         list-style: none;
         width: 100%;
         margin-top: 1px;
         background-color: $blue;
-        color: $white;
         padding: 10px 0;
         cursor: pointer;
 
@@ -92,15 +89,19 @@ body.dashboard{
           text-transform: uppercase;
           text-shadow: black 0.1em 0.1em 0.2em;
           text-decoration: none;
-          padding-left: 10px;
+          padding: 0 10px;
         }
       }
     }
+
     .box{
+      width: 378px;
       background-color: $white;
       height: 400px;
-      margin-bottom: 10px;
+      margin: 0 0 10px 10px;
       border-radius: 5px;
+      box-shadow: 1px 1px 10px $gray;
+      float: left;
 
       .ver-todos{
         text-align: right;
@@ -151,15 +152,6 @@ body.dashboard{
     }
   }
 
-  #left-box{
-    width: 49%;
-    float: left;
-  }
-
-  #right-box{
-    margin-left: 51%;
-  }
-
 
   footer{
     height: 100px;
@@ -167,5 +159,6 @@ body.dashboard{
     background-color: $gray;
     width: $width-site;
     border-radius: 5px;
+    clear: both;
   }
 }
