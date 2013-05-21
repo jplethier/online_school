@@ -29,12 +29,10 @@
       %h2 LOGO ESCOLA
     .menu
       %ul
-        %li
-          %a{ href: "" } home
-        %li
-          %a{ href: "" } professores
-        %li
-          %a{ href: "" } alunos
+        %li= link_to 'home', dashboard_path
+        %li= link_to 'alunos', students_path
+        %li= link_to 'professores', teachers_path
+        %li= link_to 'funcionários', ''
         %li
           %a{ href: "" } comunicados
 
@@ -43,6 +41,14 @@
 
   %article
     = flash_messages
+    .sidebar
+      .picture
+      %ul
+        %li
+          %a{ href: "" } comunicados
+        %li= link_to 'alunos', students_path
+        %li= link_to 'professores', teachers_path
+        %li= link_to 'funcionários', '#'
     = yield
 
   %footer
