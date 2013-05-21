@@ -20,6 +20,18 @@ input {
   border-radius: 5px;
 }
 
+input[type="text"], input[type="email"] {
+  margin-bottom:20px;
+  padding: 18px;
+}
+
+textarea {
+  border: none;
+  border-radius: 5px;
+  margin-bottom:20px;
+  padding: 18px;
+}
+
 input[type="submit"] {
   cursor: pointer;
   vertical-align: top;
@@ -34,7 +46,49 @@ input[type="submit"] {
   background: $orange;
 }
 
-textarea {
+label.error {
+  color: $red!important;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+input[type="text"].error, input[type="email"].error, textarea.error {
+  border: 1px solid $red;
+  margin-bottom: 5px;
+}
+
+.error:focus {
+  box-shadow: 0px 0px 5pt 1pt $red;
+}
+
+.button {
   border: none;
   border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.primary {
+  background-color: $orange;
+  color: $white;
+}
+
+.primary {
+  background-color: $orange;
+  color: $white;
+
+  &:hover {
+    color: $brown;
+    transition: 0.2s;
+  }
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.invisible {
+  visibility: hidden;
 }
