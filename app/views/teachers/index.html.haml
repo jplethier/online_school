@@ -1,14 +1,19 @@
-= link_to 'Novo Professor', new_teacher_path
+.content
+  .list-box
+    %p.title professores
+    %ul
+      %li= link_to 'cadastrar novo', new_teacher_path, class: 'button secondary'
+      %li
+        %form{ name: "", action: "", method: "" }
+          %input.input-search.input-size.arredondar{ type: "text", name: "" }
+          %input.button.primary{ type: "submit", value: "buscar" }
 
-%table
-  %thead
-    %tr
-      %th Nome
-      %th Email
-      %th Editar
-  %tbody
-    - @teachers.each do |teacher|
-      %tr
-        %td= teacher.name
-        %td= teacher.email
-        %td= link_to 'Editar', edit_teacher_path(teacher)
+      %li
+        %ul.three_columns
+          - @teachers.each do |teacher|
+            %li
+              %picture
+              .infos
+                %p.name= teacher.name
+                %p= teacher.email
+                %p.link= link_to 'Editar', edit_teacher_path(teacher)
