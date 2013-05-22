@@ -25,6 +25,10 @@ class StudentsController < AuthorizedController
     end
   end
 
+  def edit
+
+  end
+
   private
 
   def student_params
