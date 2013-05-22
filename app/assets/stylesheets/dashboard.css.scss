@@ -99,14 +99,27 @@ body.dashboard{
       }
     }
 
-    .box{
-      width: 378px;
+    .box, .list-box {
       background-color: $white;
-      height: 400px;
       margin: 0 0 10px 10px;
       border-radius: 5px;
       box-shadow: 1px 1px 10px $gray;
       float: left;
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          list-style: none;
+          border-bottom: 1px solid $gray-lighter;
+        }
+      }
+    }
+
+    .box{
+      width: 378px;
+      height: 400px;
 
       p{
         border-top-left-radius: 5px;
@@ -120,9 +133,6 @@ body.dashboard{
       }
 
       ul {
-        margin: 0;
-        padding: 0;
-
         li:last-child {
           text-align: right;
           padding: 5px;
@@ -136,9 +146,6 @@ body.dashboard{
       }
 
       li{
-        list-style: none;
-        border-bottom: 1px solid $gray-lighter;
-
         .hour{
           float: left;
           width: 50px;

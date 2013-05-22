@@ -1,25 +1,19 @@
 .content
-  / .list
-  #admin-aluno.box.arredondar.sombra-box
-    %p.arredondar-top aluno
+  .list-box
+    %p.title aluno
     %ul
+      %li= link_to 'cadastrar novo', new_student_path, class: 'button secondary'
       %li
-        .padding.align-center
-          = link_to 'cadastrar novo', new_student_path, class: 'bt-verde arredondar'
-      %li
-        .padding
-          %form{ name: "", action: "", method: "" }
-            %input.input-search.input-size.arredondar{ type: "text", name: "" }
-            %input.bt-submit-laranja.arredondar{ type: "submit", value: "buscar" }
+        %form{ name: "", action: "", method: "" }
+          %input.input-search.input-size.arredondar{ type: "text", name: "" }
+          %input.button.primary{ type: "submit", value: "buscar" }
 
-      %li.padding
-        %ul.lista-3-colunas
+      %li
+        %ul.three_columns
           - @students.each do |student|
             %li
-              .img.arredondar
-              .texto
-                %span.professor= student.name
-                %br
-                %span.email= student.email
-                %br
-                %span.especializacao= link_to 'Editar', edit_student_path(student)
+              %picture
+              .infos
+                %p.name= student.name
+                %p= student.email
+                %p.link= link_to 'Editar', edit_student_path(student)

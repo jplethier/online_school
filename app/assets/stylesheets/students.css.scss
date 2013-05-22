@@ -1,17 +1,63 @@
-#admin-aluno{
-  .padding{
-    padding: 30px 20px;
+.list-box{
+  width: 765px;
+
+  p.title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0;
+    background-color: $blue;
+    padding: 10px;
+    font-size: 12px;
+    color: $white;
+    text-transform: uppercase;
   }
 
-  .align-center{
-    text-align: center;
+  form {
+    input[type="text"] {
+      background-color: $white-dark;
+      border: 1px solid $gray-light;
+      padding: 15px;
+    }
+
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    li {
+      padding: 30px 20px;
+
+      .button {
+        text-transform: uppercase;
+        padding: 15px 20px;
+        font-size: 12px;
+      }
+
+      .primary {
+        background-color: $orange-dark;
+      }
+    }
+
+    li:first-child {
+      text-align: center;
+    }
+
+    li:last-child {
+      padding: 0;
+      border-bottom: none !important;
+    }
   }
 
   .input-size{
     width: 350px;
   }
 
-  .lista-3-colunas{
+  ul.three_columns{
+    margin: 30px auto !important;
+    display: block;
+    width: 725px;
+
     li{
       float: left;
       width: 33%;
@@ -19,32 +65,38 @@
     }
   }
 
-  .img{
+  picture {
     border: 1px solid #ccc;
+    border-radius: 5px;
     background-color: #F1F1F1;
     width: 60px;
     height: 75px;
     float: left;
   }
 
-  .texto{
-    margin-left: 70px;
-    .professor{
-      color: #9DBDBD;
+  .infos{
+    float: left;
+    margin-left: 8px;
+
+    p {
+      margin: 0 0 7px;
+      text-align: left;
+      font-size: 12px;
+      color: $blue-light;
+    }
+    .name{
       text-transform: uppercase;
       font-size: 18px;
     }
-    .especializacao{
-      color: #333;
-      font-size: 10px;
+    .link{
+      a {
+        color: $gray;
+        font-size: 10px;
+        text-decoration: none;
+      }
     }
-    .descricao{
-      color: #ccc;
-      font-size: 12px;
-    }
-    .email{
-      color: #9DBDBD;
-      font-size: 12px;
+    .description{
+      color: $gray-light;
     }
   }
 

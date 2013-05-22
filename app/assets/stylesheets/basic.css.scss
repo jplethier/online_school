@@ -67,11 +67,7 @@ input[type="text"].error, input[type="email"].error, textarea.error {
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-}
-
-.primary {
-  background-color: $orange;
-  color: $white;
+  text-decoration: none;
 }
 
 .primary {
@@ -82,6 +78,10 @@ input[type="text"].error, input[type="email"].error, textarea.error {
     color: $brown;
     transition: 0.2s;
   }
+
+.secondary {
+  color: $white;
+  background-color: $blue-light;
 }
 
 .hidden {
