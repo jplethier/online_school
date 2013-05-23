@@ -18,7 +18,7 @@ describe 'New Teacher' do
       expect { new_teacher_page.create }.to change { User.teachers.count }.by(1)
     end
 
-    it 'unsuccessfully' do
+    it 'with missing data' do
       new_teacher_page.name                  = 'Professor'
       new_teacher_page.password              = '1234qwer'
       new_teacher_page.password_confirmation = '1234qwer'

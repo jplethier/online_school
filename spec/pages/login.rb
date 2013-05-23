@@ -1,8 +1,9 @@
 class Login < SitePrism::Page
   set_url "http://{subdomain}.lvh.me:3000/users/sign_in"
+  set_url_matcher(/users\/sign_in/)
 
-  element :email,          "article input[name='user[email]']"
-  element :password,       "article input[name='user[password]']"
+  element :email_field,    "article input[name='user[email]']"
+  element :password_field, "article input[name='user[password]']"
   element :sign_in_button, "article input[name='commit']"
 
   def self.visit(hash)
@@ -12,14 +13,18 @@ class Login < SitePrism::Page
   end
 
   def sign_in
-    self.sign_in_button.click
+    sign_in_button.click
+  end
+
+  def email
+    email_field.value
   end
 
   def email=(email)
-    self.email.set email
+    email_field.set email
   end
 
   def password=(password)
-    self.password.set password
+    password_field.set password
   end
 end

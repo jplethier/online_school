@@ -18,7 +18,7 @@ describe 'New Student' do
       expect { new_student_page.create }.to change { User.students.count }.by(1)
     end
 
-    it 'unsuccessfully' do
+    it 'with missing data' do
       new_student_page.name                  = 'Aluno'
       new_student_page.password              = '1234qwer'
       new_student_page.password_confirmation = '1234qwer'

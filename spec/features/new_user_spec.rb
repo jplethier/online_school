@@ -22,7 +22,7 @@ describe 'New User' do
       expect(new_user_page).to have_content 'Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.'
     end
 
-    it 'unsuccessfully' do
+    it 'with missing data' do
       user_count    = User.count
       account_count = Account.count
 

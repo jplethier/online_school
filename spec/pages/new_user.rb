@@ -1,12 +1,12 @@
 class NewUser < SitePrism::Page
   set_url "/users/sign_up"
 
-  element :account_name,          "article input[name='user[account_attributes][name]']"
-  element :account_subdomain,     "article input[name='user[account_attributes][subdomain]']"
-  element :email,                 "article input[name='user[email]']"
-  element :password,              "article input[name='user[password]']"
-  element :password_confirmation, "article input[name='user[password_confirmation]']"
-  element :create_button,         "article input[name='commit']"
+  element :account_name_field,          "article input[name='user[account_attributes][name]']"
+  element :account_subdomain_field,     "article input[name='user[account_attributes][subdomain]']"
+  element :email_field,                 "article input[name='user[email]']"
+  element :password_field,              "article input[name='user[password]']"
+  element :password_confirmation_field, "article input[name='user[password_confirmation]']"
+  element :create_button,               "article input[name='commit']"
 
   def self.visit
     self.new.tap { |page| page.load }
@@ -17,22 +17,22 @@ class NewUser < SitePrism::Page
   end
 
   def account_name=(name)
-    self.account_name.set name
+    self.account_name_field.set name
   end
 
   def account_subdomain=(subdomain)
-    self.account_subdomain.set subdomain
+    self.account_subdomain_field.set subdomain
   end
 
   def email=(email)
-    self.email.set email
+    self.email_field.set email
   end
 
   def password=(password)
-    self.password.set password
+    self.password_field.set password
   end
 
   def password_confirmation=(password)
-    self.password_confirmation.set password
+    self.password_confirmation_field.set password
   end
 end

@@ -17,17 +17,22 @@ describe 'Login' do
   end
 
   context 'in home page' do
-    before do
-      visit root_path
+    it 'successfully' do
+      home_page = Home.visit
+      home_page.email = user.email
+
+      login_page = home_page.sign_in
+      expect(login_page).to be_displayed
+      expect(login_page.email).to eq user.email
     end
 
-    it 'successfully' do
-      pending 'o login não é mais possível de ser realizado pela home'
+    it 'with an unregistered email' do
+      home_page = Home.visit
+      home_page.email = 'unregistered@example.com'
 
-      fill_in 'user_email', :with => user.email
-      fill_in 'user_password', :with => user.password
-      click_on 'Login'
-      should have_content('Login efetuado com sucesso!')
+      home_page.sign_in
+      expect(home_page).to be_displayed
+      expect(home_page).to have_content 'E-mail não encontrado'
     end
   end
 end
