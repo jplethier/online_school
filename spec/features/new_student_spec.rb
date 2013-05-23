@@ -4,10 +4,7 @@ require 'spec_helper'
 describe 'New Student' do
   let(:admin) { FactoryGirl.create(:admin_user) }
 
-  before do
-    admin.confirm!
-    login_as_user admin
-  end
+  before { login_as_user admin }
 
   describe 'creating a student' do
     let(:new_student_page) { NewStudent.visit(subdomain: admin.account.subdomain) }

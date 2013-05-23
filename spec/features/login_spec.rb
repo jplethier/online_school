@@ -4,8 +4,6 @@ require 'spec_helper'
 describe 'Login' do
   let(:user) { FactoryGirl.create(:admin_user, password: '123qwe', password_confirmation: '123qwe') }
 
-  before { user.confirm! }
-
   context 'in sign_in page' do
     it 'successfully' do
       login_page = Login.visit(subdomain: user.account.subdomain)

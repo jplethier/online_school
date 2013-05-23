@@ -2,14 +2,19 @@
 
 FactoryGirl.define do
   factory :user do
+    ignore { confirmed true }
+
+    account
     sequence(:email) { |n| "f-mail-#{n}@example.com" }
     name 'F_NAME'
     password 'F_PASSWORD'
-
-    account
   end
 
   factory :admin_user, parent: :user do
     admin true
+
+    after(:create) do |user, evaluator|
+      user.confirm! if evaluator.confirmed
+    end
   end
 end
