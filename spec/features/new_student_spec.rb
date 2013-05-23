@@ -11,7 +11,7 @@ describe "New Student" do
 
   before do
     admin.confirm!
-    login_as admin, :scope => :user
+    login_as_user admin
     visit new_student_path
   end
 

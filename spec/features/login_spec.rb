@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "Login" do
 
-  let(:user) { FactoryGirl.create(:user, password: '123qwe', password_confirmation: '123qwe') }
+  let(:user) { FactoryGirl.create(:admin_user, password: '123qwe', password_confirmation: '123qwe') }
 
   subject { page }
 
@@ -13,7 +13,7 @@ describe "Login" do
 
   context 'in sign_in page' do
     before do
-      visit new_user_session_path
+      visit new_user_session_url(subdomain: user.account.subdomain)
     end
 
     it 'successfully' do
@@ -32,6 +32,8 @@ describe "Login" do
     end
 
     it 'successfully' do
+      pending 'o login não é mais possível de ser realizado pela home'
+
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => user.password
       click_on 'Login'
