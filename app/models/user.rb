@@ -37,14 +37,19 @@
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable
-  # :lockable, :timeoutable and :omniauthable
-  devise :confirmable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, request_keys: [:subdomain]
+  devise :confirmable, :database_authenticatable, :registerable, :recoverable,
+    :rememberable, :trackable, request_keys: [:subdomain]
+
+  belongs_to :account
+
+  validates :email, presence: true
+  validates :email, uniqueness: { scope: :account_id }, if: :email_changed?
+  validates :email, format: { with: Devise.email_regexp }, if: :email_changed?
 
   validates :name, presence: true
 
-  belongs_to :account
+  validates :password, presence: true, confirmation: true, if: :password_required?
+  validates :password, length: { within: Devise.password_length }
 
   accepts_nested_attributes_for :account, :allow_destroy => true
 
@@ -57,5 +62,14 @@ class User < ActiveRecord::Base
     if account = Account.find_by_subdomain(warden_conditions[:subdomain])
       account.users.find_by_email(warden_conditions[:email])
     end
+  end
+
+  protected
+
+  # Checks whether a password is needed or not. For validations only.
+  # Passwords are always required if it's a new record, or if the password
+  # or confirmation are being set somewhere.
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
   end
 end
