@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable
   # :lockable, :timeoutable and :omniauthable
-  devise :confirmable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :confirmable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, request_keys: [:subdomain]
 
   validates :name, presence: true
 
@@ -52,4 +52,10 @@ class User < ActiveRecord::Base
   scope :teachers,  lambda { where(teacher: true) }
   scope :employees, lambda { where(employee: true) }
   scope :admins,    lambda { where(admin: true) }
+
+  def self.find_for_authentication(warden_conditions)
+    if account = Account.find_by_subdomain(warden_conditions[:subdomain])
+      account.users.find_by_email(warden_conditions[:email])
+    end
+  end
 end
