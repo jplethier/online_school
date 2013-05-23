@@ -1,39 +1,32 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe "New Student" do
-  include Warden::Test::Helpers
-  Warden.test_mode!
-
-  subject { page }
-
+describe 'New Student' do
   let(:admin) { FactoryGirl.create(:admin_user) }
 
   before do
     admin.confirm!
     login_as_user admin
-    visit new_student_path
   end
 
   describe 'creating a student' do
+    let(:new_student_page) { NewStudent.visit(subdomain: admin.account.subdomain) }
+
     it 'successfully' do
-      within 'article' do
-        fill_in 'user_name', :with => 'Aluno'
-        fill_in 'user_email', :with => 'aluno@escola.com'
-        fill_in 'user_password', :with => '123qwe'
-        fill_in 'user_password_confirmation', :with => '123qwe'
-        expect { click_on 'Confirmar' }.to change { User.students.count }.by(1)
-      end
+      new_student_page.name                  = 'Aluno'
+      new_student_page.email                 = 'aluno@example.com'
+      new_student_page.password              = '1234qwer'
+      new_student_page.password_confirmation = '1234qwer'
+
+      expect { new_student_page.create }.to change { User.students.count }.by(1)
     end
 
     it 'unsuccessfully' do
-      within 'article' do
-        fill_in 'user_name', :with => 'Aluno'
-        # fill_in 'user_email', :with => 'aluno@escola.com'
-        fill_in 'user_password', :with => '123qwe'
-        fill_in 'user_password_confirmation', :with => '123qwe'
-        expect { click_on 'Confirmar' }.to_not change { User.students.count }
-      end
+      new_student_page.name                  = 'Aluno'
+      new_student_page.password              = '1234qwer'
+      new_student_page.password_confirmation = '1234qwer'
+
+      expect { new_student_page.create }.to_not change { User.students.count }
     end
   end
 end

@@ -17,6 +17,7 @@ class StudentsController < AuthorizedController
   def create
     @student.student = true
     @student.skip_confirmation!
+
     if @student.save
       redirect_to students_path, success: 'Aluno criado com sucesso'
     else
