@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130509014904) do
+ActiveRecord::Schema.define(version: 20130523160455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20130509014904) do
     t.string   "subdomain"
   end
 
-  add_index "accounts", ["cnpj"], name: "index_accounts_on_cnpj", using: :btree
+  add_index "accounts", ["subdomain"], name: "index_accounts_on_subdomain", using: :btree
 
   create_table "plans", force: true do |t|
     t.string   "title"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20130509014904) do
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
