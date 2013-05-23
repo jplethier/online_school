@@ -1,24 +1,5 @@
-.list-box{
-  width: 765px;
-
-  p.title {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    margin: 0;
-    background-color: $blue;
-    padding: 10px;
-    font-size: 12px;
-    color: $white;
-    text-transform: uppercase;
-  }
-
+.list-box {
   form {
-    input[type="text"] {
-      background-color: $white-dark;
-      border: 1px solid $gray-light;
-      padding: 15px;
-    }
-
     input {
       margin-bottom: 0;
     }
@@ -27,16 +8,6 @@
   ul {
     li {
       padding: 30px 20px;
-
-      .button {
-        text-transform: uppercase;
-        padding: 15px 20px;
-        font-size: 12px;
-      }
-
-      .primary {
-        background-color: $orange-dark;
-      }
     }
 
     li:first-child {
@@ -49,10 +20,6 @@
     }
   }
 
-  .input-size{
-    width: 350px;
-  }
-
   ul.three_columns{
     margin: 30px auto !important;
     display: block;
@@ -63,15 +30,6 @@
       width: 33%;
       padding: 30px 0;
     }
-  }
-
-  picture {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #F1F1F1;
-    width: 60px;
-    height: 75px;
-    float: left;
   }
 
   .infos{
@@ -100,13 +58,86 @@
     }
   }
 
-  label{
+  picture {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #F1F1F1;
+    width: 60px;
+    height: 75px;
+    float: left;
+  }
+}
+
+.new-box {
+
+  form {
+    padding: 20px;
+  }
+
+  .field, .small_field {
+    float: left;
+
+    label {
+      display: block;
+    }
+  }
+
+  .field {
+    width: 50%;
+
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 81%;
+    }
+
+    input.small {
+      width: 115px;
+    }
+  }
+
+  .small_field {
+    width: 25%;
+
+    input {
+      width: 115px;
+    }
+  }
+}
+
+.list-box, .new-box{
+  width: 765px;
+
+  .button {
     text-transform: uppercase;
+    padding: 15px 20px;
     font-size: 12px;
   }
 
-  input,textarea{
-    margin-bottom: 30px;
+  .primary {
+    background-color: $orange-dark;
+  }
+
+  p.title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0;
+    background-color: $blue;
+    padding: 10px;
+    font-size: 12px;
+    color: $white;
+    text-transform: uppercase;
+  }
+
+  form {
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+      background-color: $white-dark;
+      border: 1px solid $gray-light;
+      padding: 15px;
+    }
+  }
+
+  label{
+    text-transform: uppercase;
+    font-size: 12px;
   }
 
   textarea{
