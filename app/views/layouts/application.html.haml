@@ -48,19 +48,14 @@
   %footer
     .footer-wrapper
       .contact
-        %img{ src: "#{image_path('home/logo-branco.png')}" }
         %p
-          Rua Presidente Vargas 10.000, Subsolo C
-          %br
-          Cep: 20000-000 - Rio de Janeiro - RJ
-          %br
-          %br
-          Email: contato@syschool.com.br
+          E-mail:
+          = mail_to 'contato@minhasaladeaula.com'
         .social
-          %img{ src: "#{image_path('home/facebook-icon-brown.png')}" }
-          %img{ src: "#{image_path('home/twitter-icon-brown.png')}" }
-          %img{ src: "#{image_path('home/rss-icon-brown.png')}" }
-          %img{ src: "#{image_path('home/google-icon-brown.png')}" }
+          %a.facebook{ href: 'https://www.facebook.com/minhasaladeaula' }
+          %a.google{ href: '#' }
+          %a.twitter{ href: '#' }
+          %a.rss{ href: '#' }
       = form_tag(send_contact_email_path, id: "footer_form") do
         = hidden_field_tag :plan, 'nenhum plano selecionado'
         %h2 Entre em contato

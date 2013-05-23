@@ -333,14 +333,53 @@ footer {
       p {
         color: $beige-light;
         font-size: 12px;
-        margin-left: 120px;
-        margin-top: 0px;
+        margin: 15px;
+
+        a {
+          color: $white;
+          text-decoration: none;
+        }
       }
     }
 
     .social {
-      text-align: right;
+      text-align: left;
       margin-top: 20px;
+
+      a {
+        display: inline-block;
+        height: 64px;
+        transition: .5s;
+        width: 64px;
+      }
+
+      .facebook {
+        background-image: image-url('home/facebook-icon-brown.png');
+        &:hover {
+          background-image: image-url('home/facebook-icon.png');
+        }
+      }
+
+      .google {
+        background-image: image-url('home/google-icon-brown.png');
+        &:hover {
+          background-image: image-url('home/google-icon.png');
+        }
+      }
+
+      .rss {
+        background-image: image-url('home/rss-icon-brown.png');
+        &:hover {
+          background-image: image-url('home/rss-icon.png');
+        }
+      }
+
+      .twitter {
+        background-image: image-url('home/twitter-icon-brown.png');
+        &:hover {
+          background-image: image-url('home/twitter-icon.png');
+        }
+      }
     }
 
     form {
