@@ -37,4 +37,28 @@ describe StudentsController do
       expect(response).to render_template(:new)
     end
   end
+
+  it 'edit' do
+    User.stub(find: student)
+    get :edit, id: student.id
+    expect(assigns :student).to eq student
+  end
+
+  describe 'update' do
+    let(:params)  { { id: student.id, user: { password: :any } } }
+
+    it 'successfully' do
+      student.stub(update_attributes: true)
+      User.stub(find: student)
+      post :update, params
+      expect(response).to redirect_to(students_path)
+    end
+
+    it 'failure' do
+      student.stub(update_attribuets: false)
+      User.stub(find: student)
+      post :update, params
+      expect(response).to render_template(:edit)
+    end
+  end
 end

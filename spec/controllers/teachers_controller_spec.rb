@@ -37,4 +37,28 @@ describe TeachersController do
       expect(response).to render_template(:new)
     end
   end
+
+  it 'edit' do
+    User.stub(find: teacher)
+    get :edit, id: teacher.id
+    expect(assigns :teacher).to eq teacher
+  end
+
+  describe 'update' do
+    let(:params)  { { id: teacher.id, user: { password: :any } } }
+
+    it 'successfully' do
+      teacher.stub(update_attributes: true)
+      User.stub(find: teacher)
+      post :update, params
+      expect(response).to redirect_to(teachers_path)
+    end
+
+    it 'failure' do
+      teacher.stub(update_attribuets: false)
+      User.stub(find: teacher)
+      post :update, params
+      expect(response).to render_template(:edit)
+    end
+  end
 end

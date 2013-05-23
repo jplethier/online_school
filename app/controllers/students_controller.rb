@@ -29,6 +29,15 @@ class StudentsController < AuthorizedController
 
   end
 
+  def update
+    if @student.update_attributes(student_params)
+      redirect_to students_path, notice: 'Dados do aluno atualizado com sucesso.'
+    else
+      flash.now[:error] = 'Não foi possível atualizar os dados do aluno.'
+      render :edit
+    end
+  end
+
   private
 
   def student_params

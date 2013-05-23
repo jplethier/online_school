@@ -12,13 +12,14 @@
     = f.label :email
     = f.email_field :email
 
-  .small_field
-    = f.label :password
-    = f.password_field :password
+  - if student.new_record?
+    .small_field
+      = f.label :password
+      = f.password_field :password
 
-  .small_field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+    .small_field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
 
   .field
     = f.label :enrollment
