@@ -1,28 +1,20 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe "Login" do
-
+describe 'Login' do
   let(:user) { FactoryGirl.create(:admin_user, password: '123qwe', password_confirmation: '123qwe') }
 
-  subject { page }
-
-  before do
-    user.confirm!
-  end
+  before { user.confirm! }
 
   context 'in sign_in page' do
-    before do
-      visit new_user_session_url(subdomain: user.account.subdomain)
-    end
-
     it 'successfully' do
-      within 'article' do
-        fill_in 'user_email', :with => user.email
-        fill_in 'user_password', :with => user.password
-        click_on 'Login'
-      end
-      should have_content('Login efetuado com sucesso!')
+      login_page = Login.visit(subdomain: user.account.subdomain)
+
+      login_page.email    = user.email
+      login_page.password = user.password
+      login_page.sign_in
+
+      expect(login_page).to have_content 'Login efetuado com sucesso!'
     end
   end
 
