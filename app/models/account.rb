@@ -12,7 +12,10 @@
 #
 
 class Account < ActiveRecord::Base
+  ReservedSubdomains = %w( support suporte blog www help ajuda api minhasaladeaula admin dev test pop pop3 imap smtp ftp status escola e email mail webmail login signup staging homologacao launch start )
+
   validates :name, presence: true
+  validates :subdomain, presence: true, exclusion: { in: ReservedSubdomains }
 
   has_many :users
 end

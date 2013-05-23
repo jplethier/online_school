@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :account do
-    name 'Nome da Escola'
-    cnpj '62.169.623/0001-40'
+    name 'F_NAME'
+    subdomain 'SUBDOMAIN'
   end
 end

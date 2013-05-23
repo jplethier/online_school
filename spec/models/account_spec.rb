@@ -7,13 +7,19 @@ describe Account do
 
   its(:valid?) { should be_true }
 
-  describe 'validations' do
+  describe 'validations:' do
     it 'requires a name' do
       expect { account.name = nil }.to change { account.valid? }.from(true).to(false)
     end
 
-    # it 'requires a cnpj' do
-    #   expect { account.cnpj = nil }.to change { account.valid? }.from(true).to(false)
-    # end
+    describe 'subdomain' do
+      it 'is required' do
+        expect { account.subdomain = nil }.to change { account.valid? }.from(true).to(false)
+      end
+
+      it 'cannot be a reserved name' do
+        expect { account.subdomain = Account::ReservedSubdomains.first }.to change { account.valid? }.from(true).to(false)
+      end
+    end
   end
 end
