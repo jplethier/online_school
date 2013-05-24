@@ -12,6 +12,10 @@ body {
 input {
   border: none;
   border-radius: 5px;
+
+  &.large {
+    width: 350px;
+  }
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
@@ -70,6 +74,11 @@ label.error {
 .secondary {
   color: $white;
   background-color: $blue-light;
+
+  &:hover {
+    color: $brown;
+    transition: 0.2s;
+  }
 }
 
 /* HELPER CLASSES */

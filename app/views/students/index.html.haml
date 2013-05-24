@@ -1,19 +1,17 @@
 .content
   .list-box
-    %p.title aluno
+    %p.title alunos
     %ul
-      %li= link_to 'cadastrar novo', new_student_path, class: 'button secondary'
       %li
-        %form{ name: "", action: "", method: "" }
-          %input.input-search.input-size.arredondar{ type: "text", name: "" }
-          %input.button.primary{ type: "submit", value: "buscar" }
+        %form{ name: '', action: '', method: '' }
+          %input.large{ type: 'text', name: '' }
+          %input.button.primary{ type: 'submit', value: 'buscar' }
+        = link_to 'Cadastrar', new_student_path, class: 'button secondary'
 
       %li
         %ul.three-columns
-          - @students.each do |student|
-            %li
-              %picture
-              .infos
-                %p.name= student.name
-                %p= student.email
-                %p.link= link_to 'Editar', edit_student_path(student)
+          - if @students.empty?
+            %p Nenhum aluno encontrado.
+          - else
+            - @students.each do |student|
+              =render 'student', student: student

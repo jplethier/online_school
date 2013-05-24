@@ -2,18 +2,16 @@
   .list-box
     %p.title professores
     %ul
-      %li= link_to 'cadastrar novo', new_teacher_path, class: 'button secondary'
       %li
-        %form{ name: "", action: "", method: "" }
-          %input.input-search.input-size.arredondar{ type: "text", name: "" }
-          %input.button.primary{ type: "submit", value: "buscar" }
+        %form{ name: '', action: '', method: '' }
+          %input.large{ type: 'text', name: '' }
+          %input.button.primary{ type: 'submit', value: 'buscar' }
+        = link_to 'Cadastrar', new_teacher_path, class: 'button secondary'
 
       %li
         %ul.three-columns
-          - @teachers.each do |teacher|
-            %li
-              %picture
-              .infos
-                %p.name= teacher.name
-                %p= teacher.email
-                %p.link= link_to 'Editar', edit_teacher_path(teacher)
+          - if @teachers.empty?
+            %p Nenhum professor encontrado.
+          - else
+            - @teachers.each do |teacher|
+              =render 'teacher', teacher: teacher
