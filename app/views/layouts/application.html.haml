@@ -33,7 +33,7 @@
       - else
         .login
           = form_tag find_account_path do
-            = email_field_tag 'email', '', autofocus: true, placeholder: 'email'
+            = email_field_tag 'email', '', autofocus: true, placeholder: 'email', required: true
             %input.primary{ type: 'submit', value: 'Login' }
       %a.logo{ href: '/' }
 
@@ -55,7 +55,7 @@
           %a.google{ href: '#' }
           %a.twitter{ href: '#' }
           %a.rss{ href: '#' }
-      = form_tag(send_contact_email_path, id: "footer_form") do
+      = form_tag(send_contact_email_path) do
         = hidden_field_tag :plan, 'nenhum plano selecionado'
         %h2 Entre em contato
         = text_field_tag :name, '', placeholder: 'nome', required: true
@@ -68,7 +68,8 @@
 
   :javascript
     $(document).ready(function() {
-      $('#footer_form').validate();
+      $('footer form').validate();
+      $('.login form').validate();
     });
 </html>
 
