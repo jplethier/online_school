@@ -22,6 +22,6 @@ module OnlineSchool
 
     # Precompile additional assets.
     # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-    config.assets.precompile += %w( head.js )
+    config.assets.precompile += %w( head.js home.css )
   end
 end
