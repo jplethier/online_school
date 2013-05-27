@@ -105,3 +105,10 @@ label.error {
 .invisible {
   visibility: hidden;
 }
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
