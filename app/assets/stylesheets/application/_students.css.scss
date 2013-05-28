@@ -142,14 +142,6 @@
     text-transform: uppercase;
   }
 
-  form {
-    input[type="text"], input[type="email"], input[type="password"], textarea {
-      background-color: $white-dark;
-      border: 1px solid $gray-light;
-      padding: 15px;
-    }
-  }
-
   label {
     display: block;
     font-size: 12px;

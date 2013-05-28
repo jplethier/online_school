@@ -19,12 +19,18 @@ input {
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
+  background-color: $white-dark;
+  border: 1px solid $gray-light;
   margin-bottom:20px;
-  padding: 18px;
+  padding: 15px;
 
   &.error {
     border: 1px solid $red!important;
     margin-bottom: 5px;
+  }
+
+  &:disabled {
+    background-color: darken($white-dark, 10%)!important;
   }
 }
 
@@ -38,10 +44,11 @@ button[type="submit"] {
 }
 
 textarea {
-  border: none;
+  background-color: $white-dark;
+  border: 1px solid $gray-light;
   border-radius: 5px;
   margin-bottom:20px;
-  padding: 18px;
+  padding: 15px;
 
   &.error {
     border: 1px solid $red!important;
