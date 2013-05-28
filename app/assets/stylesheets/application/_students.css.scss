@@ -50,9 +50,11 @@
     }
 
     .link{
+      margin-bottom: 0;
+
       a {
         color: $gray;
-        font-size: 10px;
+        font-size: 16px;
         text-decoration: none;
       }
     }
@@ -111,7 +113,7 @@
     width: 100%;
 
     input[type='text'] {
-      width: 480px;
+      width: 469px;
     }
   }
 }

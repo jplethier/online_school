@@ -2,5 +2,7 @@
   %picture
   .infos
     %p.name.truncate= student.name
-    %p= student.email
-    %p.link= link_to 'Editar', edit_student_path(student)
+    %p= student.enrollment
+    %p.link
+      = link_to edit_student_path(student) do
+        <i class='icon-edit' title='Editar'></i>

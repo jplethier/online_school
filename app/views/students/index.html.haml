@@ -5,8 +5,10 @@
       %li
         %form{ name: '', action: '', method: '' }
           %input.large{ type: 'text', name: '' }
-          %input.button.primary{ type: 'submit', value: 'buscar' }
-        = link_to 'Cadastrar', new_student_path, class: 'button secondary'
+          %button.button.primary{ type: 'submit' }
+            <i class='icon-search'></i> Buscar
+
+        = link_to '<i class="icon-plus"></i> Cadastrar'.html_safe, new_student_path, class: 'button secondary'
 
       %li
         %ul.three-columns

@@ -3,7 +3,8 @@
     .large-field
       %label foto
       %input{ type: 'text', name: '' }
-      %input.button.primary{ type: 'submit', value: 'selecionar arquivo' }
+      %button.button.primary{ type: 'submit' }
+        <i class='icon-file'></i> selecionar arquivo
 
   .row
     .field
@@ -57,7 +58,8 @@
       = f.text_field :address_state
 
   .clear
-  = f.submit 'Confirmar', class: 'button primary'
+  %button.button.primary{ type: 'submit' }
+    <i class='icon-ok'></i> Confirmar
 
 = content_for :javascript do
   :javascript

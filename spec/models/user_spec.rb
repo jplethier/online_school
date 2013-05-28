@@ -44,9 +44,5 @@ describe User do
         it { expect { user.password = '12345' }.to change { user.valid? }.from(true).to(false) }
       end
     end
-
-    it 'requires an email' do
-      expect { user.email = nil }.to change { user.valid? }.from(true).to(false)
-    end
   end
 end
