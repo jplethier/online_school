@@ -49,6 +49,10 @@ textarea {
   }
 }
 
+label.required:after {
+  content: ' *'
+}
+
 form .error > label {
   color: $red;
   display: block;

@@ -8,16 +8,16 @@
 
   .row
     .field
-      = f.label :name
+      = f.label :name, class: 'required'
       = f.text_field :name, required: true
 
     .field
-      = f.label :email
+      = f.label :email, class: 'required'
       = f.email_field :email, required: true, email: true
 
   .row
     .field
-      = f.label :enrollment
+      = f.label :enrollment, class: 'required'
       = f.text_field :enrollment, required: true
 
     .field
