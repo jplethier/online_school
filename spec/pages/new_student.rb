@@ -5,7 +5,7 @@ class NewStudent < SitePrism::Page
   element :name_field,                  "input[name='user[name]']"
   element :password_field,              "input[name='user[password]']"
   element :password_confirmation_field, "input[name='user[password_confirmation]']"
-  element :create_button,               "input[name='commit'].primary"
+  element :create_button,               "button[name='commit']"
 
   def self.visit(hash)
     page = self.new
