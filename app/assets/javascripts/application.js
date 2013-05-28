@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.date.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.regex.extensions
 //= require_tree ./global
