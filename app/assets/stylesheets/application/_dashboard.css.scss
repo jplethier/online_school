@@ -52,7 +52,7 @@ body.dashboard{
       border: 1px dotted $gray-light;
       border-radius: 5px;
 
-      .picture{
+      .picture {
         width: 200px;
         height: 212px;
         border: 1px solid $gray-light;
@@ -60,27 +60,33 @@ body.dashboard{
         border-radius: 5px;
       }
 
-      ul{
+      ul {
         margin: 10px 0 0 0;
         padding: 0;
       }
 
-      li{
-        border-radius: 5px;
-        list-style: none;
-        width: 100%;
-        margin-top: 1px;
+      li {
         background-color: $blue;
-        padding: 10px 0;
-        cursor: pointer;
+        border-radius: 5px;
+        height: 100%;
+        list-style: none;
+        margin-top: 1px;
+        padding: 20px 0;
+        position: relative;
+        width: 100%;
 
-        a{
-          font-size: 12px;
+        a {
           color: $white;
-          text-transform: uppercase;
-          text-shadow: black 0.1em 0.1em 0.2em;
+          font-size: 12px;
+          left: 0;
+          height: 40%;
+          padding: 12px 12px;
+          position: absolute;
           text-decoration: none;
-          padding: 0 10px;
+          text-shadow: black 0.1em 0.1em 0.2em;
+          text-transform: uppercase;
+          top: 0;
+          width: 89%;
         }
       }
     }

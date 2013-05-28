@@ -33,6 +33,10 @@ input[type="submit"] {
   vertical-align: top;
 }
 
+button[type="submit"] {
+  cursor: pointer;
+}
+
 textarea {
   border: none;
   border-radius: 5px;
