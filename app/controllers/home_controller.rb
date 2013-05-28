@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  layout 'home'
+
   def contact_form
     render layout: false
   end
