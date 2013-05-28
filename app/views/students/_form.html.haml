@@ -61,7 +61,7 @@
 
     .small-field
       = f.label :address_number
-      = f.text_field :address_number, data: { inputmask: "'alias': 'integer'" }
+      = f.text_field :address_number, data: { inputmask: "'alias': 'integer', 'rightAlignNumerics': false"}
 
     .small-field
       = f.label :address_complement
