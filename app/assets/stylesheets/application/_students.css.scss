@@ -74,12 +74,11 @@
 }
 
 .new-box {
-
   form {
     padding: 20px;
   }
 
-  .field, .small-field {
+  .field, .small-field, .large-field {
     float: left;
 
     label {
@@ -165,5 +164,13 @@
     clear: both;
     margin: 20px 0;
     margin-right: 40px;
+  }
+
+  .row {
+    height: 82px;
+
+    &.error {
+      height: 97px;
+    }
   }
 }

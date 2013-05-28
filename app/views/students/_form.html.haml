@@ -1,58 +1,66 @@
 = form_for student, url: student_path(student), id: 'student_form' do |f|
-  .large-field
-    %label foto
-    %input{ type: 'text', name: '' }
-    %input.button.primary{ type: 'submit', value: 'selecionar arquivo' }
+  .row
+    .large-field
+      %label foto
+      %input{ type: 'text', name: '' }
+      %input.button.primary{ type: 'submit', value: 'selecionar arquivo' }
 
-  .field
-    = f.label :name
-    = f.text_field :name, required: true
+  .row
+    .field
+      = f.label :name
+      = f.text_field :name, required: true
 
-  .field
-    = f.label :email
-    = f.email_field :email, required: true, email: true
+    .field
+      = f.label :email
+      = f.email_field :email, required: true, email: true
 
-  .field
-    = f.label :enrollment
-    = f.text_field :enrollment, required: true
+  .row
+    .field
+      = f.label :enrollment
+      = f.text_field :enrollment, required: true
 
-  .field
-    = f.label :birth_date
-    = f.text_field :birth_date, onkeyup: 'mascara(this,data)', maxlength: 10
+    .field
+      = f.label :birth_date
+      = f.text_field :birth_date, onkeyup: 'mascara(this,data)', maxlength: 10
 
   .divider
 
-  .field
-    = f.label :cellphone_number
-    = f.text_field :cellphone_number, onkeyup: 'mascara(this,telefone)', maxlength: 14
+  .row
+    .field
+      = f.label :cellphone_number
+      = f.text_field :cellphone_number, onkeyup: 'mascara(this,telefone)', maxlength: 14
 
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number, onkeyup: 'mascara(this,telefone)', maxlength: 14
+    .field
+      = f.label :phone_number
+      = f.text_field :phone_number, onkeyup: 'mascara(this,telefone)', maxlength: 14
 
-  .field
-    = f.label :address
-    = f.text_field :address
+  .row
+    .field
+      = f.label :address
+      = f.text_field :address
 
-  .small-field
-    = f.label :address_number
-    = f.text_field :address_number, onkeyup: 'mascara(this, numero)'
+    .small-field
+      = f.label :address_number
+      = f.text_field :address_number, onkeyup: 'mascara(this, numero)'
 
-  .small-field
-    = f.label :address_complement
-    = f.text_field :address_complement
+    .small-field
+      = f.label :address_complement
+      = f.text_field :address_complement
 
-  .field
-    = f.label :address_city
-    = f.text_field :address_city
+  .row
+    .field
+      = f.label :address_city
+      = f.text_field :address_city
 
-  .field
-    = f.label :address_state
-    = f.text_field :address_state
+    .field
+      = f.label :address_state
+      = f.text_field :address_state
 
   .clear
   = f.submit 'Confirmar', class: 'button primary'
 
 = content_for :javascript do
   :javascript
-    $('.new-box form').validate();
+    $(document).ready(function() {
+      $('.new-box form').validate();
+    });
