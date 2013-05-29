@@ -6,6 +6,8 @@ OnlineSchool::Application.routes.draw do
   get  'contact_form', to: 'home#contact_form', as: 'contact_form'
   post 'send_contact_email', to: 'home#send_contact_email', as: 'send_contact_email'
 
+  get 'get_cities_by_uf/:uf', to: 'cities#get_cities_by_uf'
+
   constraints subdomain: /^(?!www\b)(\w+)/ do
     devise_for :users, only: :sessions
 
