@@ -1,17 +1,13 @@
 $(document).ready(function(){
   $.validator.setDefaults({
+    errorElement: 'div',
     highlight: function(element, errorClass, validClass) {
       $(element).addClass(errorClass).removeClass(validClass);
-      $(element).parent().addClass(errorClass);
-      $(element).parent().parent().addClass(errorClass);
+      $(element.form).find("label[for=" + element.id + "]").addClass(errorClass);
     },
     unhighlight: function(element, errorClass, validClass) {
       $(element).removeClass(errorClass).addClass(validClass);
-      $(element).parent().removeClass(errorClass);
-
-      if ($(element).parent().siblings('.error').length === 0) {
-        $(element).parent().parent().removeClass(errorClass);
-      }
+      $(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
     }
   });
 

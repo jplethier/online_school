@@ -17,7 +17,7 @@ gem 'bourbon'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+# gem 'coffee-rails', '~> 4.0.0'
 
 # Annotate models
 gem 'annotate', '>= 2.5.0'
@@ -30,11 +30,12 @@ gem 'haml-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# client side validation with jquery
+
+# Client side validation with jquery
 gem 'jquery-validation-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
+# gem 'turbolinks'
 
 # Authentication
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
@@ -45,6 +46,8 @@ gem 'cancan'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 1.0.1'
 
+gem 'ox'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # gem 'sdoc', require: false
@@ -52,8 +55,8 @@ end
 
 group :development do
   # Performance
-  gem 'rack-mini-profiler'
   gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

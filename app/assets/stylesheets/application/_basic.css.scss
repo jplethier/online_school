@@ -21,7 +21,7 @@ input {
 input[type="text"], input[type="email"], input[type="password"] {
   background-color: $white-dark;
   border: 1px solid $gray-light;
-  margin-bottom:20px;
+  margin-bottom: 10px;
   padding: 15px;
 
   &.error {
@@ -60,7 +60,15 @@ label.required:after {
   content: ' *'
 }
 
-form .error > label {
+div.error {
+  color: $red;
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+label.error {
   color: $red;
   display: block;
   font-size: 12px;
