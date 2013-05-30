@@ -78,6 +78,10 @@
 .new-box {
   form {
     padding: 15px;
+
+    .select2-container {
+      width: 326px !important;
+    }
   }
 
   .field, .small-field, .large-field {
@@ -162,6 +166,6 @@
   .row {
     clear: both;
     padding: 5px;
-    overflow: auto;
+    height: 72px;
   }
 }
