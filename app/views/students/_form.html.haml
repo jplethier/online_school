@@ -70,11 +70,11 @@
   .row
     .field
       = f.label :address_state
-      = f.select :address_state, City.order(:uf).select(:uf).uniq.collect { |city| [city.uf,city.uf] }, include_blank: t('helpers.select.prompt')
+      = f.select :address_state, @states, include_blank: t('helpers.select.prompt')
 
     .field
       = f.label :address_city
-      = f.select :address_city, City.select(:name).find_by_uf(student.address_state).collect { |city| [city.name, city.name] }, include_blank: t('helpers.select.prompt')
+      = f.select :address_city, @cities, include_blank: t('helpers.select.prompt')
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
