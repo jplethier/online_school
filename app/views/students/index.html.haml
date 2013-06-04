@@ -15,5 +15,4 @@
           - if @students.empty?
             %p Nenhum aluno encontrado.
           - else
-            - @students.each do |student|
-              =render 'student', student: student
+            = render partial: 'student', collection: @students
