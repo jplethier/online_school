@@ -30,14 +30,20 @@
   = flash_messages
 
   .nav
-    .menu
-      %ul
-        %li= link_to 'home', dashboard_path
-        %li= link_to 'alunos', students_path
-        %li= link_to 'professores', teachers_path
-        %li= link_to 'funcionários', ''
-        %li
-          %a{ href: "" } comunicados
+    .nav-wrapper
+      .menu
+        %ul
+          %li= link_to 'home', dashboard_path
+          %li= link_to 'alunos', students_path
+          %li= link_to 'professores', teachers_path
+          %li= link_to 'funcionários', ''
+          %li
+            %a{ href: '' } comunicados
+      - if user_signed_in?
+        .extra
+          %span.username= current_user.name
+          |
+          = link_to('Logout', destroy_user_session_path, method: :delete)
 
   %article
     .sidebar

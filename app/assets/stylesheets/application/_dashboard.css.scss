@@ -5,12 +5,21 @@ body.dashboard{
     width: $width-site;
     margin: 0 auto;
 
-    .menu{
+    .nav-wrapper {
       background-color: $blue;
       border-radius: 5px;
       color: $white;
       font-size: 12px;
-      height: 78px;
+      margin-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    a {
+      color: $white;
+    }
+
+    .menu {
+      display: inline-block;
       text-shadow: black 0.1em 0.1em 0.2em;
       text-transform: uppercase;
 
@@ -19,21 +28,30 @@ body.dashboard{
         padding-left: 0px;
       }
 
-      li{
+      li {
         float: left;
         list-style: none;
-        font-size: 12px;
-        color: $white;
         text-transform: uppercase;
-        padding: 30px 15px;
+        padding: 18px 15px;
 
-        a{
+        a {
           border-radius: 5px;
-          text-decoration: none;
-          color: $white;
           background-color: $blue-light;
           padding: 5px 8px;
+          text-decoration: none;
         }
+      }
+    }
+
+    .extra {
+      display: inline-block;
+      float: right;
+      /*text-transform: uppercase;*/
+      padding: 10px 15px;
+      vertical-align: top;
+
+      a {
+        text-decoration: underline;
       }
     }
   }
