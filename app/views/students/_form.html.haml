@@ -92,16 +92,21 @@
           success: function(data) {
             element = $('#user_address_city');
             element.html('');
-            element.append("<option value=''>Selecione</option>")
+            element.append("<option value='' alt=''>Selecione</option>")
             for (var i = 0; i < data.length; i++) {
-              element.append("<option value='"+data[i].name+"'>"+data[i].name+"</option>");
+              element.append("<option value='" + data[i].name + "' alt='" + removeAccent(data[i].name) + "'>" + data[i].name + "</option>");
             }
           }
         });
       });
 
       $('#user_address_state').select2();
-      $('#user_address_city').select2();
+      $('#user_address_city').select2({
+        matcher: function(term, text, opt) {
+          return text.toUpperCase().indexOf(term.toUpperCase())>=0
+            || opt.attr('alt').toUpperCase().indexOf(term.toUpperCase())>=0;
+        }
+      });
 
       $('form').on('click', '.icon-lock', function() {
         unlock();
