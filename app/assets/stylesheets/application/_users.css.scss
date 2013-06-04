@@ -165,7 +165,8 @@
 
   .row {
     clear: both;
+    display: inline-block;
     padding: 5px;
-    height: 72px;
+    width: 99%;
   }
 }
