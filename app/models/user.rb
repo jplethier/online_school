@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
 
   belongs_to :account
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "110x90>" }, default_url: "/users/avatars/:style/missing.png", url: "users/avatars/:id_partition/:style.:extension", path: "users/avatars/:id_partition/:style.:extension"
+
   validates :email, presence: true
   validates :email, uniqueness: { scope: :account_id }, if: :email_changed?
   validates :email, format: { with: Devise.email_regexp }, if: :email_changed?
