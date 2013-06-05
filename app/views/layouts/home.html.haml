@@ -28,13 +28,10 @@
 
   .nav
     .nav-wrapper
-      - if user_signed_in?
-        = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout'
-      - else
-        .login
-          = form_tag find_account_path do
-            = email_field_tag 'email', '', autofocus: true, placeholder: 'email', required: true
-            %input.primary{ type: 'submit', value: 'Login' }
+      .login
+        = form_tag find_account_path do
+          = email_field_tag 'email', '', autofocus: true, placeholder: 'email', required: true
+          %input.primary{ type: 'submit', value: 'Login' }
       %a.logo{ href: '/' }
 
   %article

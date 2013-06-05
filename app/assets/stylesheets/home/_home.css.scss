@@ -121,18 +121,13 @@ textarea {
       }
     }
 
-    a.logout {
-      float: right;
-    }
-
-
     .logo {
-      background: image-url('home/logo-branco.png') no-repeat;
+      background: image-url('home/logo-home-top.png') no-repeat;
       left: 0;
-      height: 50px;
+      height: 46px;
       position: absolute;
-      top: 0;
-      width: 109px;
+      top: 3px;
+      width: 223px;
     }
   }
 }
