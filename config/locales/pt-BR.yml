@@ -191,6 +191,7 @@
       create: 'Criar %{model}'
       update: 'Atualizar %{model}'
       submit: 'Salvar %{model}'
+      search: 'Buscar'
 
   errors:
     format: "%{attribute} %{message}"

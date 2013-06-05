@@ -17,4 +17,12 @@ FactoryGirl.define do
       user.confirm! if evaluator.confirmed
     end
   end
+
+  factory :student, parent: :user do
+    student true
+
+    after(:create) do |user, evaluator|
+      user.confirm! if evaluator.confirmed
+    end
+  end
 end

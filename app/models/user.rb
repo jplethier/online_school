@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
   scope :employees, lambda { where(employee: true) }
   scope :admins,    lambda { where(admin: true) }
 
+  scope :search, lambda { |query| where(['name ILIKE ?', "%#{query}%"]) }
+
   def self.find_for_authentication(warden_conditions)
     if account = Account.find_by_subdomain(warden_conditions[:subdomain])
       account.users.find_by_email(warden_conditions[:email])

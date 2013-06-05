@@ -8,6 +8,7 @@ class StudentsController < AuthorizedController
 
   def index
     @students = @students.students
+    @students = @students.search(params[:search]) if params[:search].present?
   end
 
   def new

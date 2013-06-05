@@ -2,16 +2,20 @@
   .list-box
     %p.title alunos
     %ul
-      %li
-        %form{ name: '', action: '', method: '' }
-          %input.large{ type: 'text', name: '' }
+      %li#user-search-box
+        = form_tag(students_path, method: 'get', id: 'student_search') do
+          .search
+            = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search')
+            - if params[:search].present?
+              .search-param Resultados da busca por '#{params[:search]}'
+
           %button.button.primary{ type: 'submit' }
             <i class='icon-search'></i> Buscar
 
         = link_to '<i class="icon-plus"></i> Cadastrar'.html_safe, new_student_path, class: 'button secondary'
 
       %li
-        %ul.three-columns
+        %ul.three-columns#students
           - if @students.empty?
             %p Nenhum aluno encontrado.
           - else
