@@ -46,14 +46,15 @@
           = link_to('Logout', destroy_user_session_path, method: :delete)
 
   %article
-    .sidebar
-      .picture
-      %ul
-        %li
-          %a{ href: "" } comunicados
-        %li= link_to 'alunos', students_path
-        %li= link_to 'professores', teachers_path
-        %li= link_to 'funcionários', '#'
+    - if user_signed_in?
+      .sidebar
+        .picture= image_tag current_user.avatar(:big)
+        %ul
+          %li
+            %a{ href: "" } comunicados
+          %li= link_to 'alunos', students_path
+          %li= link_to 'professores', teachers_path
+          %li= link_to 'funcionários', '#'
     = yield
 
   %footer
