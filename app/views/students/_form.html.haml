@@ -37,7 +37,7 @@
     .row
       .field
         = f.label :password, "Senha <i class='icon-lock'></i>".html_safe
-        = f.password_field :password, required: true, disabled: true, placeholder: '********'
+        = f.password_field :password, required: true, minlength: 6, disabled: true, placeholder: '********'
 
       .field
         = f.label :password_confirmation, "Confirmação da senha <i class='icon-lock'></i>".html_safe
