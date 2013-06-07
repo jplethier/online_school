@@ -113,7 +113,7 @@ body.dashboard{
       background-color: $white;
       margin: 0 0 10px 10px;
       border-radius: 5px;
-      box-shadow: 1px 1px 10px $gray;
+      box-shadow: 1px 1px 10px $gray-darker;
       float: left;
 
       ul {
@@ -168,7 +168,7 @@ body.dashboard{
 
           a{
             text-decoration: none;
-            color: $gray;
+            color: $gray-darker;
             font-weight: bold;
             &:hover{
               text-decoration: underline;
@@ -182,7 +182,7 @@ body.dashboard{
   footer{
     height: 100px;
     margin: 10px auto;
-    background-color: $gray;
+    background-color: $gray-darker;
     width: $width-site;
     border-radius: 5px;
     clear: both;

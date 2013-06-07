@@ -1,5 +1,5 @@
 #blocker {
-  background-color: $gray;
+  background-color: $gray-darker;
   display: none;
   left: 0;
   height: 100%;
@@ -36,7 +36,7 @@
       width: 65%;
 
       label {
-        color: $gray;
+        color: $gray-darker;
       }
 
       input {
