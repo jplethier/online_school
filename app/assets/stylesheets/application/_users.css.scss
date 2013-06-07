@@ -10,6 +10,19 @@
 
     .search {
       display: inline-block;
+      position: relative;
+
+      input.large {
+        padding-right: 40px;
+        width: 325px;
+      }
+
+      .icon-remove-sign {
+        color: $gray;
+        position: absolute;
+        right: 17px;
+        top: 17px;
+      }
 
       .search-param {
         font-size: 12px;
