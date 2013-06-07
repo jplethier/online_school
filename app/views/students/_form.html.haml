@@ -28,7 +28,7 @@
     .row
       .field
         = f.label :password, class: 'required'
-        = f.password_field :password, required: true
+        = f.password_field :password, required: true, minlength: 6
 
       .field
         = f.label :password_confirmation, class: 'required'
