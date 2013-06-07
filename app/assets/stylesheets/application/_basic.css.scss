@@ -34,9 +34,44 @@ input[type="text"], input[type="email"], input[type="password"] {
   }
 }
 
-.select2-container .select2-choice {
-  padding: 7px 8px;
-  width: 91%;
+.selectize-control {
+  width: 90%;
+
+  .selectize-input {
+    &.focus {
+      input {
+        padding-top: 2px!important;
+      }
+    }
+
+    &.has-items {
+      line-height: 0!important;
+      padding-top: 5px!important;
+
+      .item {
+        margin-top: 17px;
+      }
+
+      &.focus {
+        input {
+          line-height: 20px!important;
+        }
+
+        .item {
+          line-height: 20px!important;
+          margin-top: 7px;
+        }
+      }
+    }
+
+    &.items {
+      background: #F1F1F1;
+      border: none;
+      border: 1px solid $gray-light;
+      box-shadow: none;
+      height: 45px;
+    }
+  }
 }
 
 input[type="submit"] {
