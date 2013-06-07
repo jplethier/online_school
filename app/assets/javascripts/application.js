@@ -20,6 +20,5 @@
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.regex.extensions
 //= require jquery-fileupload
-//= require select2
-//= require select2_locale_pt-BR
+//= require selectize
 //= require_tree ./global
