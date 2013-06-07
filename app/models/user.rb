@@ -48,8 +48,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  validates :password, presence: true, confirmation: true, if: :password_required?
-  validates :password, length: { within: Devise.password_length }
+  validates :password, presence: true, confirmation: true, length: { within: Devise.password_length }, if: :password_required?
 
   accepts_nested_attributes_for :account, :allow_destroy => true
 
