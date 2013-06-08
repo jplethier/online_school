@@ -45,6 +45,7 @@ gem 'cancan'
 
 # file upload
 gem 'paperclip'
+gem 'jquery-fileupload-rails'
 
 # amazon
 gem 'aws-sdk'
