@@ -1,10 +1,8 @@
 = form_for student, url: student_path(student), id: 'student_form' do |f|
   .row
     .large-field
-      %label foto
-      %input{ type: 'text', name: '' }
-      %button.button.primary{ type: 'submit' }
-        <i class='icon-file'></i> selecionar arquivo
+      = f.label :avatar
+      = f.file_field :avatar, accept: 'image/*'
 
   .row
     .field
