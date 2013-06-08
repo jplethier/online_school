@@ -73,9 +73,11 @@ body.dashboard{
       .picture {
         width: 200px;
         height: 212px;
-        border: 1px solid $gray-light;
-        background-color: $white-dark;
-        border-radius: 5px;
+
+        img {
+          border-radius: 5px;
+          border: 1px solid $gray-light;
+        }
       }
 
       ul {

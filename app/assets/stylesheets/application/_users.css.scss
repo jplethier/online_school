@@ -95,13 +95,15 @@
   }
 
   picture {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #F1F1F1;
     float: left;
     height: 75px;
     margin-right: 10px;
     width: 60px;
+
+    img {
+      border: 1px solid $gray-light;
+      border-radius: 5px;
+    }
   }
 }
 
