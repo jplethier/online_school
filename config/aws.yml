@@ -4,6 +4,12 @@ development:
   bucket: "minhasaladeaula-dev"
   region: "us-west-2"
 
+test:
+  access_key_id: "AKIAIHQG454DW6E6RX4A"
+  secret_access_key: "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"
+  bucket: "minhasaladeaula-dev"
+  region: "us-west-2"
+
 production:
   access_key_id: "AKIAIHQG454DW6E6RX4A"
   secret_access_key: "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"
