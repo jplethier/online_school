@@ -32,7 +32,7 @@ class StudentsController < AuthorizedController
 
   def update
     if @student.update_attributes(student_params)
-      redirect_to students_path, notice: 'Dados do aluno atualizado com sucesso.'
+      redirect_to students_path, success: 'Dados do aluno atualizado com sucesso.'
     else
       flash.now[:error] = 'Não foi possível atualizar os dados do aluno.'
       populate_cities_and_states && render(:edit)

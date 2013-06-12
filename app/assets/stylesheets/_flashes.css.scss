@@ -9,6 +9,7 @@
   transparent 75%, transparent);
   padding: 15px;
   position: fixed;
+  top: 0;
   _position: absolute;
   text-shadow: 0 1px 0 rgba(0,0,0,.5);
   width: 100%;
@@ -33,7 +34,7 @@
     border-color: #d99a36;
   }
 
-  &.success {
+  &.success, &.success {
     background-color: #61b832;
     border-color: #55a12c;
   }
