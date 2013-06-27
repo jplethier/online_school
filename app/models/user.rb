@@ -34,6 +34,10 @@
 #  teacher                :boolean
 #  employee               :boolean
 #  admin                  :boolean
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
