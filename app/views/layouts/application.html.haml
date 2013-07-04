@@ -39,6 +39,11 @@
           %li= link_to 'funcionários', ''
           %li
             %a{ href: '' } comunicados
+          %li.config
+            = link_to 'configurações', ''
+            %ul
+              %li= link_to 'disciplinas', ''
+              %li= link_to 'turmas', ''
       - if user_signed_in?
         .extra
           %span.username= current_user.name
