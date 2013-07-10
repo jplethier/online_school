@@ -31,7 +31,7 @@
   .nav
     .nav-wrapper
       %a.logo{ href: '/' }
-      .login
+      .login.hidden
         = form_tag find_account_path do
           = email_field_tag 'email', '', autofocus: true, placeholder: 'email', required: true
           %input.primary{ type: 'submit', value: 'Login' }
