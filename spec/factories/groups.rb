@@ -3,5 +3,7 @@
 FactoryGirl.define do
   factory :group do
     name "MyString"
+
+    account
   end
 end

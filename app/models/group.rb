@@ -9,8 +9,10 @@
 #
 
 class Group < ActiveRecord::Base
+  belongs_to :account
   has_many :user_groups
   has_many :users, through: :user_groups
 
-  validates :name, presence: true
+  validates :account, presence: true
+  validates :name,    presence: true
 end

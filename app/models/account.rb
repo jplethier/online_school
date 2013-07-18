@@ -17,5 +17,6 @@ class Account < ActiveRecord::Base
   validates :name, presence: true
   validates :subdomain, presence: true, exclusion: { in: ReservedSubdomains }
 
+  has_many :groups
   has_many :users
 end
