@@ -6,4 +6,10 @@ module ApplicationHelper
       end
     end.join.html_safe
   end
+
+  def current_account
+    if user_signed_in?
+      current_user.account
+    end
+  end
 end
