@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
     :rememberable, :trackable, request_keys: [:subdomain]
 
   belongs_to :account
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
   has_attached_file :avatar, styles: { big: "200x212>", thumb: "60x75>" }, default_url: "/users/avatars/:style/missing.png", url: "users/avatars/:id_partition/:style.:extension", path: "users/avatars/:id_partition/:style.:extension"
 

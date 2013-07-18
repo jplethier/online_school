@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130714182124) do
+ActiveRecord::Schema.define(version: 20130718203742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20130714182124) do
 
   add_index "cities", ["uf"], name: "index_cities_on_uf", using: :btree
 
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "plans", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -50,6 +56,16 @@ ActiveRecord::Schema.define(version: 20130714182124) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_groups", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
+  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
