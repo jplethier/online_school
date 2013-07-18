@@ -148,6 +148,10 @@
       width: 469px;
     }
   }
+
+  label[for='user_avatar'] {
+    float: left;
+  }
 }
 
 .list-box, .new-box{

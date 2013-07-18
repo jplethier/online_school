@@ -1,0 +1,33 @@
+- if user.avatar.exists?
+  .field.fileupload.fileupload-exists{'data-provides' => 'fileupload'}
+    .fileupload-new.thumbnail
+      = image_tag missing_avatar(:thumb)
+
+    .fileupload-preview.fileupload-exists.thumbnail
+      = image_tag(user.avatar(:thumb), class: 'thumbnail fileupload-exists')
+
+    .buttons
+      %span.button.secondary
+        %i.icon-plus.icon-white
+          %span.fileupload-new Selecionar foto
+          %span.fileupload-exists Mudar
+        = form.file_field :avatar, accept: 'image/*'
+
+      %span.button.destroy.fileupload-exists{'data-dismiss' => 'fileupload'}
+        %i.icon-remove.icon-white
+          %span Remover
+- else
+  .field.fileupload.fileupload-new{'data-provides' => 'fileupload'}
+    = image_tag missing_avatar(:thumb), class: 'thumbnail fileupload-new'
+    .fileupload-preview.fileupload-exists.thumbnail
+
+    .buttons
+      %span.button.secondary
+        %i.icon-plus.icon-white
+          %span.fileupload-new Selecionar foto
+          %span.fileupload-exists Mudar
+        = form.file_field :avatar, accept: 'image/*'
+
+      %span.button.destroy.fileupload-exists{'data-dismiss' => 'fileupload'}
+        %i.icon-remove.icon-white
+          %span Remover

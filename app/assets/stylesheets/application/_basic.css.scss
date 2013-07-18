@@ -135,6 +135,7 @@ label.error {
 .primary {
   background-color: $orange;
   color: $white;
+  cursor: pointer;
 
   &:hover {
     color: $brown;
@@ -143,8 +144,20 @@ label.error {
 }
 
 .secondary {
-  color: $white;
   background-color: $blue-light;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    color: $brown;
+    transition: 0.2s;
+  }
+}
+
+.destroy {
+  background-color: $red;
+  color: $white;
+  cursor: pointer;
 
   &:hover {
     color: $brown;

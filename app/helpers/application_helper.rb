@@ -8,8 +8,10 @@ module ApplicationHelper
   end
 
   def current_account
-    if user_signed_in?
-      current_user.account
-    end
+    current_user.account if user_signed_in?
+  end
+
+  def missing_avatar(style)
+    "/users/avatars/#{style}/missing.png"
   end
 end

@@ -1,0 +1,57 @@
+.buttons {
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 15px;
+
+  .button {
+    display: inline-block;
+  }
+
+  .secondary {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+
+    input {
+      cursor: pointer;
+      direction: ltr;
+      filter: alpha(opacity=0);
+      font-size: 23px;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate(-300px, 0) scale(4);
+    }
+  }
+}
+
+.fileupload {
+  margin-bottom: 9px;
+
+  div.thumbnail {
+    height: 75px;
+    line-height: 75px;
+    width: 60px;
+  }
+
+  .thumbnail {
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+
+    img {
+      display: inline-block;
+      max-height: 100%;
+      max-width: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+.fileupload-exists .fileupload-new, .fileupload-new .fileupload-exists {
+  display: none!important;
+}

@@ -1,8 +1,6 @@
-= form_for student, url: student_path(student), id: 'student_form' do |f|
+= form_for student, url: student_path(student) do |f|
   .row
-    .field
-      = f.label :avatar
-      = f.file_field :avatar, accept: 'image/*'
+    = render 'avatar_upload', form: f, user: student
 
     .field
       = f.label :name, class: 'required'
