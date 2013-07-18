@@ -19,6 +19,5 @@
 //= require jquery.inputmask.date.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.regex.extensions
-//= require jquery-fileupload
 //= require selectize
 //= require_tree ./global
