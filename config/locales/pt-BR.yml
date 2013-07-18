@@ -239,6 +239,7 @@
         birth_date: 'Data de Nascimento'
         cellphone_number: 'Celular'
         enrollment: 'Matrícula'
+        group_ids: 'Classes'
         name: "Nome"
         password: "Senha"
         password_confirmation: "Confirmação da Senha"

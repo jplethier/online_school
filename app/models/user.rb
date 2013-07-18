@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def group_ids
+    self.groups.select('groups.id').map { |g| g.id }
+  end
+
   protected
 
   # Checks whether a password is needed or not. For validations only.
