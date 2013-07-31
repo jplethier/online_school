@@ -19,6 +19,12 @@ describe GroupsController do
     expect(assigns :group).to eq group
   end
 
+  it 'edit' do
+    Group.stub(find: group)
+    get :edit, id: group.id
+    expect(assigns :group).to eq group
+  end
+
   describe 'create' do
     let(:params)  { { group: { name: :any } } }
 
@@ -43,6 +49,34 @@ describe GroupsController do
       it 'renders the new page' do
         post :create, params
         expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe 'update' do
+    let(:params)  { { id: group.id, group: { name: :any } } }
+
+    context 'successfully' do
+      before do
+        Group.stub(find: group)
+        group.stub(update_attributes: true)
+      end
+
+      it 'redirects to groups page' do
+        put :update, params
+        expect(response).to redirect_to(groups_path)
+      end
+    end
+
+    context 'unsuccessfully' do
+      before do
+        Group.stub(find: group)
+        group.stub(update_attributes: false)
+      end
+
+      it 'renders the edit page' do
+        put :update, params
+        expect(response).to render_template(:edit)
       end
     end
   end

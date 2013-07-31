@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require 'spec_helper'
 
 describe 'Creating a group' do
@@ -8,7 +7,7 @@ describe 'Creating a group' do
   before { login_as_user admin }
 
   it 'successfully' do
-    new_group_page.name                  = 'Aluno'
+    new_group_page.name = 'Classe'
 
     expect { new_group_page.create }.to change { Group.count }.by(1)
   end
