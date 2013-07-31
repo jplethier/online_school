@@ -60,6 +60,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :account, :allow_destroy => true
 
+  attr_accessor :group_ids
+
   scope :students,  lambda { where(student: true) }
   scope :teachers,  lambda { where(teacher: true) }
   scope :employees, lambda { where(employee: true) }
