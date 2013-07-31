@@ -11,5 +11,9 @@ describe Classroom do
     it 'should require a subject' do
       expect{ classroom.subject = nil }.to change{ classroom.valid? }.from(true).to(false)
     end
+
+    it 'should require an account' do
+      expect{ classroom.account = nil }.to change{ classroom.valid? }.from(true).to(false)
+    end
   end
 end
