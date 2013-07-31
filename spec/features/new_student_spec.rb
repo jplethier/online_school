@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'New Student' do
-  let(:admin) { FactoryGirl.create(:admin_user) }
+  let(:admin) { FactoryGirl.create(:admin) }
 
   before { login_as_user admin }
 

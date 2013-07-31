@@ -10,7 +10,7 @@ FactoryGirl.define do
     password 'F_PASSWORD'
   end
 
-  factory :admin_user, parent: :user do
+  factory :admin, parent: :user do
     admin true
 
     after(:create) do |user, evaluator|

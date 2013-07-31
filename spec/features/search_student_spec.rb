@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Search Student' do
   before { login_as_user admin }
 
-  let(:admin) { FactoryGirl.create(:admin_user) }
+  let(:admin) { FactoryGirl.create(:admin) }
   let(:student_page) { IndexStudent.visit(subdomain: admin.account.subdomain) }
 
   it 'searching for a student' do
