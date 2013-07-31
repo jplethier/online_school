@@ -230,6 +230,8 @@
       account:
         name: 'Nome'
         subdomain: 'Subdomínio'
+      group:
+        name: 'Nome'
       user:
         address: 'Endereço'
         address_city: 'Cidade'

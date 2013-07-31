@@ -1,0 +1,33 @@
+.content
+  .list-box
+    %p.title turmas
+    %ul
+      %li#user-search-box
+        = form_tag(groups_path, method: 'get', id: 'student_search') do
+          .search
+            = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search')
+            %i{ class: 'icon-remove-sign' }
+
+            - if params[:search].present?
+              .search-param Resultados da busca por '#{params[:search]}'
+
+          %button.button.primary{ type: 'submit' }
+            <i class='icon-search'></i> Buscar
+
+        = link_to '<i class="icon-plus"></i> Cadastrar'.html_safe, new_group_path, class: 'button secondary'
+
+      %li
+        %ul.three-columns#students
+          - if @groups.empty?
+            %p Nenhuma turma encontrada.
+          - else
+            = render partial: 'group', collection: @groups
+
+= content_for :javascript do
+  :javascript
+    $('.search').on('click', '.icon-remove-sign', function() {
+      $('.search input').val('');
+      $('.search').parent('form').submit();
+    });
+
+    $('.search input').focus();

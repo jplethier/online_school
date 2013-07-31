@@ -1,0 +1,9 @@
+= form_for group do |f|
+  .row
+    .field
+      = f.label :name
+      = f.text_field :name
+
+  .clear
+  %button.button.primary{ type: 'submit', name: 'commit' }
+    <i class='icon-ok'></i> Confirmar
