@@ -25,4 +25,5 @@ RSpec.configure do |config|
   end
 
   config.include LoginHelper, type: :feature
+  config.include Helper,      type: :feature
 end

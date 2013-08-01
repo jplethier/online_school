@@ -32,4 +32,8 @@ class NewStudent < SitePrism::Page
   def password_confirmation=(password)
     self.password_confirmation_field.set password
   end
+
+  def avatar=(image_file)
+    attach_file('user_avatar', image_file)
+  end
 end
