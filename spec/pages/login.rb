@@ -1,5 +1,5 @@
 class Login < SitePrism::Page
-  set_url "http://{subdomain}.lvh.me:3000/users/sign_in"
+  set_url "http://{subdomain}.lvh.me:31234/users/sign_in"
   set_url_matcher(/users\/sign_in/)
 
   element :email_field,    "article input[name='user[email]']"

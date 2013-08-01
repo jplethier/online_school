@@ -2,7 +2,7 @@ class StudentSection < SitePrism::Section
 end
 
 class IndexStudent < SitePrism::Page
-  set_url "http://{subdomain}.lvh.me:3000/students"
+  set_url "http://{subdomain}.lvh.me:31234/students"
 
   element :search_field,  "#student_search input[name='search']"
   element :search_button, "#student_search button[type='submit']"

@@ -1,5 +1,5 @@
 class NewStudent < SitePrism::Page
-  set_url "http://{subdomain}.lvh.me:3000/students/new"
+  set_url "http://{subdomain}.lvh.me:31234/students/new"
 
   element :email_field,                 "input[name='user[email]']"
   element :name_field,                  "input[name='user[name]']"
