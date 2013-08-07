@@ -41,6 +41,8 @@
 #
 
 class User < ActiveRecord::Base
+  include HasDestroyableFile
+
   devise :confirmable, :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, request_keys: [:subdomain]
 
@@ -49,6 +51,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :user_groups
 
   has_attached_file :avatar, styles: { big: "200x212>", thumb: "60x75>" }, default_url: "/users/avatars/:style/missing.png", url: "users/avatars/:id_partition/:style.:extension", path: "users/avatars/:id_partition/:style.:extension"
+  has_destroyable_file :avatar
 
   validates :email, presence: true
   validates :email, uniqueness: { scope: :account_id }, if: :email_changed?

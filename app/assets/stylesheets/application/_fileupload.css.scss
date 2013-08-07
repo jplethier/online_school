@@ -4,7 +4,7 @@
   margin-top: 15px;
 
   .button {
-    display: inline-block;
+    display: inline-block!important;
   }
 
   .secondary {
@@ -51,6 +51,9 @@
   }
 }
 
+.fileupload-delete {
+  display: none;
+}
 
 .fileupload-exists .fileupload-new, .fileupload-new .fileupload-exists {
   display: none!important;

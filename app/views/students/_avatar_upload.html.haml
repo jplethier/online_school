@@ -13,7 +13,8 @@
           %span.fileupload-exists Mudar
         = form.file_field :avatar, accept: 'image/*'
 
-      %span.button.destroy.fileupload-exists{'data-dismiss' => 'fileupload'}
+      = form.check_box :avatar_delete, class: 'fileupload-delete'
+      = form.label :avatar_delete, class: 'button destroy fileupload-exists', 'data-dismiss' => 'fileupload' do
         %i.icon-remove.icon-white
           %span Remover
 - else

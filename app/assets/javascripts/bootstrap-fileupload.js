@@ -162,7 +162,7 @@
     var $target = $(e.target).closest('[data-dismiss="fileupload"],[data-trigger="fileupload"]');
     if ($target.length > 0) {
       $target.trigger('click.fileupload')
-      e.preventDefault()
+      //e.preventDefault() # Commented because we need a label to check a checkbox when clicked
     }
   })
 
