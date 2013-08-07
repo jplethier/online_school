@@ -5,7 +5,7 @@
       %li#user-search-box
         = form_tag(students_path, method: 'get', id: 'student_search') do
           .search
-            = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search')
+            = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search'), autofocus: true
             %i{ class: 'icon-remove-sign' }
 
             - if params[:search].present?
@@ -29,5 +29,3 @@
       $('.search input').val('');
       $('.search').parent('form').submit();
     });
-
-    $('.search input').focus();
