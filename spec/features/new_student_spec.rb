@@ -9,6 +9,7 @@ describe 'Creating a student' do
 
   context 'with mandatory data' do
     before do
+      new_student_page.enrollment            = '123'
       new_student_page.name                  = 'Aluno'
       new_student_page.email                 = 'aluno@example.com'
       new_student_page.password              = '1234qwer'
@@ -16,15 +17,15 @@ describe 'Creating a student' do
     end
 
     it 'successfully' do
-      expect { new_student_page.create }.to change { User.students.count }.by(1)
+      expect { new_student_page.save }.to change { User.students.count }.by(1)
     end
 
     it 'successfully with an avatar' do
       new_student_page.avatar = fixture_image '60x75.jpeg'
-      new_student_page.create
+      new_student_page.save
 
       user = User.students.last
-      expect(user.avatar).to be_present
+      expect(user.avatar).to exist
     end
   end
 
@@ -33,6 +34,6 @@ describe 'Creating a student' do
     new_student_page.password              = '1234qwer'
     new_student_page.password_confirmation = '1234qwer'
 
-    expect { new_student_page.create }.to_not change { User.students.count }
+    expect { new_student_page.save }.to_not change { User.students.count }
   end
 end

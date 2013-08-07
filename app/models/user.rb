@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: Devise.email_regexp }, if: :email_changed?
 
   validates :name, presence: true
+  validates :enrollment, presence: true, if: :student?
 
   validates :password, presence: true, confirmation: true, length: { within: Devise.password_length }, if: :password_required?
 
