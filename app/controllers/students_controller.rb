@@ -31,6 +31,8 @@ class StudentsController < AuthorizedController
   end
 
   def update
+    @student.avatar = nil if params[:user][:avatar].blank?
+
     if @student.update_attributes(student_params)
       redirect_to students_path, success: 'Dados do aluno atualizado com sucesso.'
     else
@@ -42,6 +44,8 @@ class StudentsController < AuthorizedController
   private
 
   def student_params
+    params[:user].delete :avatar if params[:user][:avatar].blank?
+
     params.require(:user).permit(:address, :address_city, :address_complement, :address_number, :address_state, :avatar, :birth_date, :cellphone_number, :email, :name, :enrollment, :password, :password_confirmation, :phone_number, group_ids: [])
   end
 

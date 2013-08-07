@@ -1,5 +1,6 @@
 class FormStudent < SitePrism::Page
   element :save_button,                 "button[name='commit']"
+  element :remove_avatar_button,        ".destroy.fileupload-exists"
 
   element :email_field,                 "input[name='user[email]']"
   element :enrollment_field,            "input[name='user[enrollment]']"
@@ -11,6 +12,10 @@ class FormStudent < SitePrism::Page
     page = self.new
     page.load(hash)
     page
+  end
+
+  def remove_avatar
+    self.remove_avatar_button.click
   end
 
   def save
