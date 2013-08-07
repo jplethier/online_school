@@ -28,6 +28,9 @@ gem 'therubyracer', platforms: :ruby
 gem 'haml'
 gem 'haml-rails'
 
+# better activerecord queries
+gem 'squeel'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

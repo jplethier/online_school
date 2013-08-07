@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   scope :employees, lambda { where(employee: true) }
   scope :admins,    lambda { where(admin: true) }
 
-  scope :search, lambda { |query| where(['name ILIKE ?', "%#{query.gsub(' ', '%')}%"]) }
+  scope :search, lambda { |query| where{name =~ "%#{query.gsub(' ','%')}%"} }
 
   def self.find_for_authentication(warden_conditions)
     if account = Account.find_by_subdomain(warden_conditions[:subdomain])
