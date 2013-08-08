@@ -29,7 +29,7 @@ describe StudentsController do
   end
 
   it 'index' do
-    User.stub(students: [student])
+    User.stub_chain(:students, :ordered_by_name) { [student] }
     get :index
     expect(assigns :students).to eq [student]
   end

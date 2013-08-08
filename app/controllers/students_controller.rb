@@ -7,7 +7,7 @@ class StudentsController < AuthorizedController
  end
 
   def index
-    @students = @students.students
+    @students = @students.students.ordered_by_name
     @students = @students.search(params[:search]) if params[:search].present?
   end
 

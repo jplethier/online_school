@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
   scope :employees, lambda { where(employee: true) }
   scope :admins,    lambda { where(admin: true) }
 
+  scope :ordered_by_name, lambda { order('name') }
   scope :search, lambda { |query| where{name =~ "%#{query.gsub(' ','%')}%"} }
 
   def self.find_for_authentication(warden_conditions)
