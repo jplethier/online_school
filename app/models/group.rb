@@ -16,4 +16,7 @@ class Group < ActiveRecord::Base
 
   validates :account, presence: true
   validates :name,    presence: true
+
+  accepts_nested_attributes_for :user_groups, :allow_destroy => true
+  validates_associated :user_groups
 end

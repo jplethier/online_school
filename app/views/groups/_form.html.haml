@@ -3,7 +3,37 @@
     .field
       = f.label :name
       = f.text_field :name
+    .students-list{ 'data-count' => group.user_groups.count }
+      %p Alunos
+      %ul
+        - if group.user_groups.blank? && false
+          %li.blank Não há nenhum aluno nessa turma ainda, selecione abaixo para adicionar
+        - else
+          = f.fields_for :user_groups do |f_u|
+            %li
+              = f_u.hidden_field :user_id
+              = f_u.object.user.name
+              = f_u.hidden_field :_destroy
+      .footer= select_tag :new_student, options_for_select((current_user.account.users.students).map { |student| [student.name, student.id] })
+
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
     <i class='icon-ok'></i> Confirmar
+
+= content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      $('.students-list .footer select').selectize({
+        onChange: function(value){
+          if (!value.length) return;
+
+          $('.students-list ul li.blank').hide()
+
+          count = $('.students-list').attr('data-count')
+          $('.students-list ul').append("<li><input type='hidden' name='group[user_groups_attributes]["+count+"][user_id]' value='"+value+"'></input>"+$('.selectize-input div').text()+"<input type='hidden' name='group[user_groups_attributes]["+count+"][_destroy]' value='false'></input></li>")
+
+          $('.students-list').attr('data-count', parseInt(count)+1)
+        }
+      })
+    })
