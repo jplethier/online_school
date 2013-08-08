@@ -3,21 +3,18 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails'
 
 # Database
 gem 'pg', '0.14.1', :require => 'pg'
 gem 'activerecord-postgresql-adapter'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails'
 gem 'bourbon'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-# gem 'coffee-rails', '~> 4.0.0'
 
 # Annotate models
 gem 'annotate', '>= 2.5.0'
@@ -41,7 +38,7 @@ gem 'jquery-validation-rails'
 # gem 'turbolinks'
 
 # Authentication
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 
 # Authorization
 gem 'cancan'
