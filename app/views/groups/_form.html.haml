@@ -3,17 +3,14 @@
     .field
       = f.label :name
       = f.text_field :name
-    .students-list{ 'data-count' => group.user_groups.count }
+    .students-list
       %p Alunos
       %ul
         - if group.user_groups.blank? && false
           %li.blank Não há nenhum aluno nessa turma ainda, selecione abaixo para adicionar
         - else
-          = f.fields_for :user_groups do |f_u|
-            %li
-              = f_u.hidden_field :user_id
-              = f_u.object.user.name
-              = f_u.hidden_field :_destroy
+          = f.fields_for :user_groups do |builder|
+            = render('user_group_fields').gsub('{{user_name}}', builder.object.user.name).gsub('{{user_id}}', builder.object.user_id.to_s).gsub('{{index}}', builder.index.to_s).html_safe
       .footer
         = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] })
   .clear
@@ -29,10 +26,18 @@
 
           $('.students-list ul li.blank').hide()
 
-          count = $('.students-list').attr('data-count')
-          $('.students-list ul').append("<li><input type='hidden' name='group[user_groups_attributes]["+count+"][user_id]' value='"+value+"'></input>"+$('.selectize-input div').text()+"<input type='hidden' name='group[user_groups_attributes]["+count+"][_destroy]' value='false'></input></li>")
+          user_name = $('.selectize-input div').text()
+
+          html = '#{j render("user_group_fields")}'
+
+          $('.students-list ul').append(html.replace(/{{user_name}}/g, user_name).replace(/{{user_id}}/g, value).replace(/{{index}}/g,1))
 
           $('.students-list').attr('data-count', parseInt(count)+1)
         }
+      })
+
+      $('.remove-fields').click(function(){
+        $(this).parent().hide()
+        $(this).parent().find('input.destroy').val('1')
       })
     })

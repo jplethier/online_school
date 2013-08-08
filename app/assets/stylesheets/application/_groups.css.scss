@@ -15,6 +15,22 @@
     text-transform: uppercase;
   }
 
+  ul {
+    li {
+      padding: 5px;
+
+      .remove-fields {
+        display: none;
+      }
+    }
+
+    li:hover {
+      .remove-fields {
+        display: inline;
+      }
+    }
+  }
+
   .footer {
     border-bottom: none !important;
 
