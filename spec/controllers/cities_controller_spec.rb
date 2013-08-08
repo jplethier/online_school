@@ -6,7 +6,7 @@ describe CitiesController do
     let(:params)  { { uf: 'UF' } }
 
     it 'should populate @cities' do
-      City.stub_chain(:find_by_uf, :select, :order).and_return([city])
+      City.stub_chain(:find_by_uf, :select, :order) { [city] }
       get :get_cities_by_uf, params
       expect(assigns :cities).to eq [city]
     end

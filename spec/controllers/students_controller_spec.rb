@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe StudentsController do
-
   let(:account) { stub_model(Account) }
   let(:admin)   { stub_model(User, account: account, admin: true) }
   let(:student) { stub_model(User, account: account, student: true) }
-  let(:cities)  { [stub(:cities)] }
-  let(:states)  { [stub(:states)] }
+  let(:cities)  { [double(:cities)] }
+  let(:states)  { [double(:states)] }
 
   before { sign_in admin }
 
@@ -17,7 +16,7 @@ describe StudentsController do
     end
 
     it 'has a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect).and_return(states)
+      City.stub_chain(:order, :select, :uniq, :collect) { states }
 
       get :new
       expect(assigns :states).to eq states
@@ -62,7 +61,7 @@ describe StudentsController do
       end
 
       it 'has a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect).and_return(states)
+        City.stub_chain(:order, :select, :uniq, :collect) { states }
 
         post :create, params
         expect(assigns :states).to eq states
@@ -70,7 +69,7 @@ describe StudentsController do
 
       it 'has a list with all cities from the selected state' do
         student.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect).and_return(cities)
+        City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
         post :create, params
         expect(assigns :cities).to eq cities
@@ -88,7 +87,7 @@ describe StudentsController do
     end
 
     it 'has a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect).and_return(states)
+      City.stub_chain(:order, :select, :uniq, :collect) { states }
 
       get :edit, id: student.id
       expect(assigns :states).to eq states
@@ -96,7 +95,7 @@ describe StudentsController do
 
     it 'has a list with all cities from the selected state' do
       student.stub(address_state?: true)
-      City.stub_chain(:select, :find_by_uf, :collect).and_return(cities)
+      City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
       get :edit, id: student.id
       expect(assigns :cities).to eq cities
@@ -130,7 +129,7 @@ describe StudentsController do
       end
 
       it 'has a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect).and_return(states)
+        City.stub_chain(:order, :select, :uniq, :collect) { states }
 
         post :update, params
         expect(assigns :states).to eq states
@@ -138,7 +137,7 @@ describe StudentsController do
 
       it 'has a list with all cities from the selected state' do
         student.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect).and_return(cities)
+        City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
         post :update, params
         expect(assigns :cities).to eq cities
