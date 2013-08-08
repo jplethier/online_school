@@ -11,12 +11,13 @@
 
 class Group < ActiveRecord::Base
   belongs_to :account
-  has_many :user_groups
+
+  has_many :user_groups, inverse_of: :group
   has_many :users, through: :user_groups
 
-  validates :account, presence: true
-  validates :name,    presence: true
+  validates :account,     presence: true
+  validates :name,        presence: true
+  validates :user_groups, associated: true
 
-  accepts_nested_attributes_for :user_groups, :allow_destroy => true
-  validates_associated :user_groups
+  accepts_nested_attributes_for :user_groups, allow_destroy: true
 end

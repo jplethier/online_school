@@ -4,4 +4,8 @@ class Page < SitePrism::Page
       hash.present? ? page.load(hash) : page.load
     end
   end
+
+  def reload
+    visit current_url
+  end
 end
