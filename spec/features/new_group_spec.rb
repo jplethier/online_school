@@ -20,7 +20,6 @@ describe 'Creating a group' do
       new_group_page.create
 
       expect(Group.last).to have(1).user
-      #expect { new_group_page.create }.to change { Group. }.by(1)
     end
   end
 
