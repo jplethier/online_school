@@ -13,19 +13,26 @@ Optional extensions on the jquery.inputmask base
         'decimal': {
             mask: "~",
             placeholder: "",
-            repeat: 10,
+            repeat: "*",
             greedy: false,
-            numericInput: true,
+            numericInput: false,
+            isNumeric: true,
             digits: "*", //numer of digits
             groupSeparator: "",//",", // | "."
             radixPoint: ".",
             groupSize: 3,
             autoGroup: false,
+            allowPlus: true,
+            allowMinus: true,
             getMaskLength: function (buffer, greedy, repeat, currentBuffer, opts) { //custom getMaskLength to take the groupSeparator into account
                 var calculatedLength = buffer.length;
 
-                if (!greedy && repeat > 1) {
-                    calculatedLength += (buffer.length * (repeat - 1));
+                if (!greedy) {
+                    if (repeat == "*") {
+                        calculatedLength = currentBuffer.length + 1;
+                    } else if (repeat > 1) {
+                        calculatedLength += (buffer.length * (repeat - 1));
+                    }
                 }
 
                 var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
@@ -35,9 +42,12 @@ Optional extensions on the jquery.inputmask base
                 return calculatedLength + groupOffset;
             },
             postFormat: function (buffer, pos, reformatOnly, opts) {
-                if (opts.groupSeparator == "") return pos -1;
-                var cbuf = buffer.slice();
-                if (!reformatOnly) cbuf.splice(pos, 0, "?"); //set position indicator
+                if (opts.groupSeparator == "") return pos;
+                var cbuf = buffer.slice(),
+                    radixPos = $.inArray(opts.radixPoint, buffer);
+                if (!reformatOnly) {
+                    cbuf.splice(pos, 0, "?"); //set position indicator
+                }
                 var bufVal = cbuf.join('');
                 if (opts.autoGroup || (reformatOnly && bufVal.indexOf(opts.groupSeparator) != -1)) {
                     var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
@@ -56,17 +66,18 @@ Optional extensions on the jquery.inputmask base
                 for (var i = 0, l = bufVal.length; i < l; i++) {
                     buffer[i] = bufVal.charAt(i);
                 }
-                var newPos = reformatOnly ? pos : $.inArray("?", buffer);
+                var newPos = $.inArray("?", buffer);
                 if (!reformatOnly) buffer.splice(newPos, 1);
 
-                return newPos;
+                return reformatOnly ? pos : newPos;
             },
             regex: {
-                number: function (groupSeparator, groupSize, radixPoint, digits) {
-                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, groupSeparator);
-                    var escapedRadixPoint = $.inputmask.escapeRegex.call(this, radixPoint);
-                    var digitExpression = isNaN(digits) ? digits : '{0,' + digits + '}';
-                    return new RegExp("^[\+-]?(\\d+|\\d{1," + groupSize + "}((" + escapedGroupSeparator + "\\d{" + groupSize + "})?)+)(" + escapedRadixPoint + "\\d" + digitExpression + ")?$");
+                number: function (opts) {
+                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
+                    var escapedRadixPoint = $.inputmask.escapeRegex.call(this, opts.radixPoint);
+                    var digitExpression = isNaN(opts.digits) ? opts.digits : '{0,' + opts.digits + '}';
+                    var signedExpression = "[" + (opts.allowPlus ? "\+" : "") + (opts.allowMinus ? "-" : "") + "]?";
+                    return new RegExp("^" + signedExpression + "(\\d+|\\d{1," + opts.groupSize + "}((" + escapedGroupSeparator + "\\d{" + opts.groupSize + "})?)+)(" + escapedRadixPoint + "\\d" + digitExpression + ")?$");
                 }
             },
             onKeyDown: function (e, buffer, opts) {
@@ -74,8 +85,8 @@ Optional extensions on the jquery.inputmask base
                 if (e.keyCode == opts.keyCode.TAB) {
                     var radixPosition = $.inArray(opts.radixPoint, buffer);
                     if (radixPosition != -1) {
-                        var masksets = $input.data('inputmask')['masksets'];
-                        var activeMasksetIndex = $input.data('inputmask')['activeMasksetIndex'];
+                        var masksets = $input.data('_inputmask')['masksets'];
+                        var activeMasksetIndex = $input.data('_inputmask')['activeMasksetIndex'];
                         for (var i = 1; i <= opts.digits && i < opts.getMaskLength(masksets[activeMasksetIndex]["_buffer"], masksets[activeMasksetIndex]["greedy"], masksets[activeMasksetIndex]["repeat"], buffer, opts) ; i++) {
                             if (buffer[radixPosition + i] == undefined) buffer[radixPosition + i] = "0";
                         }
@@ -90,24 +101,25 @@ Optional extensions on the jquery.inputmask base
                 '~': { //real number
                     validator: function (chrs, buffer, pos, strict, opts) {
                         if (chrs == "") return false;
-                        if (pos <= 1 && buffer[0] === '0' && new RegExp("[\\d-]").test(chrs)) { //handle first char
+                        if (!strict && pos <= 1 && buffer[0] === '0' && new RegExp("[\\d-]").test(chrs) && buffer.length == 1) { //handle first char
                             buffer[0] = "";
                             return { "pos": 0 };
                         }
 
                         var cbuf = strict ? buffer.slice(0, pos) : buffer.slice();
 
-                        cbuf.splice(pos + 1, 0, chrs);
+                        cbuf.splice(pos, 0, chrs);
                         var bufferStr = cbuf.join('');
-                        if (opts.autoGroup && !strict) { //strip groupseparator
-                            var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
-                            bufferStr = bufferStr.replace(new RegExp(escapedGroupSeparator, "g"), '');
-                        }
-                        var isValid = opts.regex.number(opts.groupSeparator, opts.groupSize, opts.radixPoint, opts.digits).test(bufferStr);
+
+                        //strip groupseparator
+                        var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
+                        bufferStr = bufferStr.replace(new RegExp(escapedGroupSeparator, "g"), '');
+                        
+                        var isValid = opts.regex.number(opts).test(bufferStr);
                         if (!isValid) {
                             //let's help the regex a bit
                             bufferStr += "0";
-                            isValid = opts.regex.number(opts.groupSeparator, opts.groupSize, opts.radixPoint, opts.digits).test(bufferStr);
+                            isValid = opts.regex.number(opts).test(bufferStr);
                             if (!isValid) {
                                 //make a valid group
                                 var lastGroupSeparator = bufferStr.lastIndexOf(opts.groupSeparator);
@@ -115,10 +127,10 @@ Optional extensions on the jquery.inputmask base
                                     bufferStr += "0";
                                 }
 
-                                isValid = opts.regex.number(opts.groupSeparator, opts.groupSize, opts.radixPoint, opts.digits).test(bufferStr);
+                                isValid = opts.regex.number(opts).test(bufferStr);
                                 if (!isValid && !strict) {
                                     if (chrs == opts.radixPoint) {
-                                        isValid = opts.regex.number(opts.groupSeparator, opts.groupSize, opts.radixPoint, opts.digits).test("0" + bufferStr + "0");
+                                        isValid = opts.regex.number(opts).test("0" + bufferStr + "0");
                                         if (isValid) {
                                             buffer[pos] = "0";
                                             pos++;
@@ -130,9 +142,10 @@ Optional extensions on the jquery.inputmask base
                         }
 
                         if (isValid != false && !strict && chrs != opts.radixPoint) {
-                            var newPos = opts.postFormat(buffer, pos + 1, false, opts);
+                            var newPos = opts.postFormat(buffer, pos, false, opts);
                             return { "pos": newPos };
                         }
+
                         return isValid;
                     },
                     cardinality: 1,
@@ -142,34 +155,15 @@ Optional extensions on the jquery.inputmask base
             insertMode: true,
             autoUnmask: false
         },
-        'non-negative-decimal': {
-            regex: {
-                number: function (groupSeparator, groupSize, radixPoint, digits) {
-                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, groupSeparator);
-                    var escapedRadixPoint = $.inputmask.escapeRegex.call(this, radixPoint);
-                    var digitExpression = isNaN(digits) ? digits : '{0,' + digits + '}'
-                    return new RegExp("^[\+]?(\\d+|\\d{1," + groupSize + "}((" + escapedGroupSeparator + "\\d{" + groupSize + "})?)+)(" + escapedRadixPoint + "\\d" + digitExpression + ")?$");
-                }
-            },
-            alias: "decimal"
-        },
         'integer': {
             regex: {
-                number: function (groupSeparator, groupSize) {
-                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, groupSeparator);
-                    return new RegExp("^[\+-]?(\\d+|\\d{1," + groupSize + "}((" + escapedGroupSeparator + "\\d{" + groupSize + "})?)+)$");
+                number: function (opts) {
+                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, opts.groupSeparator);
+                    var signedExpression = "[" + (opts.allowPlus ? "\+" : "") + (opts.allowMinus ? "-" : "") + "]?";
+                    return new RegExp("^" + signedExpression + "(\\d+|\\d{1," + opts.groupSize + "}((" + escapedGroupSeparator + "\\d{" + opts.groupSize + "})?)+)$");
                 }
             },
             alias: "decimal"
-        },
-        'non-negative-integer': {
-            regex: {
-                number: function (groupSeparator, groupSize) {
-                    var escapedGroupSeparator = $.inputmask.escapeRegex.call(this, groupSeparator);
-                    return new RegExp("^[\+]?(\\d+|\\d{1," + groupSize + "}((" + escapedGroupSeparator + "\\d{" + groupSize + "})?)+)$");
-                }
-            },
-            alias: "integer"
         }
     });
 })(jQuery);

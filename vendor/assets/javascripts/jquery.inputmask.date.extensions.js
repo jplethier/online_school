@@ -59,10 +59,18 @@ Optional extensions on the jquery.inputmask base
                 return (enteredyear != NaN ? minyear <= enteredyear && enteredyear <= maxyear : false) ||
             		   (enteredyear2 != NaN ? minyear <= enteredyear2 && enteredyear2 <= maxyear : false);
             },
-            determinebaseyear: function (minyear, maxyear) {
+            determinebaseyear: function (minyear, maxyear, hint) {
                 var currentyear = (new Date()).getFullYear();
                 if (minyear > currentyear) return minyear;
-                if (maxyear < currentyear) return maxyear;
+                if (maxyear < currentyear) {
+                    var maxYearPrefix = maxyear.toString().slice(0, 2);
+                    var maxYearPostfix = maxyear.toString().slice(2, 4);
+                    while (maxyear < maxYearPrefix + hint) {
+                        maxYearPrefix--;
+                    }
+                    var maxxYear = maxYearPrefix + maxYearPostfix;
+                    return minyear > maxxYear ? minyear : maxxYear;
+                }
 
                 return currentyear;
             },
@@ -160,14 +168,14 @@ Optional extensions on the jquery.inputmask base
                     validator: function (chrs, buffer, pos, strict, opts) {
                         var isValid = opts.isInYearRange(chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                         if (!strict && !isValid) {
-                            var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear).toString().slice(0, 1);
+                            var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs + "0").toString().slice(0, 1);
 
                             isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                             if (isValid) {
                                 buffer[pos++] = yearPrefix[0];
                                 return { "pos": pos };
                             }
-                            yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear).toString().slice(0, 2);
+                            yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs + "0").toString().slice(0, 2);
 
                             isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                             if (isValid) {
@@ -184,7 +192,7 @@ Optional extensions on the jquery.inputmask base
                     validator: function (chrs, buffer, pos, strict, opts) {
                         var isValid = opts.isInYearRange(chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                         if (!strict && !isValid) {
-                            var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear).toString().slice(0, 2);
+                            var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs).toString().slice(0, 2);
 
                             isValid = opts.isInYearRange(chrs[0] + yearPrefix[1] + chrs[1], opts.yearrange.minyear, opts.yearrange.maxyear);
                             if (isValid) {
@@ -192,7 +200,7 @@ Optional extensions on the jquery.inputmask base
                                 return { "pos": pos };
                             }
 
-                            yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear).toString().slice(0, 2);
+                            yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs).toString().slice(0, 2);
                             if (opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) {
                                 var dayMonthValue = buffer.join('').substr(0, 6);
                                 if (dayMonthValue != opts.leapday)
@@ -362,7 +370,6 @@ Optional extensions on the jquery.inputmask base
                 hrspre: new RegExp("[012]"), //hours pre
                 hrs24: new RegExp("2[0-9]|1[3-9]"),
                 hrs: new RegExp("[01][0-9]|2[0-3]"), //hours
-                ampmpre: new RegExp("[apAP]"),
                 ampm: new RegExp("^[a|p|A|P][m|M]")
             },
             timeseparator: ':',
@@ -428,53 +435,29 @@ Optional extensions on the jquery.inputmask base
                 },
                 't': { //am/pm
                     validator: function (chrs, buffer, pos, strict, opts) {
-                        var isValid = opts.regex.ampm.test(chrs);
-                        if (!strict && !isValid) {
-                            isValid = opts.regex.ampm.test(chrs + 'm');
-                            if (isValid) {
-                                buffer[pos - 1] = chrs.charAt(0);
-                                buffer[pos] = "m";
-                                pos++;
-                                return pos;
-                            }
-                        }
-                        return isValid;
+                        return opts.regex.ampm.test(chrs + "m");
                     },
                     casing: "lower",
-                    cardinality: 2,
-                    prevalidator: [{
-                        validator: function (chrs, buffer, pos, strict, opts) {
-                            var isValid = opts.regex.ampmpre.test(chrs);
-                            if (isValid) {
-                                isValid = opts.regex.ampm.test(chrs + "m");
-                                if (isValid) {
-                                    buffer[pos] = chrs;
-                                    buffer[pos + 1] = 'm';
-                                    return pos;
-                                }
-                            }
-                            return isValid;
-                        }, cardinality: 1
-                    }]
+                    cardinality: 1
                 }
             },
             insertMode: false,
             autoUnmask: false
         },
         'datetime12': {
-            mask: "1/2/y h:s t",
+            mask: "1/2/y h:s t\\m",
             placeholder: "dd/mm/yyyy hh:mm xm",
             alias: "datetime",
             hourFormat: "12"
         },
         'hh:mm t': {
-            mask: "h:s t",
+            mask: "h:s t\\m",
             placeholder: "hh:mm xm",
             alias: "datetime",
             hourFormat: "12"
         },
         'h:s t': {
-            mask: "h:s t",
+            mask: "h:s t\\m",
             placeholder: "hh:mm xm",
             alias: "datetime",
             hourFormat: "12"
