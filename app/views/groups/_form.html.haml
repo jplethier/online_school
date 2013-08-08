@@ -14,9 +14,8 @@
               = f_u.hidden_field :user_id
               = f_u.object.user.name
               = f_u.hidden_field :_destroy
-      .footer= select_tag :new_student, options_for_select((current_user.account.users.students).map { |student| [student.name, student.id] })
-
-
+      .footer
+        = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] })
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
     <i class='icon-ok'></i> Confirmar

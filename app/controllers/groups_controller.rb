@@ -1,5 +1,6 @@
 class GroupsController < AuthorizedController
   load_and_authorize_resource
+  before_filter :populate_students, only: [:new, :edit]
 
   prepend_before_filter do
     params[:group] &&= group_params
@@ -10,6 +11,7 @@ class GroupsController < AuthorizedController
       redirect_to groups_path, success: 'Classe criada com sucesso'
     else
       flash.now[:error] = 'Não foi possível criar uma classe'
+      populate_students
       render :new
     end
   end
@@ -19,6 +21,7 @@ class GroupsController < AuthorizedController
       redirect_to groups_path, success: 'Dados da classe atualizados com sucesso.'
     else
       flash.now[:error] = 'Não foi possível atualizar os dados da classe.'
+      populate_students
       render :edit
     end
   end
@@ -27,5 +30,9 @@ class GroupsController < AuthorizedController
 
   def group_params
     params.require(:group).permit(:name, user_groups_attributes: [:id, :user_id, :_destroy])
+  end
+
+  def populate_students
+    @students = current_user.account.users.students
   end
 end
