@@ -11,8 +11,7 @@ class GroupsController < AuthorizedController
       redirect_to groups_path, success: 'Classe criada com sucesso'
     else
       flash.now[:error] = 'Não foi possível criar uma classe'
-      populate_students
-      render :new
+      populate_students && render(:new)
     end
   end
 
@@ -21,8 +20,7 @@ class GroupsController < AuthorizedController
       redirect_to groups_path, success: 'Dados da classe atualizados com sucesso.'
     else
       flash.now[:error] = 'Não foi possível atualizar os dados da classe.'
-      populate_students
-      render :edit
+      populate_students && render(:edit)
     end
   end
 

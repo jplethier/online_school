@@ -31,7 +31,7 @@ describe StudentsController do
       expect(assigns :student).to be_student
     end
 
-    it 'has a list with all states' do
+    it 'populates a list with all states' do
       City.stub_chain(:order, :select, :uniq, :collect) { states }
 
       get :new
@@ -121,13 +121,13 @@ describe StudentsController do
       before { student.stub(update_attributes: true) }
 
       it 'redirects to the student page' do
-        post :update, params
+        put :update, params
         expect(response).to redirect_to students_path
       end
 
       it 'updates the student' do
         expect(student).to receive :update_attributes
-        post :update, params
+        put :update, params
       end
     end
 
@@ -135,14 +135,14 @@ describe StudentsController do
       before { student.stub(update_attributes: false) }
 
       it 'renders the edit page' do
-        post :update, params
+        put :update, params
         expect(response).to render_template :edit
       end
 
       it 'populates a list with all the states' do
         City.stub_chain(:order, :select, :uniq, :collect) { states }
 
-        post :update, params
+        put :update, params
         expect(assigns :states).to eq states
       end
 
@@ -150,7 +150,7 @@ describe StudentsController do
         student.stub(address_state?: true)
         City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
-        post :update, params
+        put :update, params
         expect(assigns :cities).to eq cities
       end
     end
