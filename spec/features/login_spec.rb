@@ -6,7 +6,7 @@ describe 'Login' do
 
   context 'in sign_in page' do
     it 'successfully' do
-      login_page = Login.visit(subdomain: user.account.subdomain)
+      login_page = LoginPage.visit(subdomain: user.account.subdomain)
 
       login_page.email    = user.email
       login_page.password = user.password
@@ -18,7 +18,7 @@ describe 'Login' do
 
   context 'in home page' do
     it 'successfully' do
-      home_page = Home.visit
+      home_page = HomePage.visit
       home_page.email = user.email
 
       login_page = home_page.sign_in
@@ -27,7 +27,7 @@ describe 'Login' do
     end
 
     it 'with an unregistered email' do
-      home_page = Home.visit
+      home_page = HomePage.visit
       home_page.email = 'unregistered@example.com'
 
       home_page.sign_in

@@ -1,4 +1,4 @@
-class Home < SitePrism::Page
+class HomePage < Page
   set_url '/'
   set_url_matcher(/.com\/$/)
 
@@ -7,14 +7,10 @@ class Home < SitePrism::Page
 
   def sign_in
     self.sign_in_button.click
-    Login.new
+    LoginPage.new
   end
 
   def email=(email)
     self.email_field.set email
-  end
-
-  def self.visit
-    self.new.tap { |page| page.load }
   end
 end

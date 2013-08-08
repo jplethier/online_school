@@ -9,6 +9,22 @@ describe StudentsController do
 
   before { sign_in admin }
 
+  describe 'index' do
+    it 'assigns all students' do
+      User.stub_chain(:students, :ordered_by_name) { [student] }
+
+      get :index
+      expect(assigns :students).to eq [student]
+    end
+
+    it 'searches when the query is present' do
+      User.stub_chain(:students, :ordered_by_name, :search) { [student] }
+
+      get :index, search: 'something'
+      expect(assigns :students).to eq [student]
+    end
+  end
+
   describe 'new' do
     it 'assigns a student' do
       get :new
@@ -28,46 +44,41 @@ describe StudentsController do
     end
   end
 
-  it 'index' do
-    User.stub_chain(:students, :ordered_by_name) { [student] }
-    get :index
-    expect(assigns :students).to eq [student]
-  end
-
   describe 'create' do
+    before { User.stub(new: student) }
+
     let(:params)  { { user: { password: :any } } }
 
     context 'successfully' do
-      before do
-        User.stub(new: student)
-        student.stub(save: true)
-      end
+      before { student.stub(save: true) }
 
       it 'redirects to the student page' do
         post :create, params
-        expect(response).to redirect_to(students_path)
+        expect(response).to redirect_to students_path
+      end
+
+      it 'saves the student' do
+        expect(student).to receive :save
+        post :create, params
       end
     end
 
     context 'unsuccessfully' do
-      before do
-        User.stub(new: student)
-        student.stub(save: false)
-      end
+      before { student.stub(save: false) }
 
       it 'renders the new page' do
         post :create, params
-        expect(response).to render_template(:new)
+        expect(response).to render_template :new
       end
 
-      it 'has a list with all the states' do
+      it 'populates a list with all the states' do
         City.stub_chain(:order, :select, :uniq, :collect) { states }
 
         post :create, params
         expect(assigns :states).to eq states
       end
 
-      it 'has a list with all cities from the selected state' do
+      it 'populates a list with all cities from the selected state' do
         student.stub(address_state?: true)
         City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
@@ -81,19 +92,18 @@ describe StudentsController do
     before { User.stub(find: student) }
 
     it 'assigns the to-be-edited student' do
-      User.stub(find: student)
       get :edit, id: student.id
       expect(assigns :student).to eq student
     end
 
-    it 'has a list with all states' do
+    it 'populates a list with all states' do
       City.stub_chain(:order, :select, :uniq, :collect) { states }
 
       get :edit, id: student.id
       expect(assigns :states).to eq states
     end
 
-    it 'has a list with all cities from the selected state' do
+    it 'populates a list with all cities from the selected state' do
       student.stub(address_state?: true)
       City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
@@ -103,63 +113,46 @@ describe StudentsController do
   end
 
   describe 'update' do
+    before { User.stub(find: student) }
+
     let(:params)  { { id: student.id, user: { password: :any } } }
 
     context 'successfully' do
-      before do
-        User.stub(find: student)
-        student.stub(update_attributes: true)
-      end
+      before { student.stub(update_attributes: true) }
 
       it 'redirects to the student page' do
         post :update, params
-        expect(response).to redirect_to(students_path)
+        expect(response).to redirect_to students_path
+      end
+
+      it 'updates the student' do
+        expect(student).to receive :update_attributes
+        post :update, params
       end
     end
 
     context 'unsuccessfully' do
-      before do
-        student.stub(update_attributes: false)
-        User.stub(find: student)
-      end
+      before { student.stub(update_attributes: false) }
 
-      it 'renders the new page' do
+      it 'renders the edit page' do
         post :update, params
-        expect(response).to render_template(:edit)
+        expect(response).to render_template :edit
       end
 
-      it 'has a list with all the states' do
+      it 'populates a list with all the states' do
         City.stub_chain(:order, :select, :uniq, :collect) { states }
 
         post :update, params
         expect(assigns :states).to eq states
       end
 
-      it 'has a list with all cities from the selected state' do
+      it 'populates a list with all cities from the selected state' do
         student.stub(address_state?: true)
         City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
         post :update, params
         expect(assigns :cities).to eq cities
       end
-    end
-  end
-
-  describe 'update' do
-    let(:params)  { { id: student.id, user: { password: :any } } }
-
-    it 'successfully' do
-      student.stub(update_attributes: true)
-      User.stub(find: student)
-      post :update, params
-      expect(response).to redirect_to(students_path)
-    end
-
-    it 'failure' do
-      student.stub(update_attribuets: false)
-      User.stub(find: student)
-      post :update, params
-      expect(response).to render_template(:edit)
     end
   end
 end

@@ -1,4 +1,4 @@
-class EditStudent < FormStudent
+class EditStudentPage < StudentFormPage
   set_url "http://{subdomain}.lvh.me:31234/students/{id}/edit"
 
   element :remove_avatar_checkbox, '#user_avatar_delete'

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Creating a group' do
   let(:admin) { FactoryGirl.create(:admin) }
-  let(:new_group_page) { NewGroup.visit(subdomain: admin.account.subdomain) }
+  let(:new_group_page) { NewGroupPage.visit(subdomain: admin.account.subdomain) }
 
   before { login_as_user admin }
 

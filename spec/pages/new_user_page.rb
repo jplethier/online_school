@@ -1,4 +1,4 @@
-class NewUser < SitePrism::Page
+class NewUserPage < Page
   set_url "/users/sign_up"
 
   element :account_name_field,          "article input[name='user[account_attributes][name]']"
@@ -8,8 +8,12 @@ class NewUser < SitePrism::Page
   element :password_confirmation_field, "article input[name='user[password_confirmation]']"
   element :create_button,               "article input[name='commit']"
 
-  def self.visit
-    self.new.tap { |page| page.load }
+  def fill_mandatory_fields
+    self.account_name          = 'Mandatory account name'
+    self.account_subdomain     = 'mandatory'
+    self.email                 = 'mandatory@example.com'
+    self.password              = '1234qwer'
+    self.password_confirmation = '1234qwer'
   end
 
   def create

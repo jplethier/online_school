@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Editing a group' do
   let(:admin) { FactoryGirl.create(:admin) }
   let(:group) { FactoryGirl.create :group, account: admin.account, name: 'Classe' }
-  let(:edit_group_page) { EditGroup.visit(subdomain: admin.account.subdomain, id: group.id) }
+  let(:edit_group_page) { EditGroupPage.visit(subdomain: admin.account.subdomain, id: group.id) }
 
   before { login_as_user admin }
 

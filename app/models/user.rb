@@ -50,19 +50,19 @@ class User < ActiveRecord::Base
   has_many :user_groups
   has_many :groups, through: :user_groups
 
-  has_attached_file :avatar, styles: { big: "200x212>", thumb: "60x75>" }, default_url: "/users/avatars/:style/missing.png", url: "users/avatars/:id_partition/:style.:extension", path: "users/avatars/:id_partition/:style.:extension"
+  has_attached_file :avatar, styles: { big: '200x212>', thumb: '60x75>' }, default_url: '/users/avatars/:style/missing.png', url: 'users/avatars/:id_partition/:style.:extension', path: 'users/avatars/:id_partition/:style.:extension'
   has_destroyable_file :avatar
 
   validates :email, presence: true
-  validates :email, uniqueness: { scope: :account_id }, if: :email_changed?
+  validates :email, uniqueness: { scope: :account_id },    if: :email_changed?
   validates :email, format: { with: Devise.email_regexp }, if: :email_changed?
 
-  validates :name, presence: true
   validates :enrollment, presence: true, if: :student?
+  validates :name, presence: true
 
   validates :password, presence: true, confirmation: true, length: { within: Devise.password_length }, if: :password_required?
 
-  accepts_nested_attributes_for :account, :allow_destroy => true
+  accepts_nested_attributes_for :account, allow_destroy: true
 
   attr_accessor :group_ids
 
@@ -76,12 +76,12 @@ class User < ActiveRecord::Base
 
   def self.find_for_authentication(warden_conditions)
     if account = Account.find_by_subdomain(warden_conditions[:subdomain])
-      account.users.find_by_email(warden_conditions[:email])
+      account.users.find_by_email warden_conditions[:email]
     end
   end
 
   def group_ids
-    self.groups.select('groups.id').map { |g| g.id }
+    self.groups.select('groups.id').map { |group| group.id }
   end
 
   protected

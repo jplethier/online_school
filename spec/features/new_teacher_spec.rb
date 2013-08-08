@@ -7,7 +7,7 @@ describe 'New Teacher' do
   before { login_as_user admin }
 
   describe 'creating a teacher' do
-    let(:new_teacher_page) { NewTeacher.visit(subdomain: admin.account.subdomain) }
+    let(:new_teacher_page) { NewTeacherPage.visit(subdomain: admin.account.subdomain) }
 
     it 'successfully' do
       new_teacher_page.name                  = 'Professor'

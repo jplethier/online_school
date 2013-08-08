@@ -1,4 +1,4 @@
-class FormStudent < SitePrism::Page
+class StudentFormPage < Page
   element :save_button,                 "button[name='commit']"
 
   element :email_field,                 "input[name='user[email]']"
@@ -7,10 +7,12 @@ class FormStudent < SitePrism::Page
   element :password_field,              "input[name='user[password]']"
   element :password_confirmation_field, "input[name='user[password_confirmation]']"
 
-  def self.visit(hash)
-    page = self.new
-    page.load(hash)
-    page
+  def fill_mandatory_fields
+    self.enrollment            = '999999'
+    self.name                  = 'Mandatory name'
+    self.email                 = 'mandatory@example.com'
+    self.password              = '1234qwer'
+    self.password_confirmation = '1234qwer'
   end
 
   def save

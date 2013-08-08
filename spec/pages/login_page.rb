@@ -1,16 +1,10 @@
-class Login < SitePrism::Page
+class LoginPage < Page
   set_url "http://{subdomain}.lvh.me:31234/users/sign_in"
   set_url_matcher(/users\/sign_in/)
 
   element :email_field,    "article input[name='user[email]']"
   element :password_field, "article input[name='user[password]']"
   element :sign_in_button, "article input[name='commit']"
-
-  def self.visit(hash)
-    page = self.new
-    page.load(hash)
-    page
-  end
 
   def sign_in
     sign_in_button.click

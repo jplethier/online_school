@@ -6,7 +6,7 @@ describe 'Editing a student' do
 
   let(:admin)   { FactoryGirl.create(:admin) }
   let(:student) { FactoryGirl.create(:student, account: admin.account) }
-  let(:edit_student_page) { EditStudent.visit(subdomain: admin.account.subdomain, id: student.id) }
+  let(:edit_student_page) { EditStudentPage.visit(subdomain: admin.account.subdomain, id: student.id) }
 
   context 'with mandatory data' do
     it 'successfully adding an avatar' do

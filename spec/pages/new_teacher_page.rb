@@ -1,4 +1,4 @@
-class NewTeacher < SitePrism::Page
+class NewTeacherPage < Page
   set_url "http://{subdomain}.lvh.me:31234/teachers/new"
 
   element :email_field,                 "input[name='user[email]']"
@@ -6,12 +6,6 @@ class NewTeacher < SitePrism::Page
   element :password_field,              "input[name='user[password]']"
   element :password_confirmation_field, "input[name='user[password_confirmation]']"
   element :create_button,               "input[name='commit'].primary"
-
-  def self.visit(hash)
-    page = self.new
-    page.load(hash)
-    page
-  end
 
   def create
     self.create_button.click
