@@ -65,7 +65,7 @@
     }
   }
 
-  .infos{
+  .info {
     p {
       color: $blue-light;
       font-size: 12px;
@@ -73,13 +73,18 @@
       text-align: left;
     }
 
-    .name{
+    .name {
       font-size: 18px;
       text-transform: uppercase;
       width: 60%;
+
+      a {
+        color: $blue-light;
+        text-decoration: none;
+      }
     }
 
-    .link{
+    .links {
       margin-bottom: 0;
 
       a {
