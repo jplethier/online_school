@@ -123,7 +123,7 @@
   .field {
     width: 48%;
 
-    margin-right: 29px;
+    margin-right: 27px;
     & ~ .field {
       margin-right: 0;
     }
@@ -189,7 +189,7 @@
   .divider {
     border-bottom: 1px dashed $gray-light;
     clear: both;
-    margin: 10px 40px 25px 0;
+    margin: 10px 0 25px 0;
   }
 
   .row {
