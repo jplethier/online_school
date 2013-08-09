@@ -112,7 +112,7 @@
     padding: 15px;
   }
 
-  .field, .small-field, .large-field {
+  .field, .small-field {
     float: left;
 
     label {
@@ -121,31 +121,28 @@
   }
 
   .field {
-    width: 50%;
+    width: 48%;
 
-    input[type="text"], input[type="password"], input[type="email"] {
-      width: 81%;
+    margin-right: 29px;
+    & ~ .field {
+      margin-right: 0;
     }
 
-    input.small {
-      width: 113px;
+    input {
+      width: 90%;
     }
   }
 
   .small-field {
-    width: 25%;
+    width: 22%;
+
+    margin-right: 27px;
+    & ~ .small-field {
+      margin-right: 0;
+    }
 
     input {
-      width: 115px;
-    }
-  }
-
-  .large-field {
-    display: inline-block;
-    width: 100%;
-
-    input[type='text'] {
-      width: 469px;
+      width: 80%;
     }
   }
 
