@@ -38,6 +38,9 @@ input[type="text"], input[type="email"], input[type="password"] {
   width: 90%;
 
   .selectize-input {
+    border-radius: 5px;
+    margin-top: 2px;
+
     &.focus {
       input {
         padding-top: 2px!important;
