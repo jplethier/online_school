@@ -41,13 +41,13 @@ input[type="text"], input[type="email"], input[type="password"] {
     border-radius: 5px;
     margin-top: 2px;
 
+    input {
+      padding-top: 2px!important;
+    }
+
     &.focus {
       border-top-left-radius: 5px!important;
       border-top-right-radius: 5px!important;
-
-      input {
-        padding-top: 2px!important;
-      }
     }
 
     &.has-items {
