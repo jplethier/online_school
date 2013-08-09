@@ -30,14 +30,9 @@
 
           html = '#{j render("user_group_fields")}'
 
-          $('.students-list ul').append(html.replace(/{{user_name}}/g, user_name).replace(/{{user_id}}/g, value).replace(/{{index}}/g,1))
+          $('.students-list ul').append(html.replace(/{{user_name}}/g, user_name).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
 
           $('.students-list').attr('data-count', parseInt(count)+1)
         }
-      })
-
-      $('.remove-fields').click(function(){
-        $(this).parent().hide()
-        $(this).parent().find('input.destroy').val('1')
       })
     })

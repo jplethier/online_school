@@ -2,4 +2,4 @@
   %input{ type: 'hidden', name: 'group[user_groups_attributes][{{index}}][user_id]', value: '{{user_id}}' }
   {{user_name}}
   %input{ type: 'hidden', name: 'group[user_groups_attributes][{{index}}][_destroy]', value: 'false', class: 'destroy' }
-  = link_to "<i class='icon-remove'></i>".html_safe, 'javascript:;', class: 'remove-fields'
+  = link_to "<i class='icon-remove'></i>".html_safe, 'javascript:;', class: 'remove-fields', onclick: 'remove_fields($(this))'
