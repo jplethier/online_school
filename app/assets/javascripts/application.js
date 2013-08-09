@@ -21,4 +21,10 @@
 //= require jquery.inputmask.regex.extensions
 //= require bootstrap-fileupload
 //= require selectize
-//= require_tree ./global
+//= require global/flashes.js
+//= require global/helpers.js
+//= require global/popup.js
+//= require global/selectize.js
+//= require global/smooth-page-scroll.js
+//= require global/validation.js
+//= require global/autoload.js
