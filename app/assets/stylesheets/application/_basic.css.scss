@@ -42,6 +42,9 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-top: 2px;
 
     &.focus {
+      border-top-left-radius: 5px!important;
+      border-top-right-radius: 5px!important;
+
       input {
         padding-top: 2px!important;
       }
