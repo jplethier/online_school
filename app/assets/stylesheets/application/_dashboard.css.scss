@@ -95,11 +95,11 @@ body.dashboard{
     }
   }
 
-  article{
+  article {
     margin: 10px auto;
     width: $width-site;
 
-    .content{
+    .content {
       float: left;
     }
 
@@ -150,7 +150,7 @@ body.dashboard{
       }
     }
 
-    .box, .list-box, .new-box {
+    .list-box, .new-box {
       background-color: $white;
       margin: 0 0 10px 10px;
       border-radius: 5px;
@@ -168,20 +168,9 @@ body.dashboard{
       }
     }
 
-    .box{
-      width: 378px;
-      height: 400px;
-
-      p{
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        margin: 0;
-        background-color: $blue;
-        padding: 10px;
-        font-size: 12px;
-        color: $white;
-        text-transform: uppercase;
-      }
+    .box {
+      /*width: 378px;*/
+      /*height: 400px;*/
 
       ul {
         li:last-child {
@@ -203,14 +192,16 @@ body.dashboard{
           font-size: 12px;
           padding: 10px;
         }
-        .post{
+
+        .post {
           padding: 10px 0;
           font-size: 12px;
 
-          a{
-            text-decoration: none;
+          a {
             color: $gray-darker;
             font-weight: bold;
+            text-decoration: none;
+
             &:hover{
               text-decoration: underline;
             }
@@ -229,3 +220,4 @@ body.dashboard{
     clear: both;
   }
 }
+

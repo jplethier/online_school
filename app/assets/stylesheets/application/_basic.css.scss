@@ -7,6 +7,22 @@ body {
   padding: 0;
 }
 
+.logo {
+  background: image-url('home/logo-home-top.png') no-repeat;
+  height: 45px;
+  text-indent: -9999px;
+  width: 237px;
+  white-space: nowrap;
+}
+
+a:focus, a:hover {
+  color: $orange!important;
+}
+
+input:focus + label, input + label:hover {
+  color: $orange!important;
+}
+
 /* FORMS */
 
 input {
@@ -168,7 +184,7 @@ label.error {
   color: $white;
   cursor: pointer;
 
-  &:hover {
+  &:focus, &:hover {
     color: $brown;
     transition: 0.2s;
   }
@@ -179,7 +195,7 @@ label.error {
   color: $white;
   cursor: pointer;
 
-  &:hover {
+  &:focus, &:hover {
     color: $brown;
     transition: 0.2s;
   }
@@ -194,26 +210,5 @@ label.error {
     color: $brown;
     transition: 0.2s;
   }
-}
-
-/* HELPER CLASSES */
-
-.clear{
-  clear: both;
-}
-
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 

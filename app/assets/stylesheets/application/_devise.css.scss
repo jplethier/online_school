@@ -1,0 +1,74 @@
+.login {
+  $space: 29px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+
+  .logo {
+    margin: 0 auto 40px auto;
+  }
+
+  .title {
+    padding-left: $space;
+  }
+
+  .field {
+    label {
+      color: $blue;
+      display: block;
+      font-size: 12px;
+      margin-left: $space;
+      text-transform: uppercase;
+    }
+
+    input[type="email"], input[type="password"] {
+      margin-left: $space;
+      width: 300px;
+    }
+
+    .error {
+      margin-left: $space;
+    }
+
+    & ~ .field {
+      margin-top: 10px;
+    }
+  }
+
+  .remember_me {
+    float: left;
+    margin-left: $space;
+
+    label {
+      color: $blue;
+      font-size: 12px;
+    }
+  }
+
+  .actions {
+    float: right;
+    margin-right: $space;
+
+    input {
+      text-transform: uppercase;
+    }
+  }
+
+  #devise-links {
+    text-align: right;
+    padding: 20px $space 10px 0;
+
+    a {
+      color: $blue;
+      font-size: 12px;
+      text-decoration: none;
+    }
+  }
+}
+

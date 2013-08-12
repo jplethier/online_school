@@ -31,40 +31,8 @@
 
   = flash_messages
 
-  .nav
-    .nav-wrapper
-      .menu
-        %ul
-          %li= link_to 'home', root_path
-          %li= link_to 'alunos', students_path
-          %li= link_to 'professores', teachers_path
-          %li= link_to 'funcionários', ''
-          %li
-            %a{ href: '' } comunicados
-          %li.config
-            = link_to 'configurações', ''
-            %ul
-              %li= link_to 'disciplinas', ''
-              %li= link_to 'turmas', groups_path
-      - if user_signed_in?
-        .extra
-          %span.username= current_user.name
-          |
-          = link_to('Logout', destroy_user_session_path, method: :delete)
-
   %article
-    - if user_signed_in?
-      .sidebar
-        .picture= image_tag current_user.avatar(:big)
-        %ul
-          %li
-            %a{ href: "" } comunicados
-          %li= link_to 'alunos', students_path
-          %li= link_to 'professores', teachers_path
-          %li= link_to 'funcionários', '#'
     = yield
-
-  %footer
 
   = javascript_include_tag :application
   = yield :javascript
