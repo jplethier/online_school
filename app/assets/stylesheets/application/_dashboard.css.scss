@@ -1,223 +1,50 @@
-body.dashboard{
-  background: image-url('noise.png');
+.content.dashboard {
+  .box {
+    float: left;
+    height: 400px;
+    width: 378px;
 
-  .nav{
-    width: $width-site;
-    margin: 0 auto;
-
-    .nav-wrapper {
-      background-color: $blue;
-      border-radius: 5px;
-      color: $white;
-      font-size: 12px;
-      margin-top: 12px;
-      padding-bottom: 12px;
-    }
-
-    a {
-      color: $white;
-    }
-
-    .menu {
-      display: inline-block;
-      text-shadow: black 0.1em 0.1em 0.2em;
-      text-transform: uppercase;
-
-      ul {
-        margin-left: 15px;
-        padding-left: 0px;
-      }
+    ul {
+      margin: 0;
+      padding: 0;
 
       li {
-        float: left;
+        border-bottom: 1px solid $gray-lighter;
         list-style: none;
-        text-transform: uppercase;
-        padding: 18px 15px;
 
-        a {
-          border-radius: 5px;
-          background-color: $blue-light;
-          padding: 5px 8px;
-          text-decoration: none;
-        }
-      }
-
-      li.config {
-        position: relative;
-
-        ul {
-          display: none;
-          position: absolute;
-        }
-      }
-
-      li.config:hover {
-        a {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-
-        ul {
-          background-color: $blue;
-          border: 5px solid $blue-light;
-          border-radius: 5px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          display: block;
-          margin: 0;
-          width: 110px;
-
-          li {
-            border-bottom: 3px solid $blue-light;
-
-            a {
-              background-color: $transparent;
-            }
-          }
-
-          li:last-child {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-
-    .extra {
-      display: inline-block;
-      float: right;
-      /*text-transform: uppercase;*/
-      padding: 10px 15px;
-      vertical-align: top;
-
-      a {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  article {
-    margin: 10px auto;
-    width: $width-site;
-
-    .content {
-      float: left;
-    }
-
-    .sidebar{
-      float: left;
-      padding: 10px;
-      border: 1px dotted $gray-light;
-      border-radius: 5px;
-
-      .picture {
-        width: 200px;
-        height: 212px;
-
-        img {
-          border-radius: 5px;
-          border: 1px solid $gray-light;
-        }
-      }
-
-      ul {
-        margin: 10px 0 0 0;
-        padding: 0;
-      }
-
-      li {
-        background-color: $blue;
-        border-radius: 5px;
-        height: 100%;
-        list-style: none;
-        margin-top: 1px;
-        padding: 20px 0;
-        position: relative;
-        width: 100%;
-
-        a {
-          color: $white;
-          font-size: 12px;
-          left: 0;
-          height: 40%;
-          padding: 12px 12px;
-          position: absolute;
-          text-decoration: none;
-          text-shadow: black 0.1em 0.1em 0.2em;
-          text-transform: uppercase;
-          top: 0;
-          width: 89%;
-        }
-      }
-    }
-
-    .list-box, .new-box {
-      background-color: $white;
-      margin: 0 0 10px 10px;
-      border-radius: 5px;
-      box-shadow: 1px 1px 10px $gray-darker;
-      float: left;
-
-      ul {
-        margin: 0;
-        padding: 0;
-
-        li {
-          list-style: none;
-          border-bottom: 1px solid $gray-lighter;
-        }
-      }
-    }
-
-    .box {
-      /*width: 378px;*/
-      /*height: 400px;*/
-
-      ul {
-        li:last-child {
-          text-align: right;
-          padding: 5px;
-
-          a{
-            text-decoration: none;
-            font-size: 12px;
-            color: $blue-light;
-          }
-        }
-      }
-
-      li{
-        .hour{
+        .hour {
           float: left;
-          width: 50px;
           font-size: 12px;
           padding: 10px;
+          width: 50px;
         }
 
         .post {
-          padding: 10px 0;
           font-size: 12px;
+          padding: 10px 0;
 
           a {
             color: $gray-darker;
             font-weight: bold;
             text-decoration: none;
 
-            &:hover{
+            &:hover {
               text-decoration: underline;
             }
           }
         }
       }
+
+      li:last-child {
+        text-align: right;
+        padding: 5px;
+
+        a {
+          text-decoration: none;
+          font-size: 12px;
+          color: $blue-light;
+        }
+      }
     }
   }
-
-  footer{
-    height: 100px;
-    margin: 10px auto;
-    background-color: $gray-darker;
-    width: $width-site;
-    border-radius: 5px;
-    clear: both;
-  }
 }
-

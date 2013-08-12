@@ -38,8 +38,15 @@
 }
 
 .list-box {
+  float: left;
+
   ul {
+    margin: 0;
+    padding: 0;
+
     li {
+      border-bottom: 1px solid $gray-lighter;
+      list-style: none;
       padding: 30px 20px;
     }
 
@@ -48,20 +55,20 @@
     }
 
     li:last-child {
-      padding: 0;
       border-bottom: none !important;
+      padding: 0;
     }
   }
 
-  ul.three-columns{
-    margin: 30px auto !important;
+  ul.three-columns {
     display: block;
+    margin: 30px auto !important;
     width: 725px;
 
-    li{
+    li {
       float: left;
-      width: 33%;
       padding: 30px 0;
+      width: 33%;
     }
   }
 
@@ -112,9 +119,17 @@
   }
 }
 
-.new-box {
+.form-box {
   form {
     padding: 15px;
+  }
+
+  .buttons .button.secondary {
+    margin-right: 5px;
+  }
+
+  .primary {
+    margin-top: 20px;
   }
 
   .field, .small-field {
@@ -156,7 +171,7 @@
   }
 }
 
-.list-box, .new-box{
+.list-box, .form-box {
   width: 765px;
 
   .button {

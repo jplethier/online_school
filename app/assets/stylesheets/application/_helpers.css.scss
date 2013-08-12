@@ -10,7 +10,7 @@
     border-top-right-radius: 5px;
     color: $white;
     font-size: 12px;
-    margin-bottom: 20px;
+    margin: 0;
     padding: 10px;
     text-transform: uppercase;
   }
@@ -28,6 +28,15 @@
 .invisible {
   visibility: hidden;
 }
+
+.logo {
+  background: image-url('home/logo-home-top.png') no-repeat;
+  height: 45px;
+  text-indent: -9999px;
+  width: 237px;
+  white-space: nowrap;
+}
+
 
 .truncate {
   overflow: hidden;
