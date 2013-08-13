@@ -23,6 +23,7 @@
 //= require selectize
 //= require global/flashes.js
 //= require global/helpers.js
+//= require global/masks.js
 //= require global/popup.js
 //= require global/smooth-page-scroll.js
 //= require global/validation.js
