@@ -1,0 +1,33 @@
+= form_tag(path, method: 'get') do
+  .search
+    = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search'), autofocus: true
+    %i{ class: 'icon-remove-sign' }
+
+    - if params[:search].present?
+      .search-param Resultados da busca por '#{params[:search]}'
+
+  %button.button.primary{ type: 'submit' }
+    <i class='icon-search'></i> Buscar
+
+= link_to '<i class="icon-plus"></i> Cadastrar'.html_safe, new_student_path, class: 'button secondary'
+
+= content_for :javascript do
+  :javascript
+    toggleSearchRemoveSign();
+
+    $('.search').on('click', '.icon-remove-sign', function() {
+      $('.search input').val('');
+      $('.search').parent('form').submit();
+    });
+
+    $('.search input').on('input', function() {
+      toggleSearchRemoveSign();
+    });
+
+    function toggleSearchRemoveSign() {
+      if (!!$('.search input').val()) {
+        $('.search .icon-remove-sign').show();
+      } else {
+        $('.search .icon-remove-sign').hide();
+      }
+    }

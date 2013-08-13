@@ -1,4 +1,4 @@
-#user-search-box {
+.search-wrapper {
   form {
     display: inline-block;
     margin-right: 30px;
@@ -19,6 +19,7 @@
 
       .icon-remove-sign {
         color: $gray;
+        display: none;
         position: absolute;
         right: 17px;
         top: 17px;
