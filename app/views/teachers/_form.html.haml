@@ -1,59 +1,141 @@
-= form_for @teacher, url: teacher_path(@teacher) do |f|
-  .field
-    %label foto
-    %input.small{ type: 'text', name: '' }
-    %input.button.primary{ type: 'submit', value: 'selecionar arquivo' }
+= form_for teacher, url: teacher_path(teacher), html: { data: { validate: true } } do |f|
+  .row
+    = render 'crud/avatar_upload', form: f, user: teacher
 
-  .field
-    = f.label :name
-    = f.text_field :name
+    .field
+      = f.label :name, class: 'required'
+      = f.text_field :name, required: true, autofocus: true
 
-  .field
-    = f.label :email
-    = f.email_field :email
+  .row
+    .field
+      = f.label :email, class: 'required'
+      = f.email_field :email, required: true, email: true
 
-  .small_field
-    = f.label :password
-    = f.password_field :password
+    .small-field
+      = f.label :birth_date
+      = f.text_field :birth_date, data: { inputmask: "'alias': 'date'" }
 
-  .small_field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+    .small-field
+      = f.label :enrollment, class: 'required'
+      = f.text_field :enrollment, required: true
 
-  .field
-    = f.label :enrollment
-    = f.text_field :enrollment
+  - if teacher.new_record?
+    .row
+      .field
+        = f.label :password, class: 'required'
+        = f.password_field :password, required: true, minlength: 6
 
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number, data: { inputmask: "'alias': 'phone'" }
+      .field
+        = f.label :password_confirmation, class: 'required'
+        = f.password_field :password_confirmation, required: true, equalto: '#user_password'
+  - else
+    .row
+      .field
+        = f.label :password, "Senha <i class='icon-lock'></i>".html_safe
+        = f.password_field :password, required: true, minlength: 6, disabled: true, placeholder: '********'
 
-  .field
-    = f.label :cellphone_number
-    = f.text_field :cellphone_number, data: { inputmask: "'alias': 'phone'" }
+      .field
+        = f.label :password_confirmation, "Confirmação da senha <i class='icon-lock'></i>".html_safe
+        = f.password_field :password_confirmation, required: true, equalto: '#user_password', disabled: true, placeholder: '********'
 
-  .field
-    = f.label :birth_date
-    = f.text_field :birth_date, data: { inputmask: "'alias': 'date'" }
+  .divider
 
-  .field
-    = f.label :address
-    = f.text_field :address
+  .row
+    .field
+      = f.label :cellphone_number
+      = f.text_field :cellphone_number, data: { inputmask: "'alias': 'phone'" }
 
-  .small_field
-    = f.label :address_number
-    = f.text_field :address_number, data: { inputmask: "'alias': 'integer'" }
+    .field
+      = f.label :phone_number
+      = f.text_field :phone_number, data: { inputmask: "'alias': 'phone'" }
 
-  .small_field
-    = f.label :address_complement
-    = f.text_field :address_complement
+  .row
+    .field
+      = f.label :address
+      = f.text_field :address
 
-  .field
-    = f.label :address_city
-    = f.text_field :address_city
+    .small-field
+      = f.label :address_number
+      = f.text_field :address_number, data: { inputmask: "'alias': 'integer', 'rightAlignNumerics': false"}
 
-  .field
-    = f.label :address_state
-    = f.text_field :address_state
+    .small-field
+      = f.label :address_complement
+      = f.text_field :address_complement
 
-  = f.submit 'Confirmar', class: 'button primary'
+  .row
+    .field
+      = f.label :address_state
+      = f.select :address_state, @states, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+
+    .field
+      = f.label :address_city
+      = f.select :address_city, @cities, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+
+
+  .clear
+  %button.button.primary{ type: 'submit', name: 'commit' }
+    <i class='icon-ok'></i> Confirmar
+
+= content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var xhr;
+      var select_state, $select_state;
+      var select_city, $select_city;
+
+      $select_state = $('#user_address_state').selectize({
+        onChange: function(value) {
+          if (!value.length) return;
+
+          select_city.disable();
+          select_city.clearOptions();
+          select_city.load(function(callback) {
+            xhr && xhr.abort();
+
+            xhr = $.ajax({
+              url: '/get_cities_by_uf/'+ value,
+              success: function(results) {
+                select_city.enable();
+                callback(results);
+              },
+              error: function() {
+                callback();
+              }
+            })
+          });
+        }
+      });
+
+      $select_city = $('#user_address_city').selectize({
+        valueField: 'name',
+        labelField: 'name',
+        searchField: ['name']
+      });
+
+      select_city  = $select_city[0].selectize;
+      select_state = $select_state[0].selectize;
+
+      select_city.disable();
+
+      $('form').on('click', '.icon-lock', function() {
+        unlock();
+      });
+
+      $('form').on('click', '.icon-unlock', function() {
+        lock();
+      });
+
+      function lock(icon) {
+        $('.icon-unlock').removeClass('icon-unlock').addClass('icon-lock');
+
+        $('#user_password').val('').prop('disabled', true);
+        $('#user_password_confirmation').val('').prop('disabled', true);
+      }
+
+      function unlock(icon) {
+        $('.icon-lock').removeClass('icon-lock').addClass('icon-unlock');
+
+        $('#user_password').prop('disabled', false);
+        $('#user_password_confirmation').prop('disabled', false);
+      }
+    });

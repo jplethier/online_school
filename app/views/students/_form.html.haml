@@ -1,6 +1,6 @@
 = form_for student, url: student_path(student), html: { data: { validate: true } } do |f|
   .row
-    = render 'avatar_upload', form: f, user: student
+    = render 'crud/avatar_upload', form: f, user: student
 
     .field
       = f.label :name, class: 'required'

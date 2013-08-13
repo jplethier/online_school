@@ -1,17 +1,13 @@
 .content
-  .list-box
+  .box.list-box
     %p.title professores
     %ul
-      %li
-        %form{ name: '', action: '', method: '' }
-          %input.large{ type: 'text', name: '' }
-          %input.button.primary{ type: 'submit', value: 'buscar' }
-        = link_to 'Cadastrar', new_teacher_path, class: 'button secondary'
+      %li.search-wrapper
+        = render 'crud/search', search_path: teachers_path, new_path: new_teacher_path
 
       %li
-        %ul.three-columns
+        %ul.three-columns#teachers
           - if @teachers.empty?
             %p Nenhum professor encontrado.
           - else
-            - @teachers.each do |teacher|
-              =render 'teacher', teacher: teacher
+            = render partial: 'teacher', collection: @teachers

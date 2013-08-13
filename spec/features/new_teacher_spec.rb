@@ -1,29 +1,32 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
-describe 'New Teacher' do
-  let(:admin) { FactoryGirl.create(:admin) }
-
+describe 'Creating a teacher' do
   before { login_as_user admin }
 
-  describe 'creating a teacher' do
-    let(:new_teacher_page) { NewTeacherPage.visit(subdomain: admin.account.subdomain) }
+  let(:admin) { FactoryGirl.create(:admin) }
+  let(:new_teacher_page) { NewTeacherPage.visit(subdomain: admin.account.subdomain) }
+
+  context 'with mandatory data' do
+    before { new_teacher_page.fill_mandatory_fields }
 
     it 'successfully' do
-      new_teacher_page.name                  = 'Professor'
-      new_teacher_page.email                 = 'professor@example.com'
-      new_teacher_page.password              = '1234qwer'
-      new_teacher_page.password_confirmation = '1234qwer'
-
-      expect { new_teacher_page.create }.to change { User.teachers.count }.by(1)
+      expect { new_teacher_page.save }.to change { User.teachers.count }.by(1)
     end
 
-    it 'with missing data' do
-      new_teacher_page.name                  = 'Professor'
-      new_teacher_page.password              = '1234qwer'
-      new_teacher_page.password_confirmation = '1234qwer'
+    it 'successfully with an avatar' do
+      new_teacher_page.avatar = fixture_image '60x75.jpeg'
+      new_teacher_page.save
 
-      expect { new_teacher_page.create }.to_not change { User.teachers.count }
+      user = User.teachers.last
+      expect(user.avatar).to exist
     end
+  end
+
+  it 'with missing data' do
+    new_teacher_page.fill_mandatory_fields
+    new_teacher_page.name = ''
+
+    expect { new_teacher_page.save }.to_not change { User.teachers.count }
   end
 end

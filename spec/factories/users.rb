@@ -22,4 +22,8 @@ FactoryGirl.define do
     student true
     enrollment 999
   end
+
+  factory :teacher, parent: :user do
+    teacher true
+  end
 end

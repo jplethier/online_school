@@ -1,6 +1,9 @@
 %li
-  %picture
-  .infos
-    %p.name.truncate= teacher.name
-    %p= teacher.email
-    %p.link= link_to 'Editar', edit_teacher_path(teacher)
+  %picture= link_to image_tag(teacher.avatar(:thumb)), teacher_path(teacher)
+
+  .info
+    %p.name.truncate= link_to teacher.name, teacher_path(teacher)
+    %p= teacher.enrollment
+    %p.links
+      = link_to edit_teacher_path(teacher) do
+        <i class='icon-edit' title='Editar'></i>

@@ -3,7 +3,7 @@
     %p.title alunos
     %ul
       %li.search-wrapper
-        = render 'search', path: students_path
+        = render 'crud/search', search_path: students_path, new_path: new_student_path
 
       %li
         %ul.three-columns#students
