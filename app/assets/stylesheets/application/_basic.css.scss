@@ -223,6 +223,10 @@ footer {
   width: $width-site;
   margin: 0 auto;
 
+  a {
+    color: $white;
+  }
+
   .nav-wrapper {
     background-color: $blue;
     border-radius: 5px;
@@ -230,84 +234,85 @@ footer {
     font-size: 12px;
     margin-top: 12px;
     padding-bottom: 12px;
-  }
 
-  a {
-    color: $white;
-  }
-
-  .menu {
-    display: inline-block;
-    text-shadow: black 0.1em 0.1em 0.2em;
-    text-transform: uppercase;
-
-    ul {
-      margin-left: 15px;
-      padding-left: 0px;
-    }
-
-    li {
-      float: left;
-      list-style: none;
+    .menu {
+      display: inline-block;
+      text-shadow: black 0.1em 0.1em 0.2em;
       text-transform: uppercase;
-      padding: 18px 15px;
-
-      a {
-        border-radius: 5px;
-        background-color: $blue-light;
-        padding: 5px 8px;
-        text-decoration: none;
-      }
-    }
-
-    li.config {
-      position: relative;
 
       ul {
-        display: none;
-        position: absolute;
-      }
-    }
-
-    li.config:hover {
-      a {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        margin-left: 15px;
+        padding-left: 0px;
       }
 
-      ul {
-        background-color: $blue;
-        border: 5px solid $blue-light;
-        border-radius: 5px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        display: block;
-        margin: 0;
-        width: 110px;
+      li {
+        float: left;
+        list-style: none;
+        text-transform: uppercase;
+        padding: 18px 15px;
 
-        li {
-          border-bottom: 3px solid $blue-light;
+        a {
+          border-radius: 5px;
+          background-color: $blue-light;
+          padding: 5px 8px;
+          text-decoration: none;
 
-          a {
-            background-color: $transparent;
+          &:hover {
+            background-color: $gray-light;
+            color: $white!important;
           }
         }
+      }
 
-        li:last-child {
-          border-bottom: none;
+      li.config {
+        position: relative;
+
+        ul {
+          display: none;
+          position: absolute;
+        }
+      }
+
+      li.config:hover {
+        a {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        ul {
+          background-color: $blue;
+          border: 5px solid $blue-light;
+          border-radius: 5px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          display: block;
+          margin: 0;
+          width: 110px;
+
+          li {
+            border-bottom: 3px solid $blue-light;
+
+            a {
+              background-color: $transparent;
+            }
+          }
+
+          li:last-child {
+            border-bottom: none;
+          }
         }
       }
     }
-  }
 
-  .extra {
-    display: inline-block;
-    float: right;
-    padding: 10px 15px;
-    vertical-align: top;
+    .extra {
+      display: inline-block;
+      float: right;
+      padding: 10px 15px;
+      vertical-align: top;
 
-    a {
-      text-decoration: underline;
+      a {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -343,6 +348,10 @@ footer {
     position: relative;
     width: 100%;
 
+    &:hover {
+      background-color: $gray-light;
+    }
+
     a {
       color: $white;
       font-size: 12px;
@@ -355,6 +364,10 @@ footer {
       text-transform: uppercase;
       top: 0;
       width: 89%;
+
+      &:hover {
+        color: $white!important;
+      }
     }
   }
 }
