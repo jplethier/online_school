@@ -22,7 +22,7 @@
 
     .field
       = f.label :group_ids
-      = f.select :group_ids, current_account.groups.collect { |group| [group.name, group.id] }, {}, value: student.group_ids, class: 'selectize', multiple: true
+      = f.select :group_ids, current_account.groups.collect { |group| [group.name, group.id] }, {}, value: student.group_ids, multiple: true, data: { selectize: true }
 
   - if student.new_record?
     .row
