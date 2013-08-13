@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def current_account
+    current_user.account if user_signed_in?
+  end
+
   protected
 
   def configure_permitted_parameters

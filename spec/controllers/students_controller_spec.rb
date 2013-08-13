@@ -6,6 +6,7 @@ describe StudentsController do
   let(:student) { stub_model(User, account: account, student: true) }
   let(:cities)  { [double(:cities)] }
   let(:states)  { [double(:states)] }
+  let(:groups)  { [double(:groups)] }
 
   before { sign_in admin }
 
@@ -41,6 +42,13 @@ describe StudentsController do
     it 'has an empty list of cities' do
       get :new
       expect(assigns :cities).to eq []
+    end
+
+    it 'populates a list with all groups' do
+      account.stub_chain(:groups, :collect) { groups }
+
+      get :new
+      expect(assigns :groups).to eq groups
     end
   end
 
@@ -83,7 +91,13 @@ describe StudentsController do
         City.stub_chain(:select, :find_by_uf, :collect) { cities }
 
         post :create, params
-        expect(assigns :cities).to eq cities
+      end
+
+      it 'populates a list with all groups' do
+        account.stub_chain(:groups, :collect) { groups }
+
+        put :create, params
+        expect(assigns :groups).to eq groups
       end
     end
   end
@@ -109,6 +123,13 @@ describe StudentsController do
 
       get :edit, id: student.id
       expect(assigns :cities).to eq cities
+    end
+
+    it 'populates a list with all groups' do
+      account.stub_chain(:groups, :collect) { groups }
+
+      get :edit, id: student.id
+      expect(assigns :groups).to eq groups
     end
   end
 
@@ -152,6 +173,13 @@ describe StudentsController do
 
         put :update, params
         expect(assigns :cities).to eq cities
+      end
+
+      it 'populates a list with all groups' do
+        account.stub_chain(:groups, :collect) { groups }
+
+        put :update, params
+        expect(assigns :groups).to eq groups
       end
     end
   end

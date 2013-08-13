@@ -1,10 +1,11 @@
 class StudentsController < AuthorizedController
   load_and_authorize_resource class: 'User'
   before_filter :populate_cities_and_states, only: [:new, :edit]
+  before_filter :populate_groups, only: [:new, :edit]
 
   prepend_before_filter do
-   params[:user] &&= student_params
- end
+    params[:user] &&= student_params
+  end
 
   def index
     @students = @students.students.ordered_by_name
@@ -23,7 +24,7 @@ class StudentsController < AuthorizedController
       redirect_to students_path, success: 'Aluno criado com sucesso'
     else
       flash[:error] = 'Não foi possível criar um aluno'
-      populate_cities_and_states && render(:new)
+      populate_cities_and_states && populate_groups && render(:new)
     end
   end
 
@@ -35,7 +36,7 @@ class StudentsController < AuthorizedController
       redirect_to students_path, success: 'Dados do aluno atualizado com sucesso.'
     else
       flash.now[:error] = 'Não foi possível atualizar os dados do aluno.'
-      populate_cities_and_states && render(:edit)
+      populate_cities_and_states && populate_groups && render(:edit)
     end
   end
 
@@ -55,5 +56,9 @@ class StudentsController < AuthorizedController
     else
       @cities = []
     end
+  end
+
+  def populate_groups
+    @groups = current_account.groups.collect { |group| [group.name, group.id] }
   end
 end
