@@ -162,6 +162,10 @@ label.error {
   border-radius: 5px;
   padding: 10px 15px;
   text-decoration: none;
+
+  input[type='file'] {
+    padding: 10px 15px;
+  }
 }
 
 .primary {
