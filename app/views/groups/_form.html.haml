@@ -3,6 +3,11 @@
     .field
       = f.label :name
       = f.text_field :name
+
+    .students-select
+      = label_tag :new_student, t('helpers.select.prompt')
+      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] })
+
     .students-list
       %p Alunos
       %ul
@@ -11,8 +16,7 @@
         - else
           = f.fields_for :user_groups do |builder|
             = render('user_group_fields').gsub('{{user_name}}', builder.object.user.name).gsub('{{user_id}}', builder.object.user_id.to_s).gsub('{{index}}', builder.index.to_s).html_safe
-      .footer
-        = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] })
+
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
     <i class='icon-ok'></i> Confirmar
@@ -20,7 +24,7 @@
 = content_for :javascript do
   :javascript
     $(document).ready(function() {
-      $('.students-list .footer select').selectize({
+      $('.students-select select').selectize({
         onChange: function(value){
           if (!value.length) return;
 
