@@ -11,6 +11,11 @@ class GroupFormPage < Page
     self.find("div.option[data-value='#{student.id}']").click
   end
 
+  def remove_student(student)
+    self.find('.students-list ul li:first-child .remove-fields').click
+    # self.find(:xpath, "//div[@class='students-list']/ul/li[contains('#{student.name}')]").find('.remove-fields').click
+  end
+
   def create
     self.create_button.click
   end
