@@ -1,6 +1,6 @@
 class GroupFormPage < Page
   element :name_field,    "input[name='group[name]']"
-  element :create_button, "button[name='commit']"
+  element :save_button,   "button[name='commit']"
 
   def fill_mandatory_fields
     self.name = 'Mandatory name'
@@ -16,8 +16,8 @@ class GroupFormPage < Page
     # self.find(:xpath, "//div[@class='students-list']/ul/li[contains('#{student.name}')]").find('.remove-fields').click
   end
 
-  def create
-    self.create_button.click
+  def save
+    self.save_button.click
   end
 
   def name=(name)
