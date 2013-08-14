@@ -1,6 +1,6 @@
 .content
   .list-box
-    %p.title turmas
+    %p.title classes
     %ul
       %li#user-search-box
         = form_tag(groups_path, method: 'get', id: 'student_search') do
@@ -19,7 +19,7 @@
       %li
         %ul.three-columns#students
           - if @groups.empty?
-            %p Nenhuma turma encontrada.
+            %p Nenhuma classe encontrada.
           - else
             = render partial: 'group', collection: @groups
 
