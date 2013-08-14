@@ -12,8 +12,7 @@ class GroupFormPage < Page
   end
 
   def remove_student(student)
-    self.find('.students-list ul li:first-child .remove-fields').click
-    # self.find(:xpath, "//div[@class='students-list']/ul/li[contains('#{student.name}')]").find('.remove-fields').click
+    self.find('.students-list ul li:first-child').click
   end
 
   def save
