@@ -15,6 +15,9 @@ class Group < ActiveRecord::Base
   has_many :user_groups, inverse_of: :group
   has_many :users, through: :user_groups
 
+  has_many :entries, as: :resource
+  has_many :classrooms, through: :entries
+
   validates :account,     presence: true
   validates :name,        presence: true
   validates :user_groups, associated: true
