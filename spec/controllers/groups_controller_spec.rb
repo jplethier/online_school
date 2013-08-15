@@ -15,6 +15,13 @@ describe GroupsController do
       get :index
       expect(assigns :groups).to eq [group]
     end
+
+    it 'searches when the query is present' do
+      Group.stub(search: [group])
+
+      get :index, search: 'something'
+      expect(assigns :groups).to eq [group]
+    end
   end
 
   describe 'new' do

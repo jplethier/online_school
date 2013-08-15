@@ -6,17 +6,8 @@
         = render 'crud/search', search_path: groups_path, new_path: new_group_path
 
       %li
-        %ul.three-columns#students
+        %ul.three-columns#groups
           - if @groups.empty?
             %p Nenhuma classe encontrada.
           - else
             = render partial: 'group', collection: @groups
-
-= content_for :javascript do
-  :javascript
-    $('.search').on('click', '.icon-remove-sign', function() {
-      $('.search input').val('');
-      $('.search').parent('form').submit();
-    });
-
-    $('.search input').focus();
