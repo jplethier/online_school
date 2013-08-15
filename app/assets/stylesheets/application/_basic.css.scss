@@ -242,6 +242,12 @@ label.error {
   tbody {
     font-size: 12px;
 
+    a {
+      color: $gray-darker;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
     tr {
       &:hover {
         background-color: $yellow-light;
