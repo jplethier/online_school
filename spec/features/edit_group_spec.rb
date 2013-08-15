@@ -15,6 +15,7 @@ describe 'Editing a group' do
 
     it 'removes a student', js: true do
       student = FactoryGirl.create :student, name: 'to be deleted', account: admin.account
+      FactoryGirl.create :user_group, user: student, group: group
 
       edit_group_page.remove_student student
       expect { edit_group_page.save }.to change { group.users.count }.by(-1)
@@ -22,7 +23,6 @@ describe 'Editing a group' do
 
     it 'adds another student', js: true do
       student = FactoryGirl.create :student, name: 'to be created', account: admin.account
-      FactoryGirl.create :user_group, user: student, group: group
 
       edit_group_page.add_student student
       expect { edit_group_page.save }.to change { group.users.count }.by(1)
