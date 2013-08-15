@@ -211,6 +211,10 @@ label.error {
   border-spacing: 0;
   width: 100%;
 
+  tr[data-url] {
+    cursor: pointer;
+  }
+
   th, td {
     padding: 10px;
   }
