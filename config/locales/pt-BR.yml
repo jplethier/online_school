@@ -266,7 +266,8 @@
       full_messages:
         format: "%{attribute} %{message}"
 
-  will_paginate:
-    previous_label: "Página anterior"
-    next_label: "Próxima página"
-    page_gap: "&hellip;"
+  views:
+    pagination:
+      previous: "&larr; Anterior"
+      next: "&rarr; Pr&oacute;ximo"
+      truncate: "..."

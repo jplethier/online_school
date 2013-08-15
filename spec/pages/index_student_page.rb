@@ -7,7 +7,7 @@ class IndexStudentPage < Page
   element :search_field,  ".search-wrapper input[name='search']"
   element :search_button, ".search-wrapper button[type='submit']"
 
-  sections :students, StudentSection, '#students li'
+  sections :students, StudentSection, '.collection li'
 
   def search(query)
     self.search_field.set query

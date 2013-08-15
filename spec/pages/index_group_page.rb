@@ -7,7 +7,7 @@ class IndexGroupPage < Page
   element :search_field,  ".search-wrapper input[name='search']"
   element :search_button, ".search-wrapper button[type='submit']"
 
-  sections :groups, GroupSection, '#groups tbody tr'
+  sections :groups, GroupSection, '.collection tbody tr'
 
   def search(query)
     self.search_field.set query

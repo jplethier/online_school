@@ -28,6 +28,8 @@ gem 'haml-rails'
 # better activerecord queries
 gem 'squeel'
 
+gem 'kaminari'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

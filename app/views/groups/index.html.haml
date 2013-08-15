@@ -5,16 +5,21 @@
       %li.search-wrapper
         = render 'crud/search', search_path: groups_path, new_path: new_group_path
 
-      %li
-        #groups
-          - if @groups.empty?
-            %p Nenhuma classe encontrada.
-          - else
-            %table.table
-              %thead
+      %li.collection
+        - if @groups.empty?
+          %p Nenhuma classe encontrada.
+        - else
+          %table.table
+            %thead
+              %tr
+                %th Nome
+                %th Quantidade de alunos
+                %th Ações
+            - if has_pagination_links? @groups
+              %tfoot
                 %tr
-                  %th Nome
-                  %th Quantidade de alunos
-                  %th Ações
-              %tbody
-                = render partial: 'group', collection: @groups
+                  %td{colspan: 3}
+                    = paginate @groups, collection: @groups
+            %tbody
+              = render partial: 'group', collection: @groups
+

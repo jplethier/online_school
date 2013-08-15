@@ -7,6 +7,7 @@ class GroupsController < AuthorizedController
   end
 
   def index
+    @groups = @groups.page(params[:page])
     @groups = @groups.search(params[:search]) if params[:search].present?
   end
 

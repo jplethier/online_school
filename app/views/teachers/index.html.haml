@@ -6,7 +6,7 @@
         = render 'crud/search', search_path: teachers_path, new_path: new_teacher_path
 
       %li
-        %ul.three-columns#teachers
+        %ul.three-columns.collection
           - if @teachers.empty?
             %p Nenhum professor encontrado.
           - else
