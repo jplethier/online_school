@@ -38,7 +38,7 @@ gem 'jquery-validation-rails'
 # gem 'turbolinks'
 
 # Authentication
-gem 'devise'
+gem 'devise', '>= 3.1.0.rc'
 
 # Authorization
 gem 'cancan'
