@@ -17,6 +17,8 @@
 
   ul {
     border: 1px $gray-lighter solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     border-top: none;
     margin: 0;
     padding: 0;
