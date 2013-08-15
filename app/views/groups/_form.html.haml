@@ -5,8 +5,8 @@
       = f.text_field :name
 
     .students-select
-      = label_tag :new_student, t('helpers.select.prompt')
-      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] })
+      = label_tag :new_student, 'Adicionar alunos a classe'
+      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }), include_blank: true, placeholder: t('helpers.select.prompt')
 
     .students-list
       %p Alunos
@@ -31,6 +31,8 @@
           $('.students-list ul li.blank').hide()
 
           user_name = $('.selectize-input div').text()
+          $('.selectize-input div').remove();
+          $('.selectize-dropdown .option.selected').remove();
 
           html = '#{j render("user_group_fields")}'
 
