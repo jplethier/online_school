@@ -1,5 +1,4 @@
 .students-list {
-  border: 1px $gray-lighter solid;
   border-radius: 5px;
   float: left;
   margin-top: 10px;
@@ -17,6 +16,8 @@
   }
 
   ul {
+    border: 1px $gray-lighter solid;
+    border-top: none;
     margin: 0;
     padding: 0;
 

@@ -73,6 +73,11 @@
     }
   }
 
+  .table {
+    margin: 30px auto;
+    width: 725px;
+  }
+
   .info {
     p {
       color: $blue-light;
@@ -186,13 +191,13 @@
   }
 
   p.title {
+    background-color: $blue;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    margin: 0;
-    background-color: $blue;
-    padding: 10px;
-    font-size: 12px;
     color: $white;
+    font-size: 12px;
+    margin: 0;
+    padding: 10px;
     text-transform: uppercase;
   }
 

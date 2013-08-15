@@ -6,8 +6,14 @@
         = render 'crud/search', search_path: groups_path, new_path: new_group_path
 
       %li
-        %ul.three-columns#groups
+        #groups
           - if @groups.empty?
             %p Nenhuma classe encontrada.
           - else
-            = render partial: 'group', collection: @groups
+            %table.table
+              %thead
+                %tr
+                  %th Nome
+                  %th Quantidade de alunos
+              %tbody
+                = render partial: 'group', collection: @groups

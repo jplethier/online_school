@@ -201,6 +201,73 @@ label.error {
   }
 }
 
+/* TABLES */
+
+.table {
+  border-bottom: 1px $gray-lighter solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+
+  th, td {
+    padding: 10px;
+  }
+
+  thead {
+    background-color: $blue;
+    color: $white;
+    font-size: 12px;
+
+    th {
+      border-top: 1px $blue solid;
+    }
+
+    th:first-child {
+      border-left: 1px $blue solid;
+      border-top-left-radius: 5px;
+    }
+
+    th:last-child {
+      border-right: 1px $blue solid;
+      border-top-right-radius: 5px;
+    }
+  }
+
+  tbody {
+    font-size: 12px;
+
+    tr {
+      &:hover {
+        background-color: $yellow-light;
+      }
+
+      td {
+        border-bottom: 1px $gray-lighter solid;
+      }
+
+      td:first-child {
+        border-left: 1px $gray-lighter solid;
+      }
+
+      td:last-child {
+        border-right: 1px $gray-lighter solid;
+      }
+    }
+
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: 5px;
+      }
+
+      td:last-child {
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+}
+
 /* COMMON PAGE AREA */
 
 body {
