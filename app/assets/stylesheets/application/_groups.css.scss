@@ -30,17 +30,15 @@
       padding: 10px;
 
       .remove-fields {
-        display: none;
+        color: $gray-lighter;
+        float: right;
+        font-size: 16px;
+        line-height: 16px;
         text-decoration: none;
-        color: $black;
       }
 
       &:hover {
         background-color: $yellow-light;
-
-        .remove-fields {
-          display: inline;
-        }
       }
     }
   }
