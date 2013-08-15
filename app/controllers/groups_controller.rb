@@ -6,6 +6,10 @@ class GroupsController < AuthorizedController
     params[:group] &&= group_params
   end
 
+  def index
+    @groups = @groups.search(params[:search]) if params[:search].present?
+  end
+
   def create
     if @group.save
       redirect_to groups_path, success: 'Classe criada com sucesso'
