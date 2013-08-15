@@ -18,14 +18,14 @@ describe 'Editing a group' do
       FactoryGirl.create :user_group, user: student, group: group
 
       edit_group_page.remove_student student
-      expect { edit_group_page.save }.to change { group.users.count }.by(-1)
+      expect { edit_group_page.save }.to change { group.students.count }.by(-1)
     end
 
     it 'adds another student', js: true do
       student = FactoryGirl.create :student, name: 'to be created', account: admin.account
 
       edit_group_page.add_student student
-      expect { edit_group_page.save }.to change { group.users.count }.by(1)
+      expect { edit_group_page.save }.to change { group.students.count }.by(1)
     end
   end
 

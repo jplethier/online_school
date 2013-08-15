@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
   belongs_to :account
 
   has_many :user_groups, inverse_of: :group
-  has_many :users, through: :user_groups
+  has_many :students, through: :user_groups, source: :user
 
   has_many :entries, as: :resource
   has_many :classrooms, through: :entries

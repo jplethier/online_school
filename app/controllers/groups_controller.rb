@@ -35,6 +35,6 @@ class GroupsController < AuthorizedController
   end
 
   def populate_students
-    @students = current_user.account.users.students
+    @students = current_account.users.students
   end
 end

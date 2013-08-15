@@ -19,7 +19,7 @@ describe 'Creating a group' do
       new_group_page.add_student student
       new_group_page.save
 
-      expect(Group.last).to have(1).user
+      expect(Group.last).to have(1).student
     end
   end
 
