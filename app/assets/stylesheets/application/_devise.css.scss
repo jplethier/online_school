@@ -28,13 +28,25 @@
       text-transform: uppercase;
     }
 
-    input[type="email"], input[type="password"] {
+    input[type="email"], input[type="password"], input[type="text"] {
       margin-left: $space;
       width: 300px;
     }
 
     .error {
       margin-left: $space;
+    }
+
+    .info {
+      color: $gray-light;
+      float: right;
+      font-size: 11px;
+      margin-top: -9px;
+      margin-right: $space + 3px;
+
+      .subdomain {
+        color: $blue;
+      }
     }
 
     & ~ .field {

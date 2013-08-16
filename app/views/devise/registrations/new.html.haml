@@ -1,34 +1,47 @@
-%h2 Cadastre-se
+.box
+  %p.title Cadastre-se
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { data: { validate: true } }) do |f|
+    = devise_error_messages!
 
-  = f.fields_for :account, resource.build_account do |f_account|
-    %div
-      = f_account.label :name
-      %br
-      = f_account.text_field :name, autofocus: true
+    = f.fields_for :account, resource.build_account do |f_account|
+      .field
+        = f_account.label :name, 'Nome da Escola'
+        = f_account.text_field :name, required: true, autofocus: true
 
-    %div
-      = f_account.label :subdomain
-      %br
-      = f_account.text_field :subdomain
+      .field
+        = f_account.label :subdomain
+        = f_account.text_field :subdomain, required: true
+        %span.info
+          %span.subdomain> subdominio
+          \.minhasaladeaula.com
 
-  %div
-    = f.label :email
-    %br
-    = f.email_field :email
+    .field
+      = f.label :email
+      = f.email_field :email, required: true, email: true
 
-  %div
-    = f.label :password
-    %br
-    = f.password_field :password
+    .field
+      = f.label :password
+      = f.password_field :password, required: true, minlength: 6
 
-  %div
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, required: true, equalto: '#user_password'
 
-  %div= f.submit "Sign up", id: 'signup_btn'
+    .actions
+      = f.submit 'Cadastrar', class: 'button primary'
 
-= render "devise/shared/links"
+    .clear
+    = render 'devise/shared/links'
+
+= content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      $('#user_account_attributes_subdomain').on('input', function() {
+        var $that = $(this);
+        var value;
+
+        value = !!$that.val() ? $that.val() : 'subdominio';
+        $that.siblings('.info').find('.subdomain').text(value);
+      });
+    });
