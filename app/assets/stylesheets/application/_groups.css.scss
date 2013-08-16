@@ -50,4 +50,12 @@
   .selectize-control {
     width: 48%;
   }
+
+  .selectize-input .item {
+    display: none;
+  }
+
+  .selectize-input input {
+    width: 100%!important;
+  }
 }

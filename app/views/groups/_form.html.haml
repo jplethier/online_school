@@ -6,7 +6,7 @@
 
     .students-select
       = label_tag :new_student, 'Adicionar alunos a classe'
-      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }), include_blank: true, placeholder: t('helpers.select.prompt')
+      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }), multiple: true, include_blank: true, placeholder: 'Procurar aluno'
 
     .students-list
       %p Alunos
@@ -24,19 +24,16 @@
 = content_for :javascript do
   :javascript
     $(document).ready(function() {
-      $('.students-select select').selectize({
-        onChange: function(value){
-          if (!value.length) return;
+      var $select_student;
 
-          $('.students-list ul li.blank').hide()
+      $select_student = $('.students-select select').selectize({
+        onItemAdd: function(value, $item) {
+          var html = '#{j render("user_group_fields")}'
+          $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
 
-          user_name = $('.selectize-input div').text()
-          $('.selectize-input div').remove();
-          $('.selectize-dropdown .option.selected').remove();
-
-          html = '#{j render("user_group_fields")}'
-
-          $('.students-list ul').append(html.replace(/{{user_name}}/g, user_name).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
+          $('.students-select .selectize-input input').attr('placeholder', 'Adicionar um aluno');
         }
       })
+
+      select_student  = $select_student[0].selectize;
     })
