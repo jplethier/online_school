@@ -397,45 +397,6 @@ footer {
           }
         }
       }
-
-      li.config {
-        position: relative;
-
-        ul {
-          display: none;
-          position: absolute;
-        }
-      }
-
-      li.config:hover {
-        a {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-
-        ul {
-          background-color: $blue;
-          border: 5px solid $blue-light;
-          border-radius: 5px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          display: block;
-          margin: 0;
-          width: 110px;
-
-          li {
-            border-bottom: 3px solid $blue-light;
-
-            a {
-              background-color: $transparent;
-            }
-          }
-
-          li:last-child {
-            border-bottom: none;
-          }
-        }
-      }
     }
 
     .extra {
