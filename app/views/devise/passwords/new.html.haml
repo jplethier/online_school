@@ -1,0 +1,15 @@
+.box
+  %p.title Esqueceu a sua senha?
+
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, data: { validate: true } }) do |f|
+    = devise_error_messages!
+
+    .field
+      = f.label :email
+      = f.email_field :email, required: true, email: true, autofocus: true
+
+    .actions
+      = f.submit 'Resetar a minha senha', class: 'button primary'
+
+    .clear
+    = render 'devise/shared/links'

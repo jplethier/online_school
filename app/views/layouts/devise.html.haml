@@ -31,7 +31,10 @@
 
   = flash_messages
 
-  %article
+  %article.devise
+    = link_to root_url do
+      .logo Minha Sala de Aula
+
     = yield
 
   = javascript_include_tag :application

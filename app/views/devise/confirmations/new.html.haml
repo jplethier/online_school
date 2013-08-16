@@ -1,0 +1,15 @@
+.box
+  %p.title Reenviar as instruções de confirmação
+
+  = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, data: { validate: true } }) do |f|
+    = devise_error_messages!
+
+    .field
+      = f.label :email
+      = f.email_field :email, required: true, email: true, autofocus: true
+
+    .actions
+      = f.submit 'Reenviar as instruções', class: 'button primary'
+
+    .clear
+    = render 'devise/shared/links'
