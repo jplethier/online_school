@@ -16,7 +16,7 @@
           %li.blank Não há nenhum aluno nessa turma ainda, selecione abaixo para adicionar
         - else
           = f.fields_for :user_groups do |builder|
-            = render('user_group_fields').gsub('{{user_name}}', builder.object.user.name).gsub('{{user_id}}', builder.object.user_id.to_s).gsub('{{index}}', builder.index.to_s).html_safe
+            = render('user_group_fields', user_name: builder.object.user.name, user_id: builder.object.user_id.to_s, index: builder.index.to_s)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
@@ -29,7 +29,7 @@
 
       $select_student = $('.students-select select').selectize({
         onItemAdd: function(value, $item) {
-          var html = '#{j render("user_group_fields")}'
+          var html = '#{j render("user_group_fields", user_name: "{{user_name}}", user_id: "{{user_id}}", index: "{{index}}")}'
           $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
 
           $('.students-select .selectize-input input').attr('placeholder', 'Adicionar um aluno');

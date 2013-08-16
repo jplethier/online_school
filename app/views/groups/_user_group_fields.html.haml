@@ -1,5 +1,5 @@
 %li
-  %input{ type: 'hidden', name: 'group[user_groups_attributes][{{index}}][user_id]', value: '{{user_id}}' }
-  %input{ type: 'hidden', name: 'group[user_groups_attributes][{{index}}][_destroy]', value: 'false', class: 'destroy' }
-  %span {{user_name}}
-  = link_to "<i class='icon-remove-sign' title='Remover'></i>".html_safe, 'javascript:;', data: { user_id: '{{user_id}}' }, class: 'remove-fields', onclick: 'remove_fields($(this), select_student)'
+  %input{ type: 'hidden', name: "group[user_groups_attributes][#{index}][user_id]", value: "#{user_id}" }
+  %input{ type: 'hidden', name: "group[user_groups_attributes][#{index}][_destroy]", value: 'false', class: 'destroy' }
+  %span= user_name
+  = link_to "<i class='icon-remove-sign' title='Remover'></i>".html_safe, 'javascript:;', data: { user_id: "#{user_id}" }, class: 'remove-fields', onclick: 'remove_fields($(this), select_student)'
