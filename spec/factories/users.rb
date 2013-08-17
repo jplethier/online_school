@@ -26,4 +26,8 @@ FactoryGirl.define do
   factory :teacher, parent: :user do
     teacher true
   end
+
+  factory :employee, parent: :user do
+    employee true
+  end
 end

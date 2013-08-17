@@ -1,0 +1,9 @@
+%li
+  %picture= link_to image_tag(employee.avatar(:thumb)), employee_path(employee)
+
+  .info
+    %p.name.truncate= link_to employee.name, employee_path(employee)
+    %p= employee.enrollment
+    %p.links
+      = link_to edit_employee_path(employee) do
+        <i class='icon-edit' title='Editar'></i>

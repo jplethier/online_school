@@ -15,6 +15,7 @@ OnlineSchool::Application.routes.draw do
 
     resources :students
     resources :teachers
+    resources :employees
     resources :users
     resources :groups
 
