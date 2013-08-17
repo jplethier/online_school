@@ -5,7 +5,7 @@
       = f.text_field :name
 
     .students-select
-      = label_tag :new_student, 'Adicionar alunos a classe'
+      = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
       = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }, selected: @group.student_ids), multiple: true
 
     .students-list
