@@ -10,7 +10,7 @@ describe GroupsController do
 
   describe 'index' do
     it 'assigns all groups' do
-      Group.stub_chain(:accessible_by, :page) { [group] }
+      Group.stub_chain(:accessible_by, :ordered_by_name, :page) { [group] }
 
       get :index
       expect(assigns :groups).to eq [group]

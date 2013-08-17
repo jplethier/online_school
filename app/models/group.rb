@@ -24,5 +24,6 @@ class Group < ActiveRecord::Base
 
   accepts_nested_attributes_for :user_groups, allow_destroy: true
 
+  scope :ordered_by_name, lambda { order('name') }
   scope :search, lambda { |query| where{name =~ "%#{query.gsub(' ','%')}%"} }
 end
