@@ -28,10 +28,13 @@
       var $select_student;
 
       $select_student = $('.students-select select').selectize({
+        plugins: ['restore_on_backspace'],
         onItemAdd: function(value, $item) {
           var html = '#{j render("user_group_fields", user_name: "{{user_name}}", user_id: "{{user_id}}", index: "{{index}}")}'
-          $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
 
+          if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
+            $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
+          }
           $('.students-select .selectize-input input').attr('placeholder', 'Adicionar um aluno');
         }
       })
