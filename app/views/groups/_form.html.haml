@@ -37,7 +37,16 @@
           if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
             $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
           }
+          if($('.selectize-dropdown-content div').length == 0){
+            $('.students-select .selectize-input input').attr('placeholder', 'Todos os alunos já foram adicionados');
+            select_student.disable();
+          }else{
+            $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
+          }
+        },
+        onItemRemove: function(value, $item){
           $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
+          select_student.enable();
         }
       })
 
