@@ -211,10 +211,6 @@ label.error {
   border-spacing: 0;
   width: 100%;
 
-  /*tr[data-url] {
-    cursor: pointer;
-  }*/
-
   th {
     padding: 10px;
   }
@@ -249,6 +245,7 @@ label.error {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
       border-bottom: 1px $gray-lighter solid;
+      padding: 10px;
     }
 
     .pagination {
@@ -322,7 +319,7 @@ label.error {
 
         a {
           display: block;
-          font-size: 12px;
+          font-size: 14px;
           padding: 10px 0 10px 10px;
           width: 100%;
         }
