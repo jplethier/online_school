@@ -211,11 +211,11 @@ label.error {
   border-spacing: 0;
   width: 100%;
 
-  tr[data-url] {
+  /*tr[data-url] {
     cursor: pointer;
-  }
+  }*/
 
-  th, td {
+  th {
     padding: 10px;
   }
 
@@ -308,10 +308,23 @@ label.error {
     tr {
       &:hover {
         background-color: $yellow-light;
+
+        td:not(:last-child) {
+          a{
+            color: $orange!important;
+          }
+        }
       }
 
       td {
         border-bottom: 1px $gray-lighter solid;
+
+        a {
+          display: block;
+          font-size: 12px;
+          padding: 10px 0 10px 10px;
+          width: 100%;
+        }
       }
 
       td:first-child {
@@ -320,6 +333,10 @@ label.error {
 
       td:last-child {
         border-right: 1px $gray-lighter solid;
+
+        a {
+          display: inline;
+        }
       }
     }
 
