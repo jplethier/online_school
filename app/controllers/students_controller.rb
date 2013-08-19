@@ -49,10 +49,10 @@ class StudentsController < AuthorizedController
   end
 
   def populate_cities_and_states
-    @states = City.order(:uf).select(:uf).uniq.collect { |city| [city.uf] }
+    @states = City.order(:uf).select(:uf).uniq.collect(&:uf)
 
     if @student.address_state?
-      @cities = City.select(:name).find_by_uf(@student.address_state).collect { |city| [city.name] }
+      @cities = City.select(:name).find_by_uf(@student.address_state).collect(&:name)
     else
       @cities = []
     end
