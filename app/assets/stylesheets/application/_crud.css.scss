@@ -145,28 +145,28 @@
   }
 
   .field {
-    width: 48%;
+    width: 346px;
 
-    margin-right: 27px;
+    margin-right: 29px;
     & ~ .field {
       margin-right: 0;
     }
 
     input {
-      width: 90%;
+      width: 315px;
     }
   }
 
   .small-field {
-    width: 22%;
+    width: 167px;
 
-    margin-right: 27px;
+    margin-right: 16px;
     & ~ .small-field {
       margin-right: 0;
     }
 
     input {
-      width: 80%;
+      width: 132px;
     }
   }
 
