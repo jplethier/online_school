@@ -4,18 +4,20 @@
       = f.label :subject
       = f.select :subject_id, Subject.all.map { |subject| [subject.id, subject.name] }, {}, class: 'selectize'
 
-    .students-select
-      = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
-      = select_tag :new_student, options_for_select(@groups.map { |group| [group.name, group.id] }, selected: classroom.group_ids), multiple: true
+    .field
 
-    .students-list
-      %p Classes
-      %ul
-        - if classroom.entries.blank?
-          %li.blank Não há nenhuma classe nessa turma ainda, selecione abaixo para adicionar
-        - else
-          = f.fields_for :entries do |builder|
-            = render('entry_fields', group_name: builder.object.group.name, group_id: builder.object.group_id.to_s, index: builder.index.to_s)
+      .students-select
+        = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
+        = select_tag :new_student, options_for_select(@groups.map { |group| [group.name, group.id] }, selected: classroom.group_ids), multiple: true
+
+      .students-list
+        %p Classes
+        %ul
+          - if classroom.entries.blank?
+            %li.blank Não há nenhuma classe nessa turma ainda, selecione abaixo para adicionar
+          - else
+            = f.fields_for :entries do |builder|
+              = render('entry_fields', group_name: builder.object.group.name, group_id: builder.object.group_id.to_s, index: builder.index.to_s)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
