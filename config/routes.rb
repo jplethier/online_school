@@ -11,14 +11,12 @@ OnlineSchool::Application.routes.draw do
   constraints subdomain: /^(?!www\b)(\w+)/ do
     devise_for :users, only: :sessions
 
-    get 'dashboard', to: 'dashboard#index'
-
+    resources :classrooms
+    resources :employees
+    resources :groups
     resources :students
     resources :teachers
-    resources :employees
     resources :users
-    resources :groups
-    resources :classrooms
 
     root to: 'dashboard#index', as: :authenticated_root
   end
