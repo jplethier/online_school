@@ -6,12 +6,12 @@
 
     .students-select
       = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
-      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }, selected: @group.student_ids), multiple: true
+      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }, selected: group.student_ids), multiple: true
 
     .students-list
       %p Alunos
       %ul
-        - if group.user_groups.blank? && false
+        - if group.user_groups.blank?
           %li.blank Não há nenhum aluno nessa turma ainda, selecione abaixo para adicionar
         - else
           = f.fields_for :user_groups do |builder|
