@@ -21,4 +21,7 @@ class Classroom < ActiveRecord::Base
 
   validates :account, presence: true
   validates :subject, presence: true
+
+  scope :ordered_by_name, lambda { order('name') }
+  scope :search, lambda { |query| where{name =~ "%#{query.gsub(' ','%')}%"} }
 end

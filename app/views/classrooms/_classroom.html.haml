@@ -1,0 +1,7 @@
+%tr
+  %td= link_to classroom.name, classroom_path(classroom)
+  %td
+  / = link_to classroom.students.count, classroom_path(classroom)
+  %td
+    = link_to edit_classroom_path(classroom) do
+      <i class='icon-edit' title='Editar'></i>

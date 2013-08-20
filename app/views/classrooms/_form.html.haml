@@ -1,21 +1,21 @@
-= form_for group do |f|
+= form_for classroom do |f|
   .row
     .field
-      = f.label :name
-      = f.text_field :name
+      = f.label :subject
+      = f.select :subject_id, Subject.all.map { |subject| [subject.id, subject.name] }, {}, class: 'selectize'
 
     .students-select
       = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
-      = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }, selected: group.student_ids), multiple: true
+      = select_tag :new_student, options_for_select(@groups.map { |group| [group.name, group.id] }, selected: classroom.group_ids), multiple: true
 
     .students-list
-      %p Alunos
+      %p Classes
       %ul
-        - if group.user_groups.blank?
-          %li.blank Não há nenhum aluno nessa turma ainda, selecione abaixo para adicionar
+        - if classroom.entries.blank?
+          %li.blank Não há nenhuma classe nessa turma ainda, selecione abaixo para adicionar
         - else
-          = f.fields_for :user_groups do |builder|
-            = render('user_group_fields', user_name: builder.object.user.name, user_id: builder.object.user_id.to_s, index: builder.index.to_s)
+          = f.fields_for :entries do |builder|
+            = render('entry_fields', group_name: builder.object.group.name, group_id: builder.object.group_id.to_s, index: builder.index.to_s)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
@@ -24,6 +24,8 @@
 = content_for :javascript do
   :javascript
     $(document).ready(function() {
+      $('.selectize').selectize()
+
       var $select_student;
 
       $select_student = $('.students-select select').selectize({
@@ -32,12 +34,12 @@
           $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
         },
         onItemAdd: function(value, $item) {
-          var html = '#{j render("user_group_fields", user_name: "{{user_name}}", user_id: "{{user_id}}", index: "{{index}}")}'
+          var html = '#{j render("entry_fields", group_name: "{{group_name}}", group_id: "{{group_id}}", index: "{{index}}")}'
 
           $('.students-list .blank').hide()
 
           if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
-            $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
+            $('.students-list ul').append(html.replace(/{{group_name}}/g, $item.text()).replace(/{{group_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
           }
           if($('.selectize-dropdown-content div').length == 0){
             $('.students-select .selectize-input input').attr('placeholder', 'Todos os alunos já foram adicionados');

@@ -230,6 +230,8 @@
       account:
         name: 'Nome'
         subdomain: 'Subdomínio'
+      classroom:
+        subject: 'Disciplina'
       group:
         name: 'Nome'
       user:

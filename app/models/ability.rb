@@ -30,6 +30,7 @@ class Ability
     if user.admin
       can :manage, User, account_id: user.account_id
       can :manage, Group, account_id: user.account_id
+      can :manage, Classroom, account_id: user.account_id
       can :index, :dashboard
     end
   end

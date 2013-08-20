@@ -18,6 +18,7 @@ OnlineSchool::Application.routes.draw do
     resources :employees
     resources :users
     resources :groups
+    resources :classrooms
 
     root to: 'dashboard#index', as: :authenticated_root
   end
