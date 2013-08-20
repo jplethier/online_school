@@ -11,7 +11,7 @@ function removeAccent(str) {
 }
 
 function remove_fields(link, select_student) {
-  select_student.removeItem(link.data('userId'));
+  select_student.removeItem(link.data('objectId'));
 
   link.parent().hide()
   link.parent().find('input.destroy').val('1')

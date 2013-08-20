@@ -2,12 +2,15 @@
   .row
     .field
       = f.label :subject
-      = f.select :subject_id, Subject.all.map { |subject| [subject.id, subject.name] }, {}, class: 'selectize'
+      = f.select :subject_id, Subject.all.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
+      %br
+      %br
+      = f.label :teacher
+      = f.select :teacher_id, current_account.users.teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
 
     .field
-
       .students-select
-        = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
+        = label_tag :new_student, 'Adicionar classes a turma', class: 'invisible'
         = select_tag :new_student, options_for_select(@groups.map { |group| [group.name, group.id] }, selected: classroom.group_ids), multiple: true
 
       .students-list
@@ -17,7 +20,7 @@
             %li.blank Não há nenhuma classe nessa turma ainda, selecione abaixo para adicionar
           - else
             = f.fields_for :entries do |builder|
-              = render('entry_fields', group_name: builder.object.group.name, group_id: builder.object.group_id.to_s, index: builder.index.to_s)
+              = render('entry_fields', resource_name: builder.object.resource.name, resource_type: builder.object.resource_type, resource_id: builder.object.resource_id.to_s, index: builder.index.to_s)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
@@ -36,23 +39,31 @@
           $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
         },
         onItemAdd: function(value, $item) {
-          var html = '#{j render("entry_fields", group_name: "{{group_name}}", group_id: "{{group_id}}", index: "{{index}}")}'
+          var html = '#{j render("entry_fields", resource_name: "{{resource_name}}", resource_type: "{{resource_type}}", resource_id: "{{resource_id}}", index: "{{index}}")}'
 
           $('.students-list .blank').hide()
 
           if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
-            $('.students-list ul').append(html.replace(/{{group_name}}/g, $item.text()).replace(/{{group_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
+            $('.students-list ul').append(html.replace(/{{resource_name}}/g, $item.text()).replace(/{{resource_type}}/g, 'Group').replace(/{{resource_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
           }
           if($('.selectize-dropdown-content div').length == 0){
-            $('.students-select .selectize-input input').attr('placeholder', 'Todos os alunos já foram adicionados');
+            $('.students-select .selectize-input input').attr('placeholder', 'Todos as classes já foram adicionadas');
             select_student.disable();
           }else{
-            $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
+            $('.students-select .selectize-input input').attr('placeholder', 'Procurar classe');
           }
         },
         onItemRemove: function(value, $item){
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
+          $('.students-select .selectize-input input').attr('placeholder', 'Procurar classe');
           select_student.enable();
+
+          if($('.selectize-input div').length == 0){
+            if($('.students-list .blank').length == 0){
+              $('.students-list ul').append('<li class="blank">Não há nenhuma classe nessa turma ainda, selecione acima para adicionar</li>')
+            }else{
+              $('.students-list .blank').show();
+            }
+          }
         }
       })
 

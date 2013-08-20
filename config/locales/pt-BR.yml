@@ -232,6 +232,7 @@
         subdomain: 'Subdomínio'
       classroom:
         subject: 'Disciplina'
+        teacher: 'Professor'
       group:
         name: 'Nome'
       user:
