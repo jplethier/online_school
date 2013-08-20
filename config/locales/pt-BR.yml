@@ -271,5 +271,5 @@
   views:
     pagination:
       previous: "&larr; Anterior"
-      next: "&rarr; Pr&oacute;ximo"
+      next: "Pr&oacute;ximo &rarr;"
       truncate: "..."
