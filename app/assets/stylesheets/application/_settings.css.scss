@@ -1,0 +1,51 @@
+.settings-sidebar {
+  padding: 10px 10px 20px 10px;
+  width: 200px;
+  float: left;
+
+  .picture {
+    height: 212px;
+    margin-bottom: 10px;
+    width: 200px;
+
+    img {
+      border-radius: 5px;
+      border: 1px solid $gray-lighter;
+    }
+  }
+
+  ul {
+    margin: 0;
+    margin-bottom: -11px;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid $gray-lighter;
+    list-style: none;
+    padding: 5px 0 5px 0;
+
+    a {
+      border-radius: 5px;
+      color: $black;
+      display: block;
+      font-size: 12px;
+      padding: 5px 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: $gray-light;
+        color: $black!important;
+      }
+
+      &.active {
+        background-color: $blue-light;
+      }
+    }
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+}

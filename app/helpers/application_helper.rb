@@ -14,4 +14,8 @@ module ApplicationHelper
   def missing_avatar(style)
     "/users/avatars/#{style}/missing.png"
   end
+
+  def settings_controller?
+    controller_name == 'settings'
+  end
 end

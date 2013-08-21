@@ -431,19 +431,24 @@ footer {
   }
 }
 
-.sidebar {
+.sidebar-border {
   float: left;
-  padding: 10px;
-  border: 1px dotted $gray-light;
-  border-radius: 5px;
+  margin: 0 10px 10px 0;
+}
+
+.sidebar {
+  padding: 10px 10px 20px 10px;
+  width: 200px;
+  float: left;
 
   .picture {
-    width: 200px;
     height: 212px;
+    margin-bottom: 10px;
+    width: 200px;
 
     img {
       border-radius: 5px;
-      border: 1px solid $gray-light;
+      border: 1px solid $gray-lighter;
     }
   }
 
@@ -458,9 +463,7 @@ footer {
     height: 100%;
     list-style: none;
     margin-top: 1px;
-    padding: 20px 0;
-    position: relative;
-    width: 100%;
+    padding: 10px 0;
 
     &:hover {
       background-color: $gray-light;
@@ -468,21 +471,22 @@ footer {
 
     a {
       color: $white;
+      display: block;
       font-size: 12px;
-      left: 0;
-      height: 40%;
-      padding: 12px 12px;
-      position: absolute;
+      line-height: 12px;
+      padding: 4px 0 4px 12px;
       text-decoration: none;
-      text-shadow: black 0.1em 0.1em 0.2em;
       text-transform: uppercase;
-      top: 0;
-      width: 89%;
+      text-shadow: black 0.1em 0.1em 0.2em;
 
       &:hover {
         color: $white!important;
       }
     }
+  }
+
+  li:last-child {
+    border-bottom: none;
   }
 }
 

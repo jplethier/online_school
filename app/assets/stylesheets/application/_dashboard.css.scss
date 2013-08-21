@@ -1,4 +1,12 @@
 .content.dashboard {
+  .box-border {
+    float: left;
+  }
+
+  .box-border:first-child {
+    margin-right: 8px;
+  }
+
   .box {
     float: left;
     height: 400px;

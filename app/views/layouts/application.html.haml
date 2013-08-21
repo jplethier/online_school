@@ -41,7 +41,7 @@
           %li= link_to 'funcionários', employees_path
           %li= link_to 'classes', groups_path
           %li= link_to 'turmas', classrooms_path
-          %li= link_to 'configuracoes', ''
+          %li= link_to 'configuracoes', settings_path
       - if user_signed_in?
         .extra
           %span.username= current_user.name
@@ -49,14 +49,30 @@
           = link_to('Logout', destroy_user_session_path, method: :delete)
 
   %article
-    - if user_signed_in?
-      .sidebar
-        .picture= image_tag current_user.avatar(:big)
-        %ul
-          %li
-            %a{ href: "" } comunicados
+    - if settings_controller?
+      .sidebar-border.box-border
+        .settings-sidebar.box
+          %ul
+            %li
+              %a{ href: "", class: 'active' } informações gerais
+            %li
+              %a{ href: "" } importação de dados
+            %li
+              %a{ href: "" } assinatura
+    - else
+      .sidebar-border.box-border
+        .sidebar.box
+          .picture= image_tag current_user.avatar(:big)
+          %ul
+            %li
+              %a{ href: "" } comunicados
+            %li
+              %a{ href: "" } comunicados
+            %li
+              %a{ href: "" } comunicados
     = yield
 
+  .clear
   %footer
 
   = javascript_include_tag :application

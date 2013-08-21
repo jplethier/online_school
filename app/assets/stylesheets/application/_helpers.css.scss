@@ -1,8 +1,12 @@
+.box-border {
+  border-bottom: 1px solid $gray-light;
+  border-radius: 5px;
+}
+
 .box {
   background-color: $white;
+  border: 1px solid $gray-light;
   border-radius: 5px;
-  box-shadow: 1px 1px 10px $gray-darker;
-  margin: 0 0 10px 10px;
 
   .title {
     background-color: $blue;
