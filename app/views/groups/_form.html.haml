@@ -13,7 +13,7 @@
         %p Alunos
         %ul
           - if group.user_groups.blank?
-            %li.blank Não há nenhum aluno nessa turma ainda, selecione acima para adicionar
+            %li.blank Não há nenhum aluno nessa turma ainda, selecione acima para adicionar.
           - else
             = f.fields_for :user_groups do |builder|
               = render('user_group_fields', user_name: builder.object.user.name, user_id: builder.object.user_id.to_s, index: builder.index.to_s)

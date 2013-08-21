@@ -50,26 +50,24 @@
 
   %article
     - if settings_controller?
-      .sidebar-border.box-border
-        .settings-sidebar.box
-          %ul
-            %li
-              %a{ href: "", class: 'active' } informações gerais
-            %li
-              %a{ href: "" } importação de dados
-            %li
-              %a{ href: "" } assinatura
+      .settings-sidebar.box
+        %ul
+          %li
+            %a{ href: "", class: 'active' } informações gerais
+          %li
+            %a{ href: "" } importação de dados
+          %li
+            %a{ href: "" } assinatura
     - else
-      .sidebar-border.box-border
-        .sidebar.box
-          .picture= image_tag current_user.avatar(:big)
-          %ul
-            %li
-              %a{ href: "" } comunicados
-            %li
-              %a{ href: "" } comunicados
-            %li
-              %a{ href: "" } comunicados
+      .sidebar.box
+        .picture= image_tag current_user.avatar(:big)
+        %ul
+          %li
+            %a{ href: "" } comunicados
+          %li
+            %a{ href: "" } comunicados
+          %li
+            %a{ href: "" } comunicados
     = yield
 
   .clear
