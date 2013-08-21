@@ -10,6 +10,10 @@ describe Ability do
       expect(ability).to_not be_able_to :index, :dashboard
     end
 
+    it 'can not browse the settings' do
+      expect(ability).to_not be_able_to :show, :settings
+    end
+
     it 'can not manage users' do
       user = stub_model(User, account_id: any_user.account_id)
       expect(ability).to_not be_able_to :manage, user
@@ -27,6 +31,10 @@ describe Ability do
 
     it 'can browse the dashboard' do
       expect(ability).to be_able_to :index, :dashboard
+    end
+
+    it 'can browse the settings' do
+      expect(ability).to be_able_to :show, :settings
     end
 
     it 'can manage users that belong to his account' do

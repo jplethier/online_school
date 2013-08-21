@@ -32,6 +32,7 @@ class Ability
       can :manage, Group, account_id: user.account_id
       can :manage, Classroom, account_id: user.account_id
       can :index, :dashboard
+      can :show,  :settings
     end
   end
 end
