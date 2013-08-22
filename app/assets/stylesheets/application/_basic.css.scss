@@ -405,10 +405,14 @@ footer {
         padding: 18px 15px;
 
         a {
-          border-radius: 5px;
           background-color: $blue-light;
+          border-radius: 5px;
           padding: 5px 8px;
           text-decoration: none;
+
+          &.active {
+            background-color: $blue-lighter;
+          }
 
           &:hover {
             background-color: $gray-light;
