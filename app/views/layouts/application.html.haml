@@ -35,13 +35,13 @@
     .nav-wrapper
       .menu
         %ul
-          %li= link_to 'home', root_path
-          %li= link_to 'alunos', students_path
-          %li= link_to 'professores', teachers_path
-          %li= link_to 'funcionários', employees_path
-          %li= link_to 'classes', groups_path, class: 'active'
-          %li= link_to 'turmas', classrooms_path
-          %li= link_to 'configuracoes', settings_path
+          %li= navigation_link_to 'home', root_path
+          %li= navigation_link_to 'alunos', students_path
+          %li= navigation_link_to 'professores', teachers_path
+          %li= navigation_link_to 'funcionários', employees_path
+          %li= navigation_link_to 'classes', groups_path
+          %li= navigation_link_to 'turmas', classrooms_path
+          %li= navigation_link_to 'configuracoes', settings_path
       - if user_signed_in?
         .extra
           %span.username= current_user.name

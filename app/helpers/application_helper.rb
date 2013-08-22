@@ -15,6 +15,18 @@ module ApplicationHelper
     "/users/avatars/#{style}/missing.png"
   end
 
+  def navigation_link_to(name, options = {}, html_options = {}, &block)
+    active = options.include?(controller_name) || (home_controller? && options == '/')
+
+    link_to_if(active, name, options, class: 'active') do
+      link_to name, options, html_options, &block
+    end
+  end
+
+  def home_controller?
+    controller_name == 'dashboard'
+  end
+
   def settings_controller?
     controller_name == 'settings'
   end
