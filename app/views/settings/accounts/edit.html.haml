@@ -10,3 +10,7 @@
       .field
         = f.label :contact_mail, class: 'required'
         = f.email_field :contact_mail, required: true, email: true
+
+    .clear
+    %button.button.primary{ type: 'submit', name: 'commit' }
+      <i class='icon-ok'></i> Salvar

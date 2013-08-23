@@ -230,6 +230,7 @@
       account:
         name: 'Nome'
         subdomain: 'Subdomínio'
+        contact_mail: 'E-mail de contato'
       classroom:
         subject: 'Disciplina'
         teacher: 'Professor'

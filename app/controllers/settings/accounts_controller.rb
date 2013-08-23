@@ -1,5 +1,5 @@
 class Settings::AccountsController < AuthorizedController
-  def show
+  def edit
     authorize! :show, :settings
 
     @account = current_account
