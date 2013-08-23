@@ -1,0 +1,12 @@
+.box.form-box
+  %p.title informações gerais
+
+  = form_for @account, url: settings_account_path, html: { data: { validate: true }, class: 'body' } do |f|
+    .row
+      .field
+        = f.label :name, class: 'required'
+        = f.text_field :name
+
+      .field
+        = f.label :contact_mail, class: 'required'
+        = f.email_field :contact_mail, required: true, email: true

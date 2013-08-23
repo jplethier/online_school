@@ -16,7 +16,9 @@ module ApplicationHelper
   end
 
   def navigation_link_to(name, options = {}, html_options = {}, &block)
-    active = options.include?(controller_name) || (home_controller? && options == '/')
+    active = options.include?(controller_name) ||
+      (home_controller? && options == '/') ||
+      (settings_controller? && options =~ /settings/)
 
     link_to_if(active, name, options, class: 'active') do
       link_to name, options, html_options, &block
@@ -28,6 +30,6 @@ module ApplicationHelper
   end
 
   def settings_controller?
-    controller_name == 'settings'
+    request.path =~ /settings/
   end
 end

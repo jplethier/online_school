@@ -11,7 +11,9 @@ OnlineSchool::Application.routes.draw do
   constraints subdomain: /^(?!www\b)(\w+)/ do
     devise_for :users, only: :sessions
 
-    resource :settings
+    namespace :settings do
+      resource :account
+    end
 
     resources :classrooms
     resources :employees

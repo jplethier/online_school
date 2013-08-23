@@ -41,7 +41,7 @@
           %li= navigation_link_to 'funcionários', employees_path
           %li= navigation_link_to 'classes', groups_path
           %li= navigation_link_to 'turmas', classrooms_path
-          %li= navigation_link_to 'configuracoes', settings_path
+          %li= navigation_link_to 'configuracoes', settings_account_path
       - if user_signed_in?
         .extra
           %span.username= current_user.name
