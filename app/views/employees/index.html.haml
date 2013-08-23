@@ -1,13 +1,12 @@
-.content
-  .box.list-box
-    %p.title funcionários
-    %ul.body
-      %li.search-wrapper
-        = render 'crud/search', search_path: employees_path, new_path: new_employee_path
+.box.list-box
+  %p.title funcionários
+  %ul.body
+    %li.search-wrapper
+      = render 'crud/search', search_path: employees_path, new_path: new_employee_path
 
-      %li
-        %ul.three-columns.collection
-          - if @employees.empty?
-            %p Nenhum funcionário encontrado.
-          - else
-            = render partial: 'employee', collection: @employees
+    %li
+      %ul.three-columns.collection
+        - if @employees.empty?
+          %p Nenhum funcionário encontrado.
+        - else
+          = render partial: 'employee', collection: @employees

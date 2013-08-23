@@ -1,13 +1,12 @@
-.content
-  .box.list-box
-    %p.title alunos
-    %ul.body
-      %li.search-wrapper
-        = render 'crud/search', search_path: students_path, new_path: new_student_path
+.box.list-box
+  %p.title alunos
+  %ul.body
+    %li.search-wrapper
+      = render 'crud/search', search_path: students_path, new_path: new_student_path
 
-      %li
-        %ul.three-columns.collection
-          - if @students.empty?
-            %p Nenhum aluno encontrado.
-          - else
-            = render partial: 'student', collection: @students
+    %li
+      %ul.three-columns.collection
+        - if @students.empty?
+          %p Nenhum aluno encontrado.
+        - else
+          = render partial: 'student', collection: @students

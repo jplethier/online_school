@@ -1,25 +1,24 @@
-.content
-  .box.list-box
-    %p.title turmas
-    %ul.body
-      %li.search-wrapper
-        = render 'crud/search', search_path: classrooms_path, new_path: new_classroom_path
+.box.list-box
+  %p.title turmas
+  %ul.body
+    %li.search-wrapper
+      = render 'crud/search', search_path: classrooms_path, new_path: new_classroom_path
 
-      %li.collection
-        - if @classrooms.empty?
-          %p Nenhuma turma encontrada.
-        - else
-          %table.table
-            %thead
+    %li.collection
+      - if @classrooms.empty?
+        %p Nenhuma turma encontrada.
+      - else
+        %table.table
+          %thead
+            %tr
+              %th Nome
+              %th Quantidade de alunos
+              %th Ações
+          - if has_pagination_links? @classrooms
+            %tfoot
               %tr
-                %th Nome
-                %th Quantidade de alunos
-                %th Ações
-            - if has_pagination_links? @classrooms
-              %tfoot
-                %tr
-                  %td{colspan: 3}
-                    = paginate @classrooms, collection: @classrooms
-            %tbody
-              = render partial: 'classroom', collection: @classrooms
+                %td{colspan: 3}
+                  = paginate @classrooms, collection: @classrooms
+          %tbody
+            = render partial: 'classroom', collection: @classrooms
 
