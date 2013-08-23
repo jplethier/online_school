@@ -50,8 +50,8 @@
 
   %article
     - if settings_controller?
-      .settings-sidebar.box
-        %ul
+      .settings-sidebar.box.no-title
+        %ul.body
           %li
             %a{ href: "", class: 'active' } informações gerais
           %li
@@ -59,7 +59,7 @@
           %li
             %a{ href: "" } assinatura
     - else
-      .sidebar.box
+      .sidebar.box.no-title
         .picture= image_tag current_user.avatar(:big)
         %ul
           %li

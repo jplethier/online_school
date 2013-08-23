@@ -1,4 +1,4 @@
-= form_for teacher, url: teacher_path(teacher), html: { data: { validate: true } } do |f|
+= form_for teacher, url: teacher_path(teacher), html: { data: { validate: true }, class: 'body' } do |f|
   .row
     = render 'crud/avatar_upload', form: f, user: teacher
 
