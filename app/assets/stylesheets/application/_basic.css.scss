@@ -436,7 +436,7 @@ footer {
 }
 
 .sidebar {
-  margin: 0 10px 10px 0;
+  margin: 0 10px 0 0;
   padding: 10px 10px 20px 10px;
   width: 200px;
   float: left;
@@ -483,10 +483,6 @@ footer {
         color: $white!important;
       }
     }
-  }
-
-  li:last-child {
-    border-bottom: none;
   }
 }
 

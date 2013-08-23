@@ -1,18 +1,8 @@
 .settings-sidebar {
+  margin: 0 10px 0 0;
   padding: 10px 10px 20px 10px;
   width: 200px;
   float: left;
-
-  .picture {
-    height: 212px;
-    margin-bottom: 10px;
-    width: 200px;
-
-    img {
-      border-radius: 5px;
-      border: 1px solid $gray-lighter;
-    }
-  }
 
   ul {
     margin: 0;
