@@ -28,3 +28,4 @@
 //= require global/smooth-page-scroll.js
 //= require global/validation.js
 //= require global/autoload.js
+//= require paloma
