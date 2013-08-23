@@ -228,9 +228,9 @@
       user: 'Usuários'
     attributes:
       account:
-        name: 'Nome'
+        name: 'Nome da Escola'
         subdomain: 'Subdomínio'
-        contact_mail: 'E-mail de contato'
+        contact_mail: 'E-mail de Contato'
       classroom:
         subject: 'Disciplina'
         teacher: 'Professor'
