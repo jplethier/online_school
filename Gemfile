@@ -16,9 +16,6 @@ gem 'bourbon'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Annotate models
-gem 'annotate', '>= 2.5.0'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
@@ -35,9 +32,6 @@ gem 'jquery-rails'
 
 # Client side validation with jquery
 gem 'jquery-validation-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
 
 # Authentication
 gem 'devise', '>= 3.1.0.rc'

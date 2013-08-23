@@ -28,8 +28,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
-    annotate (2.5.0)
-      rake
     arel (4.0.0)
     atomic (1.1.12)
     awesome_print (1.1.0)
@@ -269,7 +267,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgresql-adapter
-  annotate (>= 2.5.0)
   awesome_print
   aws-sdk
   bourbon
