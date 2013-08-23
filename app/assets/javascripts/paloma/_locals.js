@@ -8,6 +8,44 @@
   // locals.localMethod = function(){};
   var locals = Paloma.locals['/'] = {};
 
-  
-  // ~> Start local definitions here and remove this line.
+
+  locals.selectizeCityAndState = function() {
+    var xhr;
+    var selectState, $selectState;
+    var selectCity, $selectCity;
+
+    $selectState = $('#user_address_state').selectize({
+      onChange: function(value) {
+        if (!value.length) return;
+
+        selectCity.disable();
+        selectCity.clearOptions();
+        selectCity.load(function(callback) {
+          xhr && xhr.abort();
+
+          xhr = $.ajax({
+            url: '/get_cities_by_uf/'+ value,
+            success: function(results) {
+              selectCity.enable();
+              callback(results);
+            },
+            error: function() {
+              callback();
+            }
+          })
+        });
+      }
+    });
+
+    $selectCity = $('#user_address_city').selectize({
+      valueField: 'name',
+      labelField: 'name',
+      searchField: ['name']
+    });
+
+    selectCity  = $selectCity[0].selectize;
+    selectState = $selectState[0].selectize;
+
+    selectCity.disable();
+  };
 })();
