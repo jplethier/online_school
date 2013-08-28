@@ -18,6 +18,8 @@ class Account < ActiveRecord::Base
   validates :contact_mail, presence: true
   validates :subdomain, presence: true, exclusion: { in: ReservedSubdomains }
 
+  has_many :classrooms
   has_many :groups
+  has_many :subjects
   has_many :users
 end

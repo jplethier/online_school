@@ -1,14 +1,15 @@
 class ClassroomsController < AuthorizedController
   load_and_authorize_resource
   before_filter :populate_groups, only: [:new, :edit]
+  before_filter :check_subject_id, only: [:create, :update]
 
   prepend_before_filter do
     params[:classroom] &&= classroom_params
   end
 
   def index
-    @classrooms = @classrooms.ordered_by_name.page(params[:page])
-    @classrooms = @classrooms.search(params[:search]) if params[:search].present?
+    @classrooms = @classrooms.page(params[:page])
+    # @classrooms = @classrooms.search(params[:search]) if params[:search].present?
   end
 
   def create
@@ -32,10 +33,16 @@ class ClassroomsController < AuthorizedController
   private
 
   def classroom_params
-    params.require(:classroom).permit(:name, user_classrooms_attributes: [:id, :user_id, :_destroy])
+    params.require(:classroom).permit(:subject_id, :teacher_id, entries_attributes: [:id, :resource_type, :resource_id, :_destroy])
   end
 
   def populate_groups
-    @groups = current_user.account.groups
+    @groups = current_account.groups
+  end
+
+  def check_subject_id
+    unless params[:classroom][:subject_id].is_number?
+      @classroom.subject = current_account.subjects.find_or_create_by_name(params[:classroom][:subject_id])
+    end
   end
 end

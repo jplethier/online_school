@@ -2,7 +2,7 @@
   .row
     .field
       = f.label :subject
-      = f.select :subject_id, Subject.all.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
+      = f.select :subject_id, current_account.subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
       %br
       %br
       = f.label :teacher
@@ -31,12 +31,16 @@
     $(document).ready(function() {
       $('.selectize').selectize()
 
+      $('#classroom_subject_id').selectize({
+        create: true
+      })
+
       var $select_student;
 
       $select_student = $('.students-select select').selectize({
         plugins: ['restore_on_backspace'],
         onInitialize: function() {
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
+          $('.students-select .selectize-input input').attr('placeholder', 'Procurar classes');
         },
         onItemAdd: function(value, $item) {
           var html = '#{j render("entry_fields", resource_name: "{{resource_name}}", resource_type: "{{resource_type}}", resource_id: "{{resource_id}}", index: "{{index}}")}'

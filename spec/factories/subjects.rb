@@ -3,5 +3,7 @@
 FactoryGirl.define do
   factory :subject do
     name "Disciplina"
+
+    account
   end
 end

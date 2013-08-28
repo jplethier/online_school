@@ -11,8 +11,7 @@
         %table.table
           %thead
             %tr
-              %th Nome
-              %th Quantidade de alunos
+              %th Disciplina
               %th Ações
           - if has_pagination_links? @classrooms
             %tfoot
@@ -21,4 +20,3 @@
                   = paginate @classrooms, collection: @classrooms
           %tbody
             = render partial: 'classroom', collection: @classrooms
-

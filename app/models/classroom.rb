@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: classrooms
-#
-#  id         :integer          not null, primary key
-#  subject_id :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  account_id :integer
-#  teacher_id :integer
-#
-
 class Classroom < ActiveRecord::Base
   belongs_to :account
   belongs_to :subject
@@ -22,6 +10,8 @@ class Classroom < ActiveRecord::Base
   validates :account, presence: true
   validates :subject, presence: true
 
-  scope :ordered_by_name, lambda { order('name') }
-  scope :search, lambda { |query| where{name =~ "%#{query.gsub(' ','%')}%"} }
+  # scope :ordered_by_name, lambda { order('subjects.name') }
+  scope :search, lambda { |query| where{subject.name =~ "%#{query.gsub(' ','%')}%"} }
+
+  accepts_nested_attributes_for :entries, allow_destroy: true
 end
