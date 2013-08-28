@@ -10,8 +10,8 @@ class Classroom < ActiveRecord::Base
   validates :account, presence: true
   validates :subject, presence: true
 
-  # scope :ordered_by_name, lambda { order('subjects.name') }
-  scope :search, lambda { |query| where{subject.name =~ "%#{query.gsub(' ','%')}%"} }
+  scope :ordered_by_name, lambda { joins{ subject }.order{ subject.name } }
+  scope :search, lambda { |query| joins{ subject }.where{subject.name =~ "%#{query.gsub(' ','%')}%"} }
 
   accepts_nested_attributes_for :entries, allow_destroy: true
 end
