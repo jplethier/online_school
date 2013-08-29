@@ -39,4 +39,40 @@ describe ClassroomsController do
       expect(assigns :groups).to eq groups
     end
   end
+
+  describe 'create' do
+    before { Classroom.stub(new: classroom) }
+
+    let(:params)  { { classroom: { subject_id: 1 } } }
+
+    context 'successfully' do
+      before { classroom.stub(save: true) }
+
+      it 'redirects to the groups page' do
+        post :create, params
+        expect(response).to redirect_to classrooms_path
+      end
+
+      it 'saves the classroom' do
+        expect(classroom).to receive :save
+        post :create, params
+      end
+    end
+
+    context 'unsuccessfully' do
+      before { classroom.stub(save: false) }
+
+      it 'renders the new page' do
+        post :create, params
+        expect(response).to render_template :new
+      end
+
+      it 'populates a list with all groups' do
+        admin.stub_chain(:account, :groups) { groups }
+
+        post :create, params
+        expect(assigns :groups).to eq groups
+      end
+    end
+  end
 end
