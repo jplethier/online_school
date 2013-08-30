@@ -1,7 +1,8 @@
 class ClassroomsController < AuthorizedController
   load_and_authorize_resource
   before_filter :populate_groups, only: [:new, :edit]
-  before_filter :check_subject_id, only: [:create, :update]
+
+  prepend_before_filter :create_subject_when_subject_id_is_a_string, only: [:create, :update]
 
   prepend_before_filter do
     params[:classroom] &&= classroom_params
@@ -40,9 +41,9 @@ class ClassroomsController < AuthorizedController
     @groups = current_account.groups
   end
 
-  def check_subject_id
+  def create_subject_when_subject_id_is_a_string
     unless params[:classroom][:subject_id].is_number?
-      @classroom.subject = current_account.subjects.find_or_create_by_name(params[:classroom][:subject_id])
+      params[:classroom][:subject_id] = current_account.subjects.find_or_create_by_name(params[:classroom][:subject_id]).id
     end
   end
 end
