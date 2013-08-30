@@ -16,6 +16,6 @@ class Classroom < ActiveRecord::Base
   accepts_nested_attributes_for :entries, allow_destroy: true
 
   def groups_names
-    self.groups.map { |group| [group.name] }.join(', ')
+    self.groups.map(&:name).join(', ')
   end
 end
