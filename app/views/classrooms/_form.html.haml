@@ -1,12 +1,13 @@
 = form_for classroom, html: { class: 'body' } do |f|
   .row
     .field
-      = f.label :subject
-      = f.select :subject_id, current_account.subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+      .subject
+        = f.label :subject
+        = f.select :subject_id, current_account.subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
       %br
-      %br
-      = f.label :teacher
-      = f.select :teacher_id, current_account.users.teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
+      .teacher
+        = f.label :teacher
+        = f.select :teacher_id, current_account.users.teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
 
     .field
       .students-select
