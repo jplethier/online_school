@@ -5,6 +5,8 @@ describe ClassroomsController do
   let(:admin)     { stub_model(User, account: account, admin: true) }
   let(:classroom) { stub_model(Classroom, account: account) }
   let(:groups)    { [double(:groups)] }
+  let(:teachers)  { [double(:teachers)] }
+  let(:subjects)  { [double(:subjects)] }
 
   before { sign_in admin }
 
@@ -32,11 +34,15 @@ describe ClassroomsController do
       expect(assigns :classroom).to eq classroom
     end
 
-    it 'populates a list with all groups' do
+    it 'populates a list with all groups, all teachers and all subjects' do
       admin.stub_chain(:account, :groups) { groups }
+      admin.stub_chain(:account, :subjects) { subjects }
+      admin.stub_chain(:account, :users, :teachers) { teachers }
 
       get :new
       expect(assigns :groups).to eq groups
+      expect(assigns :subjects).to eq subjects
+      expect(assigns :teachers).to eq teachers
     end
   end
 
@@ -67,11 +73,15 @@ describe ClassroomsController do
         expect(response).to render_template :new
       end
 
-      it 'populates a list with all groups' do
+      it 'populates a list with all groups, all teachers and all subjects' do
         admin.stub_chain(:account, :groups) { groups }
+        admin.stub_chain(:account, :subjects) { subjects }
+        admin.stub_chain(:account, :users, :teachers) { teachers }
 
         post :create, params
         expect(assigns :groups).to eq groups
+        expect(assigns :subjects).to eq subjects
+        expect(assigns :teachers).to eq teachers
       end
     end
   end

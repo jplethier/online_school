@@ -3,11 +3,11 @@
     .field
       .subject
         = f.label :subject
-        = f.select :subject_id, current_account.subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+        = f.select :subject_id, @subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
       %br
       .teacher
         = f.label :teacher
-        = f.select :teacher_id, current_account.users.teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
+        = f.select :teacher_id, @teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
 
     .field
       .students-select
