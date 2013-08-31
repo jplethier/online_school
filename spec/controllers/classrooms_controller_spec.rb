@@ -85,4 +85,64 @@ describe ClassroomsController do
       end
     end
   end
+
+  describe 'edit' do
+    before { Classroom.stub(find: classroom) }
+
+    it 'assigns the to-be-edited group' do
+      get :edit, id: classroom.id
+      expect(assigns :classroom).to eq classroom
+    end
+
+    it 'populates a list with all groups, all teachers and all subjects' do
+      admin.stub_chain(:account, :groups) { groups }
+      admin.stub_chain(:account, :subjects) { subjects }
+      admin.stub_chain(:account, :users, :teachers) { teachers }
+
+      get :edit, id: classroom.id
+      expect(assigns :groups).to eq groups
+      expect(assigns :subjects).to eq subjects
+      expect(assigns :teachers).to eq teachers
+    end
+  end
+
+  describe 'update' do
+    before { Classroom.stub(find: classroom) }
+
+    let(:params)  { { id: classroom.id, classroom: { subject_id: 1 } } }
+
+    context 'successfully' do
+      before { classroom.stub(update_attributes: true) }
+
+      it 'redirects to classrooms page' do
+        put :update, params
+        expect(response).to redirect_to classrooms_path
+      end
+
+      it 'updates the classroom' do
+        expect(classroom).to receive :update_attributes
+        put :update, params
+      end
+    end
+
+    context 'unsuccessfully' do
+      before { classroom.stub(update_attributes: false) }
+
+      it 'renders the edit page' do
+        put :update, params
+        expect(response).to render_template :edit
+      end
+
+      it 'populates a list with all groups, all teachers and all subjects' do
+        admin.stub_chain(:account, :groups) { groups }
+        admin.stub_chain(:account, :subjects) { subjects }
+        admin.stub_chain(:account, :users, :teachers) { teachers }
+
+        put :update, params
+        expect(assigns :groups).to eq groups
+        expect(assigns :subjects).to eq subjects
+        expect(assigns :teachers).to eq teachers
+      end
+    end
+  end
 end

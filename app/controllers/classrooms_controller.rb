@@ -23,7 +23,6 @@ class ClassroomsController < AuthorizedController
   end
 
   def update
-    binding.pry
     if @classroom.update_attributes(classroom_params)
       redirect_to classrooms_path, success: 'Dados da turma atualizados com sucesso.'
     else
