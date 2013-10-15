@@ -8,6 +8,15 @@ class ClassroomFormPage < Page
     self.find(".subject div.option:first-child").click
   end
 
+  def choose_subject(subject)
+    self.find('.subject .selectize-input input').click
+    self.find(".subject div.option[data-value='#{subject.id}']").click
+  end
+
+  def subject=(subject_name)
+    select subject_name, from: 'classroom_subject_id'
+  end
+
   def add_group(group)
     self.find('.students-select .selectize-input input').click
     self.find(".students-select div.option[data-value='#{group.id}']").click

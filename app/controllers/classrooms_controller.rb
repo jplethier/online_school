@@ -45,7 +45,7 @@ class ClassroomsController < AuthorizedController
 
   def create_subject_when_subject_id_is_a_string
     unless params[:classroom][:subject_id].is_number?
-      params[:classroom][:subject_id] = current_account.subjects.find_or_create_by_name(params[:classroom][:subject_id]).id
+      params[:classroom][:subject_id] = current_account.subjects.find_or_create_by(name: params[:classroom][:subject_id]).id
     end
   end
 end
