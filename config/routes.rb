@@ -13,6 +13,7 @@ OnlineSchool::Application.routes.draw do
 
     namespace :settings do
       resource :account
+      resources :data_imports
     end
 
     resources :classrooms

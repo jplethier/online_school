@@ -6,9 +6,20 @@ describe 'Importing students' do
   let(:admin) { FactoryGirl.create(:admin) }
   let(:new_students_import_page) { NewStudentsImportPage.visit(subdomain: admin.account.subdomain) }
 
-  context 'with a valid csv file' do
+  describe 'with a valid csv file' do
     context 'with all records valid' do
-      it 'imports all students'
+      let(:file) { fixture_file_path 'all_records_valid.csv' }
+
+      it 'imports the file' do
+        new_students_import_page.file = file
+        new_students_import_page.import
+
+        data_import = DataImport.last
+        expect(data_import.file).to exist
+      end
+
+      it 'imports all students' do
+      end
     end
 
     context 'but with a few invalid records' do
