@@ -10,14 +10,14 @@ describe 'Editing a employee' do
 
   context 'with mandatory data' do
     it 'successfully adding an avatar' do
-      edit_employee_page.avatar = fixture_image '60x75.jpeg'
+      edit_employee_page.avatar = fixture_file_path '60x75.jpeg'
       edit_employee_page.save
 
       expect(employee.reload.avatar).to exist
     end
 
     it 'successfully removing its avatar' do
-      employee.avatar = File.new(fixture_image '60x75.jpeg')
+      employee.avatar = fixture_file '60x75.jpeg'
       employee.save!
 
       edit_employee_page.remove_avatar
