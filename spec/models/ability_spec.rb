@@ -11,18 +11,23 @@ describe Ability do
       expect(ability).to_not be_able_to :index, :dashboard
     end
 
-    it 'can not manage groups' do
-      group = stub_model(Group, account_id: any_user.account_id)
-      expect(ability).to_not be_able_to :manage, group
-    end
-
     it 'can not manage the school account' do
       expect(ability).to_not be_able_to :manage, any_user.account
+    end
+
+    it 'can not manage data imports' do
+      data_import = stub_model(DataImport, account_id: any_user.account_id)
+      expect(ability).to_not be_able_to :manage, data_import
     end
 
     it 'can not manage users' do
       user = stub_model(User, account_id: any_user.account_id)
       expect(ability).to_not be_able_to :manage, user
+    end
+
+    it 'can not manage groups' do
+      group = stub_model(Group, account_id: any_user.account_id)
+      expect(ability).to_not be_able_to :manage, group
     end
   end
 
@@ -37,6 +42,14 @@ describe Ability do
 
     it 'can manage the school account' do
       expect(ability).to be_able_to :manage, admin.account
+    end
+
+    it 'can manage data imports that belong to his account' do
+      same_account_import      = stub_model(DataImport, account_id: admin.account_id)
+      different_account_import = stub_model(DataImport, account_id: 'different')
+
+      expect(ability).to be_able_to :manage, same_account_import
+      expect(ability).to_not be_able_to :manage, different_account_import
     end
 
     it 'can manage users that belong to his account' do
