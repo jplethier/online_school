@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823013206) do
+ActiveRecord::Schema.define(version: 20131016154620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20130823013206) do
 
   add_index "classrooms", ["subject_id"], name: "index_classrooms_on_subject_id", using: :btree
   add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
+
+  create_table "data_imports", force: true do |t|
+    t.string   "data_type"
+    t.integer  "processed",         default: 0
+    t.integer  "total"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
 
   create_table "entries", force: true do |t|
     t.integer  "resource_id"
@@ -91,8 +104,8 @@ ActiveRecord::Schema.define(version: 20130823013206) do
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -118,10 +131,10 @@ ActiveRecord::Schema.define(version: 20130823013206) do
     t.string   "address_city"
     t.string   "address_state"
     t.integer  "account_id"
-    t.boolean  "student"
-    t.boolean  "teacher"
-    t.boolean  "employee"
-    t.boolean  "admin"
+    t.boolean  "student",                default: false
+    t.boolean  "teacher",                default: false
+    t.boolean  "employee",               default: false
+    t.boolean  "admin",                  default: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
