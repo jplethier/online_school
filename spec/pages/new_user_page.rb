@@ -2,7 +2,6 @@ class NewUserPage < Page
   set_url "/users/sign_up"
 
   element :account_name_field,          "article input[name='user[account_attributes][name]']"
-  element :account_contact_mail_field,  "article input[name='user[account_attributes][contact_mail]']"
   element :account_subdomain_field,     "article input[name='user[account_attributes][subdomain]']"
   element :email_field,                 "article input[name='user[email]']"
   element :password_field,              "article input[name='user[password]']"
@@ -11,7 +10,6 @@ class NewUserPage < Page
 
   def fill_mandatory_fields
     self.account_name          = 'Mandatory account name'
-    self.account_contact_mail  = 'mandatory@example.com'
     self.account_subdomain     = 'mandatory'
     self.email                 = 'mandatory@example.com'
     self.password              = '1234qwer'
@@ -24,10 +22,6 @@ class NewUserPage < Page
 
   def account_name=(name)
     self.account_name_field.set name
-  end
-
-  def account_contact_mail=(email)
-    self.account_contact_mail_field.set email
   end
 
   def account_subdomain=(subdomain)

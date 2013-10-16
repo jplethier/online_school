@@ -5,6 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
     if hash.blank?
       self.resource = User.new
     else
+      assign_contact_mail hash
+
       self.resource = User.new hash
       self.resource.admin = true
 
@@ -14,5 +16,11 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     self.resource
+  end
+
+  private
+
+  def assign_contact_mail(hash)
+    hash[:account_attributes][:contact_mail] = hash[:email]
   end
 end
