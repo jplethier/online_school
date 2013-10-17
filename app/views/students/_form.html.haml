@@ -74,7 +74,7 @@
 
     .field
       = f.label :address_city
-      = f.select :address_city, @cities, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+      = f.select :address_city, options_for_select(@cities.map { |city| [city.name, 'data-name' => city.name] }, selected: student.address_city), { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
