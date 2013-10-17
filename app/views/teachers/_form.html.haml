@@ -71,7 +71,6 @@
       = f.label :address_city
       = f.select :address_city, @cities, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
 
-
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
     <i class='icon-ok'></i> Confirmar
