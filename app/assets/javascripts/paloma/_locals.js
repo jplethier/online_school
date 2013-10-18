@@ -40,12 +40,13 @@
     $selectCity = $('#user_address_city').selectize({
       valueField: 'name',
       labelField: 'name',
-      searchField: ['name']
+      searchField: ['name'],
+      dataAttr: 'data-name',
     });
 
     selectCity  = $selectCity[0].selectize;
     selectState = $selectState[0].selectize;
 
-    selectCity.disable();
+    if (!selectState.getValue()) selectCity.disable();
   };
 })();

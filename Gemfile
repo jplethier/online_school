@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'jquery-validation-rails'
 
 # Authentication
-gem 'devise', '>= 3.1.0.rc'
+gem 'devise', '>= 3.1.0'
 
 # Authorization
 gem 'cancan'

@@ -32,7 +32,7 @@ describe EmployeesController do
     end
 
     it 'populates a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect) { states }
+      City.stub_chain(:uf_list, :collect) { states }
 
       get :new
       expect(assigns :states).to eq states
@@ -72,7 +72,7 @@ describe EmployeesController do
       end
 
       it 'populates a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect) { states }
+        City.stub_chain(:uf_list, :collect) { states }
 
         post :create, params
         expect(assigns :states).to eq states
@@ -80,7 +80,7 @@ describe EmployeesController do
 
       it 'populates a list with all cities from the selected state' do
         employee.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect) { cities }
+        City.stub(:name_list) { cities }
 
         post :create, params
       end
@@ -96,7 +96,7 @@ describe EmployeesController do
     end
 
     it 'populates a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect) { states }
+      City.stub_chain(:uf_list, :collect) { states }
 
       get :edit, id: employee.id
       expect(assigns :states).to eq states
@@ -104,7 +104,7 @@ describe EmployeesController do
 
     it 'populates a list with all cities from the selected state' do
       employee.stub(address_state?: true)
-      City.stub_chain(:select, :find_by_uf, :collect) { cities }
+      City.stub(:name_list) { cities }
 
       get :edit, id: employee.id
       expect(assigns :cities).to eq cities
@@ -139,7 +139,7 @@ describe EmployeesController do
       end
 
       it 'populates a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect) { states }
+        City.stub_chain(:uf_list, :collect) { states }
 
         put :update, params
         expect(assigns :states).to eq states
@@ -147,7 +147,7 @@ describe EmployeesController do
 
       it 'populates a list with all cities from the selected state' do
         employee.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect) { cities }
+        City.stub(:name_list) { cities }
 
         put :update, params
         expect(assigns :cities).to eq cities

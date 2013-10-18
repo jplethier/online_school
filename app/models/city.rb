@@ -13,5 +13,6 @@ class City < ActiveRecord::Base
   validates :name, presence: true
   validates :uf,   presence: true
 
-  scope :find_by_uf, lambda { |uf| where(uf: uf) }
+  scope :uf_list, lambda { select('distinct uf').order(:uf) }
+  scope :name_list, lambda { |uf| select(:name).where(uf: uf).order(:name) }
 end

@@ -32,8 +32,8 @@ describe StudentsController do
       expect(assigns :student).to be_student
     end
 
-    it 'populates a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect) { states }
+    it 'populates a list with all the states' do
+      City.stub_chain(:uf_list, :collect) { states }
 
       get :new
       expect(assigns :states).to eq states
@@ -80,7 +80,7 @@ describe StudentsController do
       end
 
       it 'populates a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect) { states }
+        City.stub_chain(:uf_list, :collect) { states }
 
         post :create, params
         expect(assigns :states).to eq states
@@ -88,9 +88,10 @@ describe StudentsController do
 
       it 'populates a list with all cities from the selected state' do
         student.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect) { cities }
+        City.stub(:name_list) { cities }
 
         post :create, params
+        expect(assigns :cities).to eq cities
       end
 
       it 'populates a list with all groups' do
@@ -110,8 +111,8 @@ describe StudentsController do
       expect(assigns :student).to eq student
     end
 
-    it 'populates a list with all states' do
-      City.stub_chain(:order, :select, :uniq, :collect) { states }
+    it 'populates a list with all the states' do
+      City.stub_chain(:uf_list, :collect) { states }
 
       get :edit, id: student.id
       expect(assigns :states).to eq states
@@ -119,7 +120,7 @@ describe StudentsController do
 
     it 'populates a list with all cities from the selected state' do
       student.stub(address_state?: true)
-      City.stub_chain(:select, :find_by_uf, :collect) { cities }
+      City.stub(:name_list) { cities }
 
       get :edit, id: student.id
       expect(assigns :cities).to eq cities
@@ -161,7 +162,7 @@ describe StudentsController do
       end
 
       it 'populates a list with all the states' do
-        City.stub_chain(:order, :select, :uniq, :collect) { states }
+        City.stub_chain(:uf_list, :collect) { states }
 
         put :update, params
         expect(assigns :states).to eq states
@@ -169,7 +170,7 @@ describe StudentsController do
 
       it 'populates a list with all cities from the selected state' do
         student.stub(address_state?: true)
-        City.stub_chain(:select, :find_by_uf, :collect) { cities }
+        City.stub(:name_list) { cities }
 
         put :update, params
         expect(assigns :cities).to eq cities

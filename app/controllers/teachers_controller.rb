@@ -1,5 +1,5 @@
 class TeachersController < AuthorizedController
-  load_and_authorize_resource :class => "User"
+  load_and_authorize_resource :class => 'User'
   before_filter :populate_cities_and_states, only: [:new, :edit]
 
   prepend_before_filter do
@@ -48,12 +48,7 @@ class TeachersController < AuthorizedController
   end
 
   def populate_cities_and_states
-    @states = City.order(:uf).select(:uf).uniq.collect(&:uf)
-
-    if @teacher.address_state?
-      @cities = City.select(:name).find_by_uf(@teacher.address_state).collect(&:name)
-    else
-      @cities = []
-    end
+    @states = City.uf_list.collect(&:uf)
+    @cities = @teacher.address_state? ? City.name_list(@teacher.address_state) : []
   end
 end

@@ -35,7 +35,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bcrypt-ruby (3.1.1)
+    bcrypt-ruby (3.1.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -70,7 +70,7 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
-    devise (3.1.0.rc)
+    devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -277,7 +277,7 @@ DEPENDENCIES
   capistrano
   capybara
   database_cleaner (>= 1.0.1)
-  devise (>= 3.1.0.rc)
+  devise (>= 3.1.0)
   factory_girl_rails
   fog
   haml
