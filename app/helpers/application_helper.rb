@@ -32,4 +32,8 @@ module ApplicationHelper
   def settings_controller?
     request.path =~ /settings/
   end
+
+  def city_options(cities, selected: nil)
+    options_for_select(cities.map { |city| [city.name, 'data-name' => {name: city.name}.to_json] }, selected: selected)
+  end
 end
