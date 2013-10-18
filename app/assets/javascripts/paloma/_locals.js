@@ -47,6 +47,6 @@
     selectCity  = $selectCity[0].selectize;
     selectState = $selectState[0].selectize;
 
-    selectCity.disable();
+    if (!selectState.getValue()) selectCity.disable();
   };
 })();
