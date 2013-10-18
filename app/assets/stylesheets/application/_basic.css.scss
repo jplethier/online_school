@@ -14,6 +14,7 @@ input {
   border: none;
   border-radius: 5px;
   color: $gray-dark;
+  font-family: 'CenturyGothicRegular';
 
   &.large {
     width: 350px;
@@ -63,6 +64,10 @@ textarea {
 .selectize-control {
   width: 99.8%;
 
+  .selectize-dropdown {
+    top: 46px!important;
+  }
+
   .selectize-input {
     border-radius: 5px;
     margin-top: 2px;
@@ -85,13 +90,16 @@ textarea {
     }
 
     input {
-      font-size: 14px;
-      padding-top: 2px!important;
+      padding-left: 4px!important; /* Our normal inputs have a 4px padding to the left */
+      padding-top: 2px!important; /* Align the input vertically */
     }
   }
 
   &.single {
     .selectize-input {
+      &.focus {
+        padding-right: 40px!important; /* Don't allow the input text to go over the input arrow */
+      }
 
       &.has-items {
         line-height: 0!important;
@@ -99,11 +107,13 @@ textarea {
 
         .item {
           margin-top: 17px;
+          padding-left: 4px!important; /* Display the placeholder with the selected item with the same input padding */
         }
 
         &.focus {
           input {
-            line-height: 20px!important;
+            line-height: 20px!important; /* Increase the cursor size */
+            padding-left: 0px!important; /* Without this the cursor has a padding */
           }
 
           .item {
@@ -118,7 +128,7 @@ textarea {
   &.multi {
     .selectize-input {
       &.has-items {
-        padding-top: 9px!important;
+        padding-top: 10px!important; /* Align the items vertically */
       }
 
       &.focus {
