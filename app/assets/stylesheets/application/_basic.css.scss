@@ -90,6 +90,7 @@ textarea {
     &.focus {
       border-top-left-radius: 5px!important;
       border-top-right-radius: 5px!important;
+      box-shadow: inset 0 1px 2px rgba(0 ,0 ,0 ,0.15); /* Normal inputs have inner shadow */
     }
 
     input {
@@ -132,10 +133,6 @@ textarea {
     .selectize-input {
       &.has-items {
         padding-top: 10px!important; /* Align the items vertically */
-      }
-
-      &.focus {
-        box-shadow: inset 0 1px 2px rgba(0 ,0 ,0 ,0.15);
       }
     }
   }
