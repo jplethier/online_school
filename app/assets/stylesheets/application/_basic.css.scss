@@ -77,7 +77,7 @@ textarea {
       border: none;
       border: 1px solid $gray-light;
       box-shadow: none;
-      height: 46px;
+      min-height: 46px; /* Our inputs have a minimum size of 46px */
 
       &.focus {
         background: $white!important;
