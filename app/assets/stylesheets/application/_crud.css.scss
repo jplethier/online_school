@@ -157,6 +157,12 @@
     }
   }
 
+  .small-selectize {
+    .selectize-dropdown-content {
+      max-height: 96px!important;
+    }
+  }
+
   .small-field {
     width: 167px;
 

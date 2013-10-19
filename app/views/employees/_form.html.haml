@@ -63,11 +63,11 @@
       = f.text_field :address_complement
 
   .row
-    .field
+    .field.small-selectize
       = f.label :address_state
       = f.select :address_state, @states, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
 
-    .field
+    .field.small-selectize
       = f.label :address_city
       = f.select :address_city, city_options(@cities, selected: employee.address_city), { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
 

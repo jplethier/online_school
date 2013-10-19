@@ -14,6 +14,7 @@ input {
   border: none;
   border-radius: 5px;
   color: $gray-dark;
+  font-family: 'CenturyGothicRegular';
 
   &.large {
     width: 350px;
@@ -63,6 +64,13 @@ textarea {
 .selectize-control {
   width: 99.8%;
 
+  .selectize-dropdown {
+    border: 1px solid $gray-light;
+    border-top: 1px solid $gray-lighter;
+    box-shadow: none;
+    top: 46px!important;
+  }
+
   .selectize-input {
     border-radius: 5px;
     margin-top: 2px;
@@ -72,7 +80,7 @@ textarea {
       border: none;
       border: 1px solid $gray-light;
       box-shadow: none;
-      height: 46px;
+      min-height: 46px; /* Our inputs have a minimum size of 46px */
 
       &.focus {
         background: $white!important;
@@ -82,16 +90,20 @@ textarea {
     &.focus {
       border-top-left-radius: 5px!important;
       border-top-right-radius: 5px!important;
+      box-shadow: inset 0 1px 2px rgba(0 ,0 ,0 ,0.15); /* Normal inputs have inner shadow */
     }
 
     input {
-      font-size: 14px;
-      padding-top: 2px!important;
+      padding-left: 4px!important; /* Our normal inputs have a 4px padding to the left */
+      padding-top: 2px!important; /* Align the input vertically */
     }
   }
 
   &.single {
     .selectize-input {
+      &.focus {
+        padding-right: 40px!important; /* Don't allow the input text to go over the input arrow */
+      }
 
       &.has-items {
         line-height: 0!important;
@@ -99,11 +111,13 @@ textarea {
 
         .item {
           margin-top: 17px;
+          padding-left: 4px!important; /* Display the placeholder with the selected item with the same input padding */
         }
 
         &.focus {
           input {
-            line-height: 20px!important;
+            line-height: 20px!important; /* Increase the cursor size */
+            padding-left: 0px!important; /* Without this the cursor has a padding */
           }
 
           .item {
@@ -118,11 +132,7 @@ textarea {
   &.multi {
     .selectize-input {
       &.has-items {
-        padding-top: 9px!important;
-      }
-
-      &.focus {
-        box-shadow: inset 0 1px 2px rgba(0 ,0 ,0 ,0.15);
+        padding-top: 10px!important; /* Align the items vertically */
       }
     }
   }
