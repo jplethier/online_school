@@ -10,14 +10,14 @@ describe 'Editing a student' do
 
   context 'with mandatory data' do
     it 'successfully adding an avatar' do
-      edit_student_page.avatar = fixture_image '60x75.jpeg'
+      edit_student_page.avatar = fixture_file_path '60x75.jpeg'
       edit_student_page.save
 
       expect(student.reload.avatar).to exist
     end
 
     it 'successfully removing its avatar' do
-      student.avatar = File.new(fixture_image '60x75.jpeg')
+      student.avatar = fixture_file '60x75.jpeg'
       student.save!
 
       edit_student_page.remove_avatar

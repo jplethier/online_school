@@ -25,6 +25,14 @@ module ApplicationHelper
     end
   end
 
+  def sidebar_link_to(name, options = {}, html_options = {}, &block)
+    active = options.include?(controller_name.singularize)
+
+    link_to_if(active, name, options, class: 'active') do
+      link_to name, options, html_options, &block
+    end
+  end
+
   def home_controller?
     controller_name == 'dashboard'
   end

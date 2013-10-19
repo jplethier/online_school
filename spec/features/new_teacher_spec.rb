@@ -15,7 +15,7 @@ describe 'Creating a teacher' do
     end
 
     it 'successfully with an avatar' do
-      new_teacher_page.avatar = fixture_image '60x75.jpeg'
+      new_teacher_page.avatar = fixture_file_path '60x75.jpeg'
       new_teacher_page.save
 
       user = User.teachers.last

@@ -52,10 +52,8 @@
     - if settings_controller?
       .settings-sidebar.box.no-title
         %ul
-          %li
-            %a{ href: "", class: 'active' } informações gerais
-          %li
-            %a{ href: "" } importação de dados
+          %li= sidebar_link_to 'informações gerais', edit_settings_account_path
+          %li= sidebar_link_to 'importação de dados', settings_data_imports_path
           %li
             %a{ href: "" } assinatura
     - else

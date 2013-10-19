@@ -15,7 +15,7 @@ describe 'Creating a employee' do
     end
 
     it 'successfully with an avatar' do
-      new_employee_page.avatar = fixture_image '60x75.jpeg'
+      new_employee_page.avatar = fixture_file_path '60x75.jpeg'
       new_employee_page.save
 
       user = User.employees.last

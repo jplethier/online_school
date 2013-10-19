@@ -1,0 +1,10 @@
+.box.form-box
+  %p.title nova importação de dados
+
+  = form_for @data_import, url: settings_data_import_path(@data_import), html: { data: { validate: true }, class: 'body' } do |f|
+    .row
+      = f.file_field :file, accept: '.csv'
+
+    .clear
+    %button.button.primary{ type: 'submit', name: 'commit' }
+      <i class='icon-ok'></i> Importar

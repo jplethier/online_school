@@ -18,12 +18,11 @@ describe RegistrationsController do
       post :create, params
     end
 
-    it 'sets the user email' do
-      User.stub(new: user)
+    it 'sets the account contact mail same as the user email' do
       params[:user][:email] = 'user@example.com'
+      expect(Account).to receive(:new).with(hash_including(contact_mail: 'user@example.com'))
 
       post :create, params
-      expect(User).to have_received(:new).with(hash_including(email: 'user@example.com'))
     end
 
     it 'sets the user as admin' do
