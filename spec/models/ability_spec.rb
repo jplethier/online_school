@@ -54,5 +54,13 @@ describe Ability do
       expect(ability).to be_able_to :manage, same_account_group
       expect(ability).to_not be_able_to :manage, different_account_group
     end
+
+    it 'can manage classrooms that belong to his account' do
+      same_account_classroom      = stub_model(Classroom, account_id: admin.account_id)
+      different_account_classroom = stub_model(Classroom, account_id: 'different')
+
+      expect(ability).to be_able_to :manage, same_account_classroom
+      expect(ability).to_not be_able_to :manage, different_account_classroom
+    end
   end
 end

@@ -186,6 +186,7 @@
   helpers:
     select:
       prompt: "Por favor selecione"
+      select_or_add: 'Selecione ou adicione'
 
     submit:
       create: 'Criar %{model}'

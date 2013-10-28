@@ -3,7 +3,7 @@
     .field
       .subject
         = f.label :subject
-        = f.select :subject_id, @subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt')
+        = f.select :subject_id, @subjects.map { |subject| [subject.name, subject.id] }, { include_blank: t('helpers.select.select_or_add') }, placeholder: t('helpers.select.select_or_add')
       %br
       .teacher
         = f.label :teacher
@@ -18,7 +18,7 @@
         %p Classes
         %ul
           - if classroom.entries.blank?
-            %li.blank Não há nenhuma classe nessa turma ainda, selecione abaixo para adicionar
+            %li.blank Não há nenhuma classe nessa turma ainda, selecione acima para adicionar
           - else
             = f.fields_for :entries do |builder|
               = render('entry_fields', resource_name: builder.object.resource.name, resource_type: builder.object.resource_type, resource_id: builder.object.resource_id.to_s, index: builder.index.to_s)
@@ -33,7 +33,12 @@
       $('.selectize').selectize()
 
       $('#classroom_subject_id').selectize({
-        create: true
+        create: true,
+        render: {
+          option_create: function(data, escape){
+            return '<div data-selectable="" class="create">Adicionar <strong>'+escape(data.input)+'</strong>…</div>'
+          }
+        }
       })
 
       var $select_student;
