@@ -39,7 +39,7 @@ describe 'Editing a classroom' do
   end
 
   it 'with missing data' do
-    edit_classroom_page.subject = 'Por favor selecione'
+    edit_classroom_page.subject = 'Selecione ou adicione'
     expect { edit_classroom_page.save }.to_not change { classroom.reload.subject }
   end
 end
