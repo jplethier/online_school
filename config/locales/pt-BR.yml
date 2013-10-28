@@ -185,6 +185,7 @@
 
   helpers:
     select:
+      add: 'Adicionar'
       prompt: "Por favor selecione"
       select_or_add: 'Selecione ou adicione'
 

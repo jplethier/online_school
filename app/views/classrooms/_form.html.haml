@@ -36,7 +36,7 @@
         create: true,
         render: {
           option_create: function(data, escape){
-            return '<div data-selectable="" class="create">Adicionar <strong>'+escape(data.input)+'</strong>…</div>'
+            return '<div data-selectable="" class="create">#{t("helpers.select.add")} <strong>'+escape(data.input)+'</strong>…</div>'
           }
         }
       })
