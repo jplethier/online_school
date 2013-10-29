@@ -2,6 +2,8 @@ class Exam < ActiveRecord::Base
   belongs_to :account
   belongs_to :classroom
 
+  has_many :student_exams
+
   validates :account,   presence: true
   validates :classroom, presence: true
   validates :exam_date, presence: true

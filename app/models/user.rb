@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :user_groups
   has_many :entries, as: :resource
   has_many :classrooms, through: :entries
+  has_many :student_exams, as: :student
 
   has_attached_file :avatar, styles: { big: '200x212>', thumb: '60x75>' }, default_url: '/users/avatars/:style/missing.png', url: 'users/avatars/:id_partition/:style.:extension', path: 'users/avatars/:id_partition/:style.:extension'
   has_destroyable_file :avatar
