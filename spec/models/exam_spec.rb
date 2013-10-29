@@ -8,6 +8,10 @@ describe Exam do
   its(:valid?) { should be true }
 
   describe 'validations' do
+    it 'requires an account' do
+      expect { exam.account = nil }.to change{ exam.valid? }.from(true).to(false)
+    end
+
     it 'requires a classroom' do
       expect { exam.classroom = nil }.to change{ exam.valid? }.from(true).to(false)
     end

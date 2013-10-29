@@ -7,5 +7,6 @@ FactoryGirl.define do
     exam_date Time.new + 3.days
 
     classroom
+    account
   end
 end
