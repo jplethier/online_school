@@ -16,6 +16,11 @@ describe Ability do
       expect(ability).to_not be_able_to :manage, group
     end
 
+    it 'can not manage classrooms' do
+      classroom = stub_model(Classroom, account_id: any_user.account_id)
+      expect(ability).to_not be_able_to :manage, classroom
+    end
+
     it 'can not manage the school account' do
       expect(ability).to_not be_able_to :manage, any_user.account
     end
