@@ -1,0 +1,7 @@
+%tr
+  %td= link_to exam.kind, classroom_exam_path(exam.classroom, exam)
+  %td= link_to exam.period, classroom_exam_path(exam.classroom, exam)
+  %td= link_to l(exam.exam_date), classroom_exam_path(exam.classroom, exam)
+  %td
+    = link_to edit_classroom_exam_path(exam.classroom, exam) do
+      <i class='fa fa-edit' title='Editar'></i>

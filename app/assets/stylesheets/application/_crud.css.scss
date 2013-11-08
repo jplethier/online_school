@@ -182,11 +182,20 @@
 }
 
 .show-box {
-  .details {
+  .details, .exams {
     display: inline-block;
     margin: 10px;
     width: 745px;
+  }
 
+  .exams {
+    p {
+      color: $gray-dark;
+      font-size: 18px;
+    }
+  }
+
+  .details {
     .info {
       float: left;
 
@@ -214,8 +223,9 @@
       float: left;
     }
 
-    a.exam {
+    a {
       float: right;
+      margin: 0 5px;
     }
   }
 }

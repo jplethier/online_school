@@ -9,4 +9,7 @@ class Exam < ActiveRecord::Base
   validates :exam_date, presence: true
   validates :kind,      presence: true
   validates :period,    numericality: { only_integer: true }
+
+  scope :future, lambda { where{exam_date >= Date.today} }
+  scope :past,   lambda { where{exam_date < Date.today} }
 end

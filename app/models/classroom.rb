@@ -7,6 +7,8 @@ class Classroom < ActiveRecord::Base
   has_many :users,   -> { where("entries.resource_type = 'User'") },  through: :entries, source: :user
   has_many :groups,  -> { where("entries.resource_type = 'Group'") }, through: :entries, source: :group
 
+  has_many :exams
+
   validates :account, presence: true
   validates :subject, presence: true
 

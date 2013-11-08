@@ -15,8 +15,35 @@
               %li
                 %span= entry.resource.name
 
+    .exams
+      .exams-list.future
+        %p Próximas Avaliações
+        %table.table
+          %thead
+            %tr
+              %th Tipo de Avaliação
+              %th Período
+              %th Data da Avaliação
+              %th Ações
+          / - if has_pagination_links? @classroom.exams.future
+          /   %tfoot
+          /     %tr
+          /       %td{colspan: 3}
+          /         = paginate @classrooms, collection: @classrooms
+          %tbody
+            = render @classroom.exams.future
+
+      .exams-list.past
+        %p Avaliações passadas
+        %ul
+          - @classroom.exams.past.each do |exam|
+            %li
+              %span= "#{exam.kind} em #{l exam.exam_date.to_date}"
+
     .actions
       = link_to classrooms_path, class: 'back button secondary' do
         <i class='fa fa-reply' title='Voltar'></i> Voltar
-      = link_to new_classroom_exam_path(@classroom), class: 'exam button primary' do
+      = link_to new_classroom_exam_path(@classroom), class: 'button primary' do
         <i class='fa fa-plus' title='Nova avaliação'></i> Nova avaliação
+      = link_to edit_classroom_path(@classroom), class: 'button primary' do
+        <i class='fa fa-edit' title='Editar'></i> Editar
