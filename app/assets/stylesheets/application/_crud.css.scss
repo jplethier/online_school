@@ -181,7 +181,46 @@
   }
 }
 
-.list-box, .form-box {
+.show-box {
+  .details {
+    display: inline-block;
+    margin: 10px;
+    width: 745px;
+
+    .info {
+      float: left;
+
+      p {
+        color: $gray-dark;
+        font-size: 18px;
+      }
+    }
+
+  }
+
+  .students-list {
+    float: right;
+    margin: 10px 20px;
+    width: 50%;
+  }
+
+  .actions {
+    clear: both;
+    height: 45px;
+    margin: 10px auto;
+    width: 90%;
+
+    a.back {
+      float: left;
+    }
+
+    a.exam {
+      float: right;
+    }
+  }
+}
+
+.list-box, .form-box, .show-box {
   width: 765px;
 
   .button {

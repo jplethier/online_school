@@ -15,7 +15,11 @@ OnlineSchool::Application.routes.draw do
       resource :account
     end
 
-    resources :classrooms
+    resources :classrooms do
+      resources :exams do
+        resources :student_exams
+      end
+    end
     resources :employees
     resources :groups
     resources :students

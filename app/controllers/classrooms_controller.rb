@@ -31,6 +31,10 @@ class ClassroomsController < AuthorizedController
     end
   end
 
+  def show
+
+  end
+
   private
 
   def classroom_params

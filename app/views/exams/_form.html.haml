@@ -1,0 +1,18 @@
+= form_for [classroom, exam], html: { class: 'body' } do |f|
+  .row
+    .field
+      = f.label :period, class: 'required'
+      = f.text_field :period, required: true
+
+    .field
+      = f.label :kind, class: 'required'
+      = f.text_field :kind
+
+  .row
+    .field
+      = f.label :exam_date, class: 'required'
+      = f.text_field :exam_date, required: true, data: { inputmask: "'alias': 'date'" }
+
+  .clear
+  %button.button.primary{ type: 'submit', name: 'commit' }
+    <i class='fa fa-check'></i> Confirmar

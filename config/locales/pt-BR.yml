@@ -236,6 +236,9 @@
       classroom:
         subject: 'Disciplina'
         teacher: 'Professor'
+      exam:
+        kind: 'Tipo de Avaliação'
+        period: 'Período (Bimestre/Trimestre/Semestre)'
       group:
         name: 'Nome'
       user:
