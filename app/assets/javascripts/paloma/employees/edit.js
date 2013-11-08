@@ -20,23 +20,23 @@
   Paloma.callbacks['employees']['edit'] = function(params){
     _l.selectizeCityAndState();
 
-    $('form').on('click', '.icon-lock', function() {
+    $('form').on('click', '.fa-lock', function() {
       unlockPassword();
     });
 
-    $('form').on('click', '.icon-unlock', function() {
+    $('form').on('click', '.fa-unlock', function() {
       lockPassword();
     });
 
     function lockPassword() {
-      $('.icon-unlock').removeClass('icon-unlock').addClass('icon-lock');
+      $('.fa-unlock').removeClass('fa-unlock').addClass('fa-lock');
 
       $('#user_password').val('').prop('disabled', true);
       $('#user_password_confirmation').val('').prop('disabled', true);
     }
 
     function unlockPassword() {
-      $('.icon-lock').removeClass('icon-lock').addClass('icon-unlock');
+      $('.fa-lock').removeClass('fa-lock').addClass('fa-unlock');
 
       $('#user_password').prop('disabled', false);
       $('#user_password_confirmation').prop('disabled', false);

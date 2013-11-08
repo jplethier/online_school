@@ -36,11 +36,11 @@
   - else
     .row
       .field
-        = f.label :password, "Senha <i class='icon-lock'></i>".html_safe
+        = f.label :password, "Senha <i class='fa fa-lock'></i>".html_safe
         = f.password_field :password, required: true, minlength: 6, disabled: true, placeholder: '********'
 
       .field
-        = f.label :password_confirmation, "Confirmação da senha <i class='icon-lock'></i>".html_safe
+        = f.label :password_confirmation, "Confirmação da senha <i class='fa fa-lock'></i>".html_safe
         = f.password_field :password_confirmation, required: true, equalto: '#user_password', disabled: true, placeholder: '********'
 
   .divider
@@ -78,4 +78,4 @@
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
-    <i class='icon-ok'></i> Confirmar
+    <i class='fa fa-check'></i> Confirmar

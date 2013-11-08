@@ -8,14 +8,14 @@
 
     .buttons
       %span.button.secondary
-        %i.icon-plus.icon-white
+        %i.fa.fa-plus.icon-white
         %span.fileupload-new Selecionar foto
         %span.fileupload-exists Mudar
         = form.file_field :avatar, accept: 'image/*'
 
       = form.check_box :avatar_delete, class: 'fileupload-delete'
       = form.label :avatar_delete, class: 'button destroy fileupload-exists', 'data-dismiss' => 'fileupload' do
-        %i.icon-remove.icon-white
+        %i.fa.fa-times.icon-white
         %span Remover
 - else
   .field.fileupload.fileupload-new{'data-provides' => 'fileupload'}
@@ -24,11 +24,11 @@
 
     .buttons
       %span.button.secondary
-        %i.icon-plus.icon-white
+        %i.fa.fa-plus.icon-white
         %span.fileupload-new Selecionar foto
         %span.fileupload-exists Mudar
         = form.file_field :avatar, accept: 'image/*'
 
       %span.button.destroy.fileupload-exists{'data-dismiss' => 'fileupload'}
-        %i.icon-remove.icon-white
+        %i.fa.fa-times.icon-white
         %span Remover

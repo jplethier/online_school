@@ -1,21 +1,21 @@
 = form_tag(search_path, method: 'get') do
   .search
     = text_field_tag 'search', params[:search], class: 'large', placeholder: t('helpers.submit.search'), autofocus: true
-    %i{ class: 'icon-remove-sign' }
+    %i{ class: 'fa fa-times-circle' }
 
     - if params[:search].present?
       .search-param Resultados da busca por '#{params[:search]}'
 
   %button.button.primary{ type: 'submit' }
-    <i class='icon-search'></i> Buscar
+    <i class='fa fa-search'></i> Buscar
 
-= link_to '<i class="icon-plus"></i> Cadastrar'.html_safe, new_path, class: 'button secondary'
+= link_to '<i class="fa fa-plus"></i> Cadastrar'.html_safe, new_path, class: 'button secondary'
 
 = content_for :javascript do
   :javascript
     toggleSearchRemoveSign();
 
-    $('.search').on('click', '.icon-remove-sign', function() {
+    $('.search').on('click', '.fa-times-circle', function() {
       $('.search input').val('');
       $('.search').parent('form').submit();
     });
@@ -26,8 +26,8 @@
 
     function toggleSearchRemoveSign() {
       if (!!$('.search input').val()) {
-        $('.search .icon-remove-sign').show();
+        $('.search .fa-times-circle').show();
       } else {
-        $('.search .icon-remove-sign').hide();
+        $('.search .fa-times-circle').hide();
       }
     }

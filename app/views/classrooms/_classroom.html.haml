@@ -3,4 +3,6 @@
   %td= link_to classroom.groups_names, classroom_path(classroom)
   %td
     = link_to edit_classroom_path(classroom) do
-      <i class='icon-edit' title='Editar'></i>
+      <i class='fa fa-edit' title='Editar'></i>
+    = link_to classroom_path(classroom) do
+      <i class='fa fa-info' title='Exibir'></i>
