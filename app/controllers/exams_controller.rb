@@ -10,9 +10,6 @@ class ExamsController < ApplicationController
     @exam.classroom = Classroom.find(params[:classroom_id])
   end
 
-  def show
-  end
-
   def create
     classroom = Classroom.find(params[:classroom_id])
     @exam.classroom = classroom
@@ -21,6 +18,15 @@ class ExamsController < ApplicationController
     else
       flash.now[:error] = 'Não foi possível criar a avaliação'
       render :new
+    end
+  end
+
+  def update
+    if @exam.update_attributes(exam_params)
+      redirect_to classroom_path(@exam.classroom), success: 'Dados da avaliação atualizados com sucesso.'
+    else
+      flash.now[:error] = 'Não foi possível atualizar os dados da avaliação.'
+      render :edit
     end
   end
 
