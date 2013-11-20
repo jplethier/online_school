@@ -32,7 +32,8 @@ class ClassroomsController < AuthorizedController
   end
 
   def show
-
+    @past_exams = @classroom.exams.past
+    @future_exams = @classroom.exams.future
   end
 
   private

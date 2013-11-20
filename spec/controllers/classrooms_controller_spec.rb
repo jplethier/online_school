@@ -145,4 +145,24 @@ describe ClassroomsController do
       end
     end
   end
+
+  describe 'show' do
+    let(:past_exam) { Exam.stub(account: account, classroom: classroom) }
+    let(:future_exam) { Exam.stub(account: account, classroom: classroom) }
+
+    before { Classroom.stub(find: classroom) }
+
+    it 'assigns classroom' do
+      get :show, id: classroom.id
+      expect(assigns :classroom).to eq classroom
+    end
+
+    it 'populates past and future classroom exams' do
+      classroom.stub_chain(:exams, :past) { [past_exam] }
+      classroom.stub_chain(:exams, :future) { [future_exam] }
+      get :show, id: classroom.id
+      expect(assigns :past_exams).to eq [past_exam]
+      expect(assigns :future_exams).to eq [future_exam]
+    end
+  end
 end

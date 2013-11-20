@@ -31,12 +31,12 @@
           /       %td{colspan: 3}
           /         = paginate @classrooms, collection: @classrooms
           %tbody
-            = render @classroom.exams.future
+            = render @future_exams
 
       .exams-list.past
         %p Avaliações passadas
         %ul
-          - @classroom.exams.past.each do |exam|
+          - @past_exams.each do |exam|
             %li
               %span= "#{exam.kind} em #{l exam.exam_date.to_date}"
 
