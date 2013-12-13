@@ -397,6 +397,7 @@ footer {
     font-size: 12px;
     margin-top: 12px;
     padding-bottom: 12px;
+    position: relative;
 
     .menu {
       display: inline-block;
@@ -434,8 +435,9 @@ footer {
 
     .extra {
       display: inline-block;
-      float: right;
       padding: 10px 15px;
+      position: absolute;
+      right: 0;
       vertical-align: top;
 
       a {
