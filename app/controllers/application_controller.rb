@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |user| user.permit(:email, :password, :remember_me) }
 
     devise_parameter_sanitizer.for(:sign_up) do |user|
-      user.permit(:email, :password, :password_confirmation, account_attributes: [:name, :subdomain, :contact_mail] )
+      user.permit(:email, :password, :password_confirmation, account_attributes: [:name, :subdomain, :contact_mail, :plan_id] )
     end
 
     devise_parameter_sanitizer.for(:account_update) { |user| user.permit(:current_password, :email, :password, :password_confirmation) }

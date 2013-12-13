@@ -230,9 +230,10 @@
       user: 'Usuários'
     attributes:
       account:
-        name: 'Nome da Escola'
-        subdomain: 'Subdomínio'
         contact_mail: 'E-mail de Contato'
+        name: 'Nome da Escola'
+        plan_id: 'Plano'
+        subdomain: 'Subdomínio'
       classroom:
         subject: 'Disciplina'
         teacher: 'Professor'

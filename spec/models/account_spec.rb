@@ -16,6 +16,10 @@ describe Account do
       expect { account.contact_mail = nil }.to change { account.valid? }.from(true).to(false)
     end
 
+    it 'requires a plan' do
+      expect { account.plan = nil }.to change { account.valid? }.from(true).to(false)
+    end
+
     describe 'subdomain' do
       it 'is required' do
         expect { account.subdomain = nil }.to change { account.valid? }.from(true).to(false)

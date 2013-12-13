@@ -46,7 +46,8 @@
           %td R$ 180,00
         %tr
           %td
-            %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Médio')", href: 'javascript:;' } Experimentar
+            / %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Médio')", href: 'javascript:;' }
+            %a.button.primary{ href: new_user_registration_path+'?plan_id='+@plans[:medium].id.to_s } Experimentar
 
       %table
         %tr
@@ -88,9 +89,12 @@
         %tr
           %td
           %td
-            %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Pequeno')", href: 'javascript:;' } Experimentar
+            / %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Pequeno')", href: 'javascript:;' }
+            %a.button.primary{ href: new_user_registration_path+'?plan_id='+@plans[:small].id.to_s } Experimentar
           %td
             %img{ src: "#{image_path('home/onebit_34.png')}" }
-            %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Médio')", href: 'javascript:;' } Experimentar
+            / %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Médio')", href: 'javascript:;' } Experimentar
+            %a.button.primary{ href: new_user_registration_path+'?plan_id='+@plans[:medium].id.to_s } Experimentar
           %td
-            %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Grande')", href: 'javascript:;' } Experimentar
+            / %a.button.primary{ onclick: "Popup.open_url('#{contact_form_url}?plan=Grande')", href: 'javascript:;' } Experimentar
+            %a.button.primary{ href: new_user_registration_path+'?plan_id='+@plans[:big].id.to_s } Experimentar

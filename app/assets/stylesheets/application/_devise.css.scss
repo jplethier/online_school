@@ -36,6 +36,15 @@
       width: 300px;
     }
 
+    .selectize-control {
+      margin-left: $space;
+      width: 330px;
+
+      .selectize-input {
+        padding: 14px;
+      }
+    }
+
     .error {
       margin-left: $space;
     }

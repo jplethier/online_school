@@ -16,7 +16,10 @@ class Account < ActiveRecord::Base
 
   validates :name, presence: true
   validates :contact_mail, presence: true
+  validates :plan_id, presence: true
   validates :subdomain, presence: true, exclusion: { in: ReservedSubdomains }
+
+  belongs_to :plan
 
   has_many :classrooms
   has_many :groups

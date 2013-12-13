@@ -5,5 +5,7 @@ FactoryGirl.define do
     f.contact_mail 'F_CONTACT_MAIL'
     f.name 'F_NAME'
     f.subdomain 'SUBDOMAIN'
+
+    plan
   end
 end

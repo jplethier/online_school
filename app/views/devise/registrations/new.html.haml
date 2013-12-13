@@ -19,6 +19,10 @@
           %span.subdomain> subdominio
           \.minhasaladeaula.com
 
+      .field
+        = f_account.label :plan_id
+        = f_account.select :plan_id, options_from_collection_for_select(@plans, :id, :title_with_price, params[:plan_id]), {}, data: { selectize: true }, required: true
+
     .field
       = f.label :email
       = f.email_field :email, required: true, email: true
