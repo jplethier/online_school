@@ -70,7 +70,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'letter_opener'
-  gem 'pry-debugger'
+  gem 'pry-nav'
   gem "rspec-rails"
 end
 
