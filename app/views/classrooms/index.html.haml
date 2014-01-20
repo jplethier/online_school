@@ -5,7 +5,7 @@
       = render 'crud/search', search_path: classrooms_path, new_path: new_classroom_path
 
     %li.collection
-      - if @classrooms.empty?
+      - if @classrooms.blank?
         %p Nenhuma turma encontrada.
       - else
         %table.table

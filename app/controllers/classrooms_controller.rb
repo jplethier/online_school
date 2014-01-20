@@ -10,8 +10,10 @@ class ClassroomsController < AuthorizedController
   end
 
   def index
-    @classrooms = @classrooms.ordered_by_name.page(params[:page])
-    @classrooms = @classrooms.search(params[:search]) if params[:search].present?
+    unless @classrooms.blank?
+      @classrooms = @classrooms.ordered_by_name.page(params[:page])
+      @classrooms = @classrooms.search(params[:search]) if params[:search].present?
+    end
   end
 
   def create
