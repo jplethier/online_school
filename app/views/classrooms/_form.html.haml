@@ -7,7 +7,7 @@
       %br
       .teacher
         = f.label :teacher
-        = f.select :teacher_id, @teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), class: 'selectize'
+        = f.select :teacher_id, @teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), data: { selectize: true }
 
     .field
       .students-select
@@ -30,8 +30,6 @@
 = content_for :javascript do
   :javascript
     $(document).ready(function() {
-      $('.selectize').selectize()
-
       $('#classroom_subject_id').selectize({
         create: true,
         render: {
