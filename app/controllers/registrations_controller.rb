@@ -4,6 +4,11 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def create
+    @plans = Plan.order_by_price
+    super
+  end
+
   protected
 
   def build_resource(hash=nil)

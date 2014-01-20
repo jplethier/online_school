@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120171117) do
+ActiveRecord::Schema.define(version: 20140120173710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20140120171117) do
   end
 
   add_index "entries", ["classroom_id"], name: "index_entries_on_classroom_id", using: :btree
+
+  create_table "entry_settings", force: true do |t|
+    t.integer  "entry_id"
+    t.integer  "topic_id"
+    t.boolean  "follow",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entry_settings", ["entry_id"], name: "index_entry_settings_on_entry_id", using: :btree
+  add_index "entry_settings", ["topic_id"], name: "index_entry_settings_on_topic_id", using: :btree
 
   create_table "exams", force: true do |t|
     t.integer  "period"

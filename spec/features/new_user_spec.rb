@@ -3,7 +3,8 @@ require 'spec_helper'
 
 describe 'New User' do
   describe 'creating a user' do
-    let(:new_user_page) { NewUserPage.visit }
+    let!(:plan) { FactoryGirl.create :plan}
+    let(:new_user_page) { NewUserPage.visit(plan_id: plan.id.to_s) }
 
     it 'successfully' do
       new_user_page.fill_mandatory_fields

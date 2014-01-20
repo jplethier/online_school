@@ -1,5 +1,5 @@
 class NewUserPage < Page
-  set_url "/users/sign_up"
+  set_url "/users/sign_up?plan_id={plan_id}"
 
   element :account_name_field,          "article input[name='user[account_attributes][name]']"
   element :account_contact_mail_field,  "article input[name='user[account_attributes][contact_mail]']"
