@@ -10,10 +10,11 @@ class ClassroomsController < AuthorizedController
   end
 
   def index
-    unless @classrooms.blank?
-      @classrooms = @classrooms.ordered_by_name.page(params[:page])
-      @classrooms = @classrooms.search(params[:search]) if params[:search].present?
+    if @classrooms.blank?
+      @classrooms = current_user.classrooms.where(account_id: current_user.account_id)
     end
+    @classrooms = @classrooms.ordered_by_name.page(params[:page])
+    @classrooms = @classrooms.search(params[:search]) if params[:search].present?
   end
 
   def create
