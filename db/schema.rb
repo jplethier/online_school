@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 20140120173710) do
   add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
 
   create_table "entries", force: true do |t|
-    t.integer  "resource_id"
-    t.string   "resource_type"
     t.integer  "classroom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_group_id"
   end
 
   add_index "entries", ["classroom_id"], name: "index_entries_on_classroom_id", using: :btree
+  add_index "entries", ["user_group_id"], name: "index_entries_on_user_group_id", using: :btree
 
   create_table "entry_settings", force: true do |t|
     t.integer  "entry_id"
