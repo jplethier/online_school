@@ -9,19 +9,26 @@
         = f.label :teacher
         = f.select :teacher_id, @teachers.map { |teacher| [teacher.name, teacher.id] }, { include_blank: t('helpers.select.prompt') }, placeholder: t('helpers.select.prompt'), data: { selectize: true }
 
-    .field
-      .students-select
+    .field{ data: { 'dual-selectize' => 'remove',
+      'search-placeholder' => 'Procurar classes',
+      'empty-search-list' => 'Todas as classes já foram adicionadas',
+      } }
+
+      .select
         = label_tag :new_student, 'Adicionar classes a turma', class: 'invisible'
         = select_tag :new_student, options_for_select(@groups.map { |group| [group.name, group.id] }, selected: classroom.group_ids), multiple: true
 
-      .students-list
+      .list
         %p Classes
         %ul
-          - if @classroom_groups.blank?
-            %li.blank Não há nenhuma classe nessa turma ainda, selecione acima para adicionar
-          - else
+          %li.blank Não há nenhuma classe nessa turma ainda, selecione acima para adicionar
+
+          .template
+            = render('group_fields', group_id: '{{value}}', group_name: '{{text}}', disabled: 'disabled')
+
+          - if @classroom_groups.present?
             - @classroom_groups.each do |group|
-              = render('group_fields', group_id: group.id, group_name: group.name)
+              = render('group_fields', group_id: group.id, group_name: group.name, disabled: false)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
@@ -34,46 +41,8 @@
         create: true,
         render: {
           option_create: function(data, escape){
-            return '<div data-selectable="" class="create">#{t("helpers.select.add")} <strong>'+escape(data.input)+'</strong>…</div>'
+            return '<div data-selectable="" class="create">#{t("helpers.select.add")} <strong>' + escape(data.input) + '</strong>…</div>'
           }
         }
       })
-
-      var $select_student;
-
-      $select_student = $('.students-select select').selectize({
-        plugins: ['restore_on_backspace'],
-        onInitialize: function() {
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar classes');
-        },
-        onItemAdd: function(value, $item) {
-          var html = '#{j render("group_fields", group_name: "{{group_name}}", group_id: "{{group_id}}")}'
-
-          $('.students-list .blank').hide()
-
-          if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
-            $('.students-list ul').append(html.replace(/{{group_name}}/g, $item.text()).replace(/{{group_id}}/g, value))
-          }
-          if($('.selectize-dropdown-content div').length == 0){
-            $('.students-select .selectize-input input').attr('placeholder', 'Todos as classes já foram adicionadas');
-            select_student.disable();
-          }else{
-            $('.students-select .selectize-input input').attr('placeholder', 'Procurar classe');
-          }
-        },
-        onItemRemove: function(value, $item){
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar classe');
-          select_student.enable();
-
-          if($('.students-select .selectize-input div').length == 0){
-            if($('.students-list .blank').length == 0){
-              $('.students-list ul').append('<li class="blank">Não há nenhuma classe nessa turma ainda, selecione acima para adicionar</li>')
-            }else{
-              $('.students-list .blank').show();
-            }
-          }
-        }
-      })
-
-      select_student  = $select_student[0].selectize;
     })

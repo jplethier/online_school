@@ -4,61 +4,27 @@
       = f.label :name
       = f.text_field :name
 
-    .field
-      .students-select
+    .field{ data: { 'dual-selectize' => 'remove',
+      'search-placeholder' => 'Procurar alunos',
+      'empty-search-list' => 'Todas os alunos já foram adicionados',
+      } }
+
+      .select
         = label_tag :new_student, 'Adicionar alunos a classe', class: 'invisible'
         = select_tag :new_student, options_for_select(@students.map { |student| [student.name, student.id] }, selected: group.student_ids), multiple: true
 
-      .students-list
+      .list
         %p Alunos
         %ul
-          - if group.user_groups.blank?
-            %li.blank Não há nenhum aluno nessa turma ainda, selecione acima para adicionar.
-          - else
+          %li.blank Não há nenhum aluno nessa turma ainda, selecione acima para adicionar.
+
+          .template
+            = render('user_group_fields', user_name: '{{text}}', user_id: '{{value}}', index: '{{random}}', disabled: 'disabled')
+
+          - if group.user_groups.present?
             = f.fields_for :user_groups do |builder|
-              = render('user_group_fields', user_name: builder.object.user.name, user_id: builder.object.user_id.to_s, index: builder.index.to_s)
+              = render('user_group_fields', user_name: builder.object.user.name, user_id: builder.object.user_id.to_s, index: builder.index.to_s, disabled: false)
 
   .clear
   %button.button.primary{ type: 'submit', name: 'commit' }
     <i class='fa fa-check'></i> Confirmar
-
-= content_for :javascript do
-  :javascript
-    $(document).ready(function() {
-      var $select_student;
-
-      $select_student = $('.students-select select').selectize({
-        plugins: ['restore_on_backspace'],
-        onInitialize: function() {
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
-        },
-        onItemAdd: function(value, $item) {
-          var html = '#{j render("user_group_fields", user_name: "{{user_name}}", user_id: "{{user_id}}", index: "{{index}}")}'
-
-          $('.students-list .blank').hide()
-
-          if ($('.students-list li:visible input[value="' + value + '"]').length == 0) {
-            $('.students-list ul').append(html.replace(/{{user_name}}/g, $item.text()).replace(/{{user_id}}/g, value).replace(/{{index}}/g,new Date().getTime()))
-          }
-          if($('.selectize-dropdown-content div').length == 0){
-            $('.students-select .selectize-input input').attr('placeholder', 'Todos os alunos já foram adicionados');
-            select_student.disable();
-          }else{
-            $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
-          }
-        },
-        onItemRemove: function(value, $item){
-          $('.students-select .selectize-input input').attr('placeholder', 'Procurar aluno');
-          if($('.selectize-input div').length == 0){
-            if($('.students-list .blank').length == 0){
-              $('.students-list ul').append('<li class="blank">Não há nenhum aluno nessa turma ainda, selecione acima para adicionar</li>')
-            }else{
-              $('.students-list .blank').show();
-            }
-          }
-          select_student.enable();
-        }
-      })
-
-      select_student  = $select_student[0].selectize;
-    })

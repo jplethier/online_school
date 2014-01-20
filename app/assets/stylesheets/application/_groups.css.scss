@@ -1,61 +1,67 @@
-.students-list {
-  border-radius: 5px;
-  float: left;
-  margin-top: 10px;
-  width: 100%;
+*[data-dual-selectize] {
+  .list {
+    border-radius: 5px;
+    float: left;
+    margin-top: 10px;
+    width: 100%;
 
-  p {
-    background-color: $blue;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    color: $white;
-    font-size: 12px;
-    margin: 0;
-    padding: 10px;
-    text-transform: uppercase;
-  }
-
-  ul {
-    border: 1px $gray-lighter solid;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      border-bottom: 1px solid $gray-lighter;
+    p {
+      background-color: $blue;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      color: $white;
       font-size: 12px;
-      list-style: none;
+      margin: 0;
       padding: 10px;
+      text-transform: uppercase;
+    }
 
-      .remove-fields {
-        color: $gray-lighter;
-        float: right;
-        font-size: 16px;
-        line-height: 16px;
-        text-decoration: none;
-      }
+    ul {
+      border: 1px $gray-lighter solid;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top: none;
+      margin: 0;
+      padding: 0;
 
-      &:hover {
-        background-color: $yellow-light;
+      li {
+        border-bottom: 1px solid $gray-lighter;
+        font-size: 12px;
+        list-style: none;
+        padding: 10px;
+
+        .remove-fields, .destroy-fields {
+          color: $gray-lighter;
+          float: right;
+          font-size: 16px;
+          line-height: 16px;
+          text-decoration: none;
+        }
+
+        &:hover {
+          background-color: $yellow-light;
+        }
       }
     }
-  }
-}
 
-.students-select {
-  border-bottom: none !important;
-
-  .selectize-control {
-    width: 100%;
+    .template {
+      display: none;
+    }
   }
 
-  .selectize-input .item {
-    display: none;
-  }
+  .select {
+    border-bottom: none !important;
 
-  .selectize-input input {
-    width: 100%!important;
+    .selectize-control {
+      width: 100%;
+    }
+
+    .selectize-input .item {
+      display: none;
+    }
+
+    .selectize-input input {
+      width: 100%!important;
+    }
   }
 }

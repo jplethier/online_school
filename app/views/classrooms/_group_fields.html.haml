@@ -1,4 +1,4 @@
 %li
-  %input{ type: 'hidden', name: "classroom[group_ids][]", value: "#{group_id}" }
+  %input{ type: 'hidden', name: "classroom[group_ids][]", value: "#{group_id}", disabled: disabled }
   %span= group_name
-  = link_to "<i class='fa fa-times-circle' title='Remover'></i>".html_safe, 'javascript:;', data: { object_id: "#{group_id}" }, class: 'remove-fields', onclick: 'remove_fields($(this), select_student)'
+  = link_to "<i class='fa fa-times-circle' title='Remover'></i>".html_safe, '#', data: { object_id: "#{group_id}" }, class: 'remove-fields'
