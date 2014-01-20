@@ -2,10 +2,10 @@ class HomeController < ApplicationController
   layout 'home'
 
   def index
-    @plans = {}
-    @plans[:small] = Plan.find_by(title: 'Pequeno')
-    @plans[:medium] = Plan.find_by(title: 'Médio')
-    @plans[:big] = Plan.find_by(title: 'Grande')
+    @plans          = {}
+    @plans[:small]  = Plan.where(title: 'Pequeno').first_or_create { |plan| plan.price = 100; plan.students_number = 100 }
+    @plans[:medium] = Plan.where(title: 'Médio').first_or_create   { |plan| plan.price = 180; plan.students_number = 200 }
+    @plans[:big]    = Plan.where(title: 'Grande').first_or_create  { |plan| plan.price = 500; plan.students_number = 400 }
   end
 
   def contact_form

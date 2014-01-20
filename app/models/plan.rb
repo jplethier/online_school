@@ -17,7 +17,7 @@ class Plan < ActiveRecord::Base
   validates :students_number, numericality: true, presence: true
   validates :title, presence: true
 
-  scope :order_by_price, order('price')
+  scope :order_by_price, -> { order('price') }
 
   def title_with_price
     "#{self.title} - R$ #{self.price}"

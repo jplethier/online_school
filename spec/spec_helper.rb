@@ -25,6 +25,6 @@ RSpec.configure do |config|
     I18n.locale = 'pt-BR'
   end
 
-  config.include LoginHelper, type: :feature
   config.include Helper,      type: :feature
+  config.include LoginHelper, type: :feature
 end
