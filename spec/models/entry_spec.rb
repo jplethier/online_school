@@ -12,8 +12,8 @@ describe Entry do
       expect{ entry.classroom = nil }.to change{ entry.valid? }.from(true).to(false)
     end
 
-    it 'should require a resource' do
-      expect{ entry.resource = nil }.to change{ entry.valid? }.from(true).to(false)
+    it 'should require a user group' do
+      expect{ entry.user_group = nil }.to change{ entry.valid? }.from(true).to(false)
     end
   end
 end

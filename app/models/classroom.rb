@@ -4,8 +4,9 @@ class Classroom < ActiveRecord::Base
   belongs_to :teacher, class_name: 'User'
 
   has_many :entries, inverse_of: :classroom
-  has_many :users,   -> { where("entries.resource_type = 'User'") },  through: :entries, source: :user
-  has_many :groups,  -> { where("entries.resource_type = 'Group'") }, through: :entries, source: :group
+  has_many :user_groups, through: :entries
+  has_many :users, through: :user_groups, source: :user
+  has_many :groups, through: :user_groups, source: :group
 
   has_many :exams
 

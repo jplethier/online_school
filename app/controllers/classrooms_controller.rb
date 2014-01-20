@@ -1,6 +1,7 @@
 class ClassroomsController < AuthorizedController
   load_and_authorize_resource
   before_filter :populate_groups_subjects_and_teachers, only: [:new, :edit]
+  before_filter :populate_classroom_groups, only: [:edit]
 
   prepend_before_filter :create_subject_when_subject_id_is_a_string, only: [:create, :update]
 
@@ -39,14 +40,27 @@ class ClassroomsController < AuthorizedController
   private
 
   def classroom_params
-    params.require(:classroom).permit(:subject_id, :teacher_id, entries_attributes: [:id, :resource_type, :resource_id, :_destroy])
+    params.require(:classroom).permit(:subject_id, :teacher_id, entries_attributes: [:id, :resource_id, :_destroy])
+  end
+
+  def populate_classroom_groups
+    @classroom_groups = @classroom.groups.where(id: @classroom.group_ids)
   end
 
   def populate_groups_subjects_and_teachers
-    @groups = current_account.groups
+    @groups   = current_account.groups
     @subjects = current_account.subjects
     @teachers = current_account.users.teachers
   end
+
+  #def assign_all_students_of_a_group
+    #if classroom = params[:classroom]
+      #classroom[:entries_attributes].values.each do |entry|
+        #group = Group.find entry.delete(:resource_id)
+        #group.students.map(&:user_id)
+      #end
+    #end
+  #end
 
   def create_subject_when_subject_id_is_a_string
     unless params[:classroom][:subject_id].is_number?

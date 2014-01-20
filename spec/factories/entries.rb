@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :entry do
     classroom
-    association(:resource, factory: :user)
+    user_group
   end
 end

@@ -1,6 +1,0 @@
-%li
-  %input{ type: 'hidden', name: "classroom[entries_attributes][#{index}][resource_id]", value: "#{resource_id}" }
-  %input{ type: 'hidden', name: "classroom[entries_attributes][#{index}][resource_type]", value: "#{resource_type}" }
-  %input{ type: 'hidden', name: "classroom[entries_attributes][#{index}][_destroy]", value: 'false', class: 'destroy' }
-  %span= resource_name
-  = link_to "<i class='fa fa-times-circle' title='Remover'></i>".html_safe, 'javascript:;', data: { object_id: "#{resource_id}" }, class: 'remove-fields', onclick: 'remove_fields($(this), select_student)'

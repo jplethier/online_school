@@ -5,8 +5,9 @@ describe 'Creating a classroom' do
 
   let(:admin) { FactoryGirl.create(:admin) }
   let(:new_classroom_page) { NewClassroomPage.visit(subdomain: admin.account.subdomain) }
+
   let!(:teacher) { FactoryGirl.create(:teacher, account: admin.account) }
-  let!(:subjectr) { FactoryGirl.create(:subject, account: admin.account) }
+  let!(:subject) { FactoryGirl.create(:subject, account: admin.account) }
 
   context 'with mandatory data' do
     it 'successfully', js: true  do

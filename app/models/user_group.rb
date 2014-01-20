@@ -13,6 +13,8 @@ class UserGroup < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
 
+  has_many :entries, inverse_of: :user_group
+
   validates :user,  presence: true
   validates :group, presence: true
 end

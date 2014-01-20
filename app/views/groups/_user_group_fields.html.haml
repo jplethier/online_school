@@ -2,4 +2,4 @@
   %input{ type: 'hidden', name: "group[user_groups_attributes][#{index}][user_id]", value: "#{user_id}" }
   %input{ type: 'hidden', name: "group[user_groups_attributes][#{index}][_destroy]", value: 'false', class: 'destroy' }
   %span= user_name
-  = link_to "<i class='fa fa-times-circle' title='Remover'></i>".html_safe, 'javascript:;', data: { object_id: "#{user_id}" }, class: 'remove-fields', onclick: 'remove_fields($(this), select_student)'
+  = link_to "<i class='fa fa-times-circle' title='Remover'></i>".html_safe, 'javascript:;', data: { object_id: "#{user_id}" }, class: 'remove-fields', onclick: 'mark_fields_as_destroyed($(this), select_student)'
