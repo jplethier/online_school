@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120191144) do
+ActiveRecord::Schema.define(version: 20140120193759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20140120191144) do
     t.integer  "students_number"
   end
 
+  create_table "posts", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
+
   create_table "student_exams", force: true do |t|
     t.integer  "student_id"
     t.integer  "exam_id"
@@ -120,6 +131,7 @@ ActiveRecord::Schema.define(version: 20140120191144) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
   create_table "user_groups", force: true do |t|

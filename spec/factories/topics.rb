@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :topic do
     message 'F_TOPIC'
 
+    account
     classroom
     user
   end
