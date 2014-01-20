@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213143241) do
+ActiveRecord::Schema.define(version: 20140120171117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 20131213143241) do
     t.integer  "account_id"
   end
 
+  create_table "topics", force: true do |t|
+    t.integer  "classroom_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_groups", force: true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -112,8 +121,8 @@ ActiveRecord::Schema.define(version: 20131213143241) do
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -139,10 +148,10 @@ ActiveRecord::Schema.define(version: 20131213143241) do
     t.string   "address_city"
     t.string   "address_state"
     t.integer  "account_id"
-    t.boolean  "student",                default: false
-    t.boolean  "teacher",                default: false
-    t.boolean  "employee",               default: false
-    t.boolean  "admin",                  default: false
+    t.boolean  "student"
+    t.boolean  "teacher"
+    t.boolean  "employee"
+    t.boolean  "admin"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

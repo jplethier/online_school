@@ -9,6 +9,8 @@ class Classroom < ActiveRecord::Base
 
   has_many :exams
 
+  has_many :topics
+
   validates :account, presence: true
   validates :subject, presence: true
 
