@@ -82,7 +82,7 @@ describe Ability do
     end
   end
 
-  context 'Admin' do
+  context 'Student' do
     let(:account) { stub_model(Account, id: 1) }
     let(:student) { stub_model(User, student: true, account_id: 1, account: account) }
     let(:ability) { Ability.new(student) }
@@ -96,7 +96,7 @@ describe Ability do
     end
 
     it 'can view his classrooms' do
-      student_classroom = FactoryGirl.create(:classroom)
+      student_classroom = FactoryGirl.create(:classroom, account: student.account)
       user_group = FactoryGirl.create(:user_group, user: student)
       student_classroom.entries << FactoryGirl.create(:entry, user_group: user_group)
       another_classroom = stub_model(Classroom)

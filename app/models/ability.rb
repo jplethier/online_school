@@ -18,7 +18,7 @@ class Ability
     if user.student
       can :index, :dashboard
       can :read, Classroom do |classroom|
-        classroom.user_groups.where(user_id: user.id).exists?
+        classroom.user_groups.where(user_id: user.id).exists? && classroom.account_id == user.account_id
       end
     end
   end
