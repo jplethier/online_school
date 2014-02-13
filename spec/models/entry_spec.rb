@@ -8,12 +8,18 @@ describe Entry do
   its(:valid?) { should be_true }
 
   describe 'validations' do
-    it 'should require a classroom' do
-      expect{ entry.classroom = nil }.to change{ entry.valid? }.from(true).to(false)
+    it 'requires a classroom' do
+      expect { entry.classroom = nil }.to change{ entry.valid? }.from(true).to(false)
     end
 
-    it 'should require a user group' do
-      expect{ entry.user_group = nil }.to change{ entry.valid? }.from(true).to(false)
+    it 'requires a user group' do
+      expect { entry.user_group = nil }.to change{ entry.valid? }.from(true).to(false)
+    end
+
+    it 'only allows one entry per user group and classroom' do
+      duplicated_entry = FactoryGirl.build :entry, classroom: entry.classroom, user_group: entry.user_group
+
+      expect { entry.save! }.to change { duplicated_entry.valid? }.to(false)
     end
   end
 end

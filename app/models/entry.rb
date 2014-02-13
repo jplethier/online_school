@@ -6,4 +6,6 @@ class Entry < ActiveRecord::Base
 
   validates :classroom, presence: true
   validates :user_group, presence: true
+
+  validates :classroom_id, uniqueness: { scope: :user_group_id }
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120193759) do
+ActiveRecord::Schema.define(version: 20140213205412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140120193759) do
     t.integer  "user_group_id"
   end
 
+  add_index "entries", ["classroom_id", "user_group_id"], name: "index_entries_on_classroom_id_and_user_group_id", unique: true, using: :btree
   add_index "entries", ["classroom_id"], name: "index_entries_on_classroom_id", using: :btree
   add_index "entries", ["user_group_id"], name: "index_entries_on_user_group_id", using: :btree
 
