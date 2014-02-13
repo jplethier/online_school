@@ -9,12 +9,12 @@
       .students-list
         %p Classes
         %ul
-          - if @classroom.entries.blank?
+          - if @classroom.groups.blank?
             %li.blank Não há nenhuma classe nessa turma ainda
           - else
-            - @classroom.entries.each do |entry|
+            - @classroom.groups.each do |group|
               %li
-                %span= entry.resource.name
+                %span= group.name
 
     .exams
       .exams-list.future
