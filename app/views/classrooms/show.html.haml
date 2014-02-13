@@ -4,7 +4,8 @@
     .details
       .info
         %p= "Disciplina: #{@classroom.subject.name}"
-        %p= "Professor: #{@classroom.teacher.name}"
+        - if @classroom.teacher.present?
+          %p= "Professor: #{@classroom.teacher.name}"
       .students-list
         %p Classes
         %ul
